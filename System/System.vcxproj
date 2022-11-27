@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final Release|Win32">
+      <Configuration>Final Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Pix profile|Win32">
+      <Configuration>Pix profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Xbox360 Release|Win32">
+      <Configuration>Xbox360 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Systems</ProjectName>
+    <ProjectGuid>{2A864A4D-6168-4D6C-815C-7E4181522248}</ProjectGuid>
+    <RootNamespace>Systems</RootNamespace>
+    <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
+    <SccLocalPath>..</SccLocalPath>
+    <SccProvider>MSSCCI:Alienbrain</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DelayLoadDLLs>xinput1_3.dll;d3dx9_35.dll;d3dx9_36.dll;d3dx9_37.dll;d3dx9_38.dll;d3dx9_39.dll;d3dx9_40.dll;d3dx9_41.dll;d3dx9_42.dll;d3dx9_43.dll;d3dx9_44.dll;d3dx9_45.dll;d3dx9_46.dll;d3dx9_47.dll;d3dx9_48.dll;d3dx9_49.dll;d3dx9_50.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <AdditionalDependencies>atls.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>atlsd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DelayLoadDLLs>xinput1_3.dll;d3dx9_35.dll;d3dx9_36.dll;d3dx9_37.dll;d3dx9_38.dll;d3dx9_39.dll;d3dx9_40.dll;d3dx9_41.dll;d3dx9_42.dll;d3dx9_43.dll;d3dx9_44.dll;d3dx9_45.dll;d3dx9_46.dll;d3dx9_47.dll;d3dx9_48.dll;d3dx9_49.dll;d3dx9_50.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>atls.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>atlsd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <DelayLoadDLLs>xinput1_3.dll;d3dx9_35.dll;d3dx9_36.dll;d3dx9_37.dll;d3dx9_38.dll;d3dx9_39.dll;d3dx9_40.dll;d3dx9_41.dll;d3dx9_42.dll;d3dx9_43.dll;d3dx9_44.dll;d3dx9_45.dll;d3dx9_46.dll;d3dx9_47.dll;d3dx9_48.dll;d3dx9_49.dll;d3dx9_50.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>atls.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>atlsd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DelayLoadDLLs>xinput1_3.dll;d3dx9_35.dll;d3dx9_36.dll;d3dx9_37.dll;d3dx9_38.dll;d3dx9_39.dll;d3dx9_40.dll;d3dx9_41.dll;d3dx9_42.dll;d3dx9_43.dll;d3dx9_44.dll;d3dx9_45.dll;d3dx9_46.dll;d3dx9_47.dll;d3dx9_48.dll;d3dx9_49.dll;d3dx9_50.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>atls.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>atlsd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;STOP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <AssemblerOutput />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DelayLoadDLLs>xinput1_3.dll;d3dx9_35.dll;d3dx9_36.dll;d3dx9_37.dll;d3dx9_38.dll;d3dx9_39.dll;d3dx9_40.dll;d3dx9_41.dll;d3dx9_42.dll;d3dx9_43.dll;d3dx9_44.dll;d3dx9_45.dll;d3dx9_46.dll;d3dx9_47.dll;d3dx9_48.dll;d3dx9_49.dll;d3dx9_50.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>atls.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>atlsd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common_h\compression\Compressor.cpp" />
+    <ClCompile Include="..\common_h\compression\XCompressor.cpp" />
+    <ClCompile Include="AnimationService\Animation.cpp" />
+    <ClCompile Include="AnimationService\AnimationProcedural.cpp" />
+    <ClCompile Include="AnimationService\AnimationService.cpp" />
+    <ClCompile Include="AnimationService\anxanimation\AnxAnimation.cpp" />
+    <ClCompile Include="AnimationService\anxanimation\AnxData.cpp" />
+    <ClCompile Include="AnimationService\anxanimation\AnxPlayer.cpp" />
+    <ClCompile Include="Controls\ControlsIniParser.cpp" />
+    <ClCompile Include="Controls\ControlsManager.cpp" />
+    <ClCompile Include="Controls\ControlsTrigger.cpp" />
+    <ClCompile Include="Controls\Force.cpp" />
+    <ClCompile Include="Controls\JoystickDevice.cpp" />
+    <ClCompile Include="Controls\JoystickManager.cpp" />
+    <ClCompile Include="Controls\KeyboardDevice.cpp" />
+    <ClCompile Include="Controls\MouseDevice.cpp" />
+    <ClCompile Include="Controls\pc.cpp" />
+    <ClCompile Include="Controls\utils.cpp" />
+    <ClCompile Include="Controls\XBoxDevice.cpp" />
+    <ClCompile Include="Controls\XBoxKeyboard.cpp" />
+    <ClCompile Include="Core\Core.cpp" />
+    <ClCompile Include="Core\CoreMain.cpp" />
+    <ClCompile Include="Core\CoreStorage.cpp" />
+    <ClCompile Include="Core\CoreStorageFolder.cpp" />
+    <ClCompile Include="Core\DllManager.cpp" />
+    <ClCompile Include="Core\ExecutionModule.cpp" />
+    <ClCompile Include="Core\MemoryManager.cpp" />
+    <ClCompile Include="Core\ObjectsDeclarators.cpp" />
+    <ClCompile Include="Core\PerformanceCounters.cpp" />
+    <ClCompile Include="FileService\Archivator.cpp" />
+    <ClCompile Include="FileService\DataFile.cpp" />
+    <ClCompile Include="FileService\File.cpp" />
+    <ClCompile Include="FileService\FileService.cpp" />
+    <ClCompile Include="FileService\FilesTree.cpp" />
+    <ClCompile Include="FileService\Finder.cpp" />
+    <ClCompile Include="FileService\IniFile.cpp" />
+    <ClCompile Include="FileService\IniParser.cpp" />
+    <ClCompile Include="FileService\LoadBuffer.cpp" />
+    <ClCompile Include="FileService\MirrorPath.cpp" />
+    <ClCompile Include="FileService\PackFile.cpp" />
+    <ClCompile Include="GMXService\blendShapeMixer.cpp" />
+    <ClCompile Include="GMXService\gmxService.cpp" />
+    <ClCompile Include="GMXService\meshContainer.cpp" />
+    <ClCompile Include="GMXService\meshInstance.cpp" />
+    <ClCompile Include="LocStrings\LocStrings.cpp" />
+    <ClCompile Include="SoundService\FxBase.cpp" />
+    <ClCompile Include="SoundService\FxPremaster.cpp" />
+    <ClCompile Include="SoundService\FxScene.cpp" />
+    <ClCompile Include="SoundService\FxVoice.cpp" />
+    <ClCompile Include="SoundService\Sound.cpp" />
+    <ClCompile Include="SoundService\SoundBanks.cpp" />
+    <ClCompile Include="SoundService\SoundEditorAccessor.cpp" />
+    <ClCompile Include="SoundService\SoundScene.cpp" />
+    <ClCompile Include="SoundService\SoundsEngine.cpp" />
+    <ClCompile Include="SoundService\SoundService.cpp" />
+    <ClCompile Include="SoundService\UnitTests\UnitTestWaveSelectors.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="xboxlive\LiveService.cpp" />
+    <ClCompile Include="xboxlive\marketplace\ContentGUIUpdater.cpp" />
+    <ClCompile Include="xboxlive\marketplace\contentmanager.cpp" />
+    <ClCompile Include="xboxlive\marketplace\contenttest.cpp" />
+    <ClCompile Include="xboxlive\marketplace\pc\LiveService.cpp" />
+    <ClCompile Include="xboxlive\marketplace\pc\PCContentEnumerator.cpp" />
+    <ClCompile Include="xboxlive\marketplace\xbox\content.cpp" />
+    <ClCompile Include="xboxlive\marketplace\xbox\ContentEnumerator.cpp" />
+    <ClCompile Include="xboxlive\marketplace\xbox\DownloadEnumerator.cpp" />
+    <ClCompile Include="xboxlive\objects\LiveServiceTrigger.cpp" />
+    <ClCompile Include="xboxlive\pc\PCLiveManager.cpp" />
+    <ClCompile Include="xboxlive\pc\pcutils_temp\utils_temp.cpp" />
+    <ClCompile Include="xboxlive\pc\steam_wraper.cpp" />
+    <ClCompile Include="xboxlive\xbox\XboxLiveManager.cpp" />
+    <ClCompile Include="XRender\advfont\AdvFont.cpp" />
+    <ClCompile Include="XRender\advfont\AdvFontsManager.cpp" />
+    <ClCompile Include="XRender\batch\CommandBufferExecutor.cpp" />
+    <ClCompile Include="XRender\batch\PrecompiledBatch.cpp" />
+    <ClCompile Include="XRender\capsule\Capsule.cpp" />
+    <ClCompile Include="XRender\commandbuffers\CommandBufferCompiler.cpp" />
+    <ClCompile Include="XRender\defaultstates\DefaultStates.cpp" />
+    <ClCompile Include="XRender\device\PC_Device.cpp" />
+    <ClCompile Include="XRender\device\X360_Device.cpp" />
+    <ClCompile Include="XRender\Draw.cpp" />
+    <ClCompile Include="XRender\fonts\CFont.cpp" />
+    <ClCompile Include="XRender\fonts\Font.cpp" />
+    <ClCompile Include="XRender\fonts\RFont.cpp" />
+    <ClCompile Include="XRender\indexbuffers\IBuffer.cpp" />
+    <ClCompile Include="XRender\mediaplayer\XBoxMediaPlayer.cpp" />
+    <ClCompile Include="XRender\Query\OcclusionQuery.cpp" />
+    <ClCompile Include="XRender\Render.cpp" />
+    <ClCompile Include="XRender\rendertargets\RenderTarget.cpp" />
+    <ClCompile Include="XRender\rendertargets\RenderTargetDepth.cpp" />
+    <ClCompile Include="XRender\Resource.cpp" />
+    <ClCompile Include="XRender\shaders\changelist\ChangeList.cpp" />
+    <ClCompile Include="XRender\shaders\IncludeHandler.cpp" />
+    <ClCompile Include="XRender\shaders\Shader.cpp" />
+    <ClCompile Include="XRender\shaders\ShaderManager.cpp" />
+    <ClCompile Include="XRender\shaders\ShaderVar.cpp" />
+    <ClCompile Include="XRender\shaders\statefilter\StateFilter.cpp" />
+    <ClCompile Include="XRender\textures\BaseTexture.cpp" />
+    <ClCompile Include="XRender\textures\Texture.cpp" />
+    <ClCompile Include="XRender\TXXLoader.cpp" />
+    <ClCompile Include="XRender\VariablesDB.cpp" />
+    <ClCompile Include="XRender\vertexbuffers\VBuffer.cpp" />
+    <ClCompile Include="XRender\VideoCodec\DShowTextures.cpp" />
+    <ClCompile Include="XRender\VideoCodec\wmvcodec.cpp" />
+    <ClCompile Include="XRender\VideoCodec\wmvgraph.cpp" />
+    <ClCompile Include="XRender\VideoCodec\xmvcodec.cpp" />
+    <ClCompile Include="XRender\xliveshower\XLiveShowerPC.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common_h\Animation.h" />
+    <ClInclude Include="..\common_h\AnimationBlendLevels.h" />
+    <ClInclude Include="..\common_h\AnimationNativeAccess.h" />
+    <ClInclude Include="..\common_h\AnimationStdEvents.h" />
+    <ClInclude Include="..\common_h\cfg_switches.h" />
+    <ClInclude Include="..\common_h\compression\Compressor.h" />
+    <ClInclude Include="..\common_h\compression\XCompressor.h" />
+    <ClInclude Include="..\common_h\controls.h" />
+    <ClInclude Include="..\common_h\core.h" />
+    <ClInclude Include="..\common_h\corecmds.h" />
+    <ClInclude Include="..\common_h\coreloader.h" />
+    <ClInclude Include="..\common_h\coremanager.h" />
+    <ClInclude Include="..\common_h\CritSection.h" />
+    <ClInclude Include="..\common_h\data_swizzle.h" />
+    <ClInclude Include="..\common_h\defines.h" />
+    <ClInclude Include="..\common_h\d_types.h" />
+    <ClInclude Include="..\common_h\FileService.h" />
+    <ClInclude Include="..\common_h\gmx.h" />
+    <ClInclude Include="..\common_h\gmxservice\gmx_OBB.h" />
+    <ClInclude Include="..\common_h\gmxservice\igmx_scene.h" />
+    <ClInclude Include="..\common_h\gmxservice\igmx_service.h" />
+    <ClInclude Include="..\common_h\gmxservice\MeshStructure.h" />
+    <ClInclude Include="..\common_h\IForce.h" />
+    <ClInclude Include="..\common_h\ILiveService.h" />
+    <ClInclude Include="..\common_h\InputSrvCmds.h" />
+    <ClInclude Include="..\common_h\IVideoCodec.h" />
+    <ClInclude Include="..\common_h\LocStrings.h" />
+    <ClInclude Include="..\common_h\Render.h" />
+    <ClInclude Include="..\common_h\render\IAdvancedFont.h" />
+    <ClInclude Include="..\common_h\render\IFilter.h" />
+    <ClInclude Include="..\common_h\render\IFont.h" />
+    <ClInclude Include="..\common_h\render\IRender.h" />
+    <ClInclude Include="..\common_h\render\IResource.h" />
+    <ClInclude Include="..\common_h\render\ShaderID.h" />
+    <ClInclude Include="..\common_h\Sound.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\defines.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\PsaApi.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\PscApi.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\PsConfig.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\PsConstants.h" />
+    <ClInclude Include="..\common_h\StarForce_SDK\SFinclude.h" />
+    <ClInclude Include="..\common_h\StringUtils\Win1250.h" />
+    <ClInclude Include="..\common_h\StringUtils\Win1251.h" />
+    <ClInclude Include="..\common_h\StringUtils\Win1252.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\functions.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_Pack.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_Structs.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_UberGenerator.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_UberShader.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_Variables.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_VertexShader.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\gmxService\gmx_VertexShaderAnim.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\stdVariables.h" />
+    <ClInclude Include="AnimationService\Animation.h" />
+    <ClInclude Include="AnimationService\AnimationProcedural.h" />
+    <ClInclude Include="AnimationService\AnimationService.h" />
+    <ClInclude Include="AnimationService\anxanimation\AnxAnimation.h" />
+    <ClInclude Include="AnimationService\anxanimation\AnxData.h" />
+    <ClInclude Include="AnimationService\anxanimation\AnxFileFormat.h" />
+    <ClInclude Include="AnimationService\anxanimation\AnxPlayer.h" />
+    <ClInclude Include="AnimationService\IAnxEditorServiceAccess.h" />
+    <ClInclude Include="Controls\ControlsIniParser.h" />
+    <ClInclude Include="Controls\ControlsManager.h" />
+    <ClInclude Include="Controls\ControlsTrigger.h" />
+    <ClInclude Include="Controls\device.h" />
+    <ClInclude Include="Controls\Force.h" />
+    <ClInclude Include="Controls\JoystickDevice.h" />
+    <ClInclude Include="Controls\JoystickManager.h" />
+    <ClInclude Include="Controls\KeyboardDevice.h" />
+    <ClInclude Include="Controls\MouseDevice.h" />
+    <ClInclude Include="Controls\pc.h" />
+    <ClInclude Include="Controls\utils.h" />
+    <ClInclude Include="Controls\XBoxDevice.h" />
+    <ClInclude Include="Controls\XBoxKeyboard.h" />
+    <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Core\CoreBase.h" />
+    <ClInclude Include="Core\CoreStorage.h" />
+    <ClInclude Include="Core\CoreStorageFolder.h" />
+    <ClInclude Include="Core\DllManager.h" />
+    <ClInclude Include="Core\ExecutionModule.h" />
+    <ClInclude Include="Core\MemoryManager.h" />
+    <ClInclude Include="Core\ObjectsDeclarators.h" />
+    <ClInclude Include="Core\PerformanceCounters.h" />
+    <ClInclude Include="Core\RegistryKeyAccessor.h" />
+    <ClInclude Include="FileService\Archivator.h" />
+    <ClInclude Include="FileService\DataFile.h" />
+    <ClInclude Include="FileService\File.h" />
+    <ClInclude Include="FileService\FileService.h" />
+    <ClInclude Include="FileService\FilesTree.h" />
+    <ClInclude Include="FileService\Finder.h" />
+    <ClInclude Include="FileService\IniFile.h" />
+    <ClInclude Include="FileService\IniParser.h" />
+    <ClInclude Include="FileService\LoadBuffer.h" />
+    <ClInclude Include="FileService\MirrorPath.h" />
+    <ClInclude Include="FileService\PackFile.h" />
+    <ClInclude Include="GMXService\blendShapeMixer.h" />
+    <ClInclude Include="GMXService\gmxService.h" />
+    <ClInclude Include="GMXService\meshContainer.h" />
+    <ClInclude Include="GMXService\meshInstance.h" />
+    <ClInclude Include="GMXService\mesh_data.h" />
+    <ClInclude Include="LocStrings\LocStrings.h" />
+    <ClInclude Include="SoundService\FxBase.h" />
+    <ClInclude Include="SoundService\FxPremaster.h" />
+    <ClInclude Include="SoundService\FxScene.h" />
+    <ClInclude Include="SoundService\FxVoice.h" />
+    <ClInclude Include="SoundService\ISoundEditorAccessor.h" />
+    <ClInclude Include="SoundService\Sound.h" />
+    <ClInclude Include="SoundService\SoundBankFile.h" />
+    <ClInclude Include="SoundService\SoundBanks.h" />
+    <ClInclude Include="SoundService\SoundEditorAccessor.h" />
+    <ClInclude Include="SoundService\SoundOff.h" />
+    <ClInclude Include="SoundService\SoundScene.h" />
+    <ClInclude Include="SoundService\SoundsEngine.h" />
+    <ClInclude Include="SoundService\SoundService.h" />
+    <CustomBuild Include="SoundService\UnitTests\SoundServiceUnitTests.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="xboxlive\ILiveManager.h" />
+    <ClInclude Include="xboxlive\LiveService.h" />
+    <ClInclude Include="xboxlive\marketplace\ContentGUIUpdater.h" />
+    <ClInclude Include="xboxlive\marketplace\contentmanager.h" />
+    <ClInclude Include="xboxlive\marketplace\contenttest.h" />
+    <ClInclude Include="xboxlive\marketplace\defines.h" />
+    <ClInclude Include="xboxlive\marketplace\icontent.h" />
+    <ClInclude Include="xboxlive\marketplace\ILiveService.h" />
+    <ClInclude Include="xboxlive\marketplace\pc\LiveService.h" />
+    <ClInclude Include="xboxlive\marketplace\pc\PCContentEnumerator.h" />
+    <ClInclude Include="xboxlive\marketplace\xbox\content.h" />
+    <ClInclude Include="xboxlive\marketplace\xbox\ContentEnumerator.h" />
+    <ClInclude Include="xboxlive\marketplace\xbox\DownloadEnumerator.h" />
+    <ClInclude Include="xboxlive\objects\LiveServiceTrigger.h" />
+    <ClInclude Include="xboxlive\pc\PCLiveManager.h" />
+    <ClInclude Include="xboxlive\pc\pcutils_temp\utils_temp.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamapps.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamclient.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamfriends.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamgameserver.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteammasterserverupdater.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteammatchmaking.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamnetworking.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamremotestorage.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamuser.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamuserstats.h" />
+    <ClInclude Include="xboxlive\pc\steam\isteamutils.h" />
+    <ClInclude Include="xboxlive\pc\steam\matchmakingtypes.h" />
+    <ClInclude Include="xboxlive\pc\steam\steamclientpublic.h" />
+    <ClInclude Include="xboxlive\pc\steam\steamtypes.h" />
+    <ClInclude Include="xboxlive\pc\steam\steam_api.h" />
+    <ClInclude Include="xboxlive\pc\steam\steam_gameserver.h" />
+    <ClInclude Include="xboxlive\pc\steam_wraper.h" />
+    <ClInclude Include="xboxlive\xbox\XboxLiveManager.h" />
+    <ClInclude Include="XRender\advfont\AdvFont.h" />
+    <ClInclude Include="XRender\advfont\AdvFontsManager.h" />
+    <ClInclude Include="XRender\atomicI32.h" />
+    <ClInclude Include="XRender\batch\CommandBufferExecutor.h" />
+    <ClInclude Include="XRender\batch\gpu_structs.h" />
+    <ClInclude Include="XRender\batch\PrecompiledBatch.h" />
+    <ClInclude Include="XRender\capsule\Capsule.h" />
+    <ClInclude Include="XRender\commandbuffers\CommandBufferCompiler.h" />
+    <ClInclude Include="XRender\CompilerMode.h" />
+    <ClInclude Include="XRender\D3D9SyncCode.h" />
+    <ClInclude Include="XRender\D3DConvertor.h" />
+    <ClInclude Include="XRender\defaultstates\DefaultStates.h" />
+    <ClInclude Include="XRender\device\IDevice.h" />
+    <ClInclude Include="XRender\device\PC_Device.h" />
+    <ClInclude Include="XRender\device\X360_Device.h" />
+    <ClInclude Include="XRender\fonts\Font.h" />
+    <ClInclude Include="XRender\GraphicsApi.h" />
+    <ClInclude Include="XRender\indexbuffers\IBuffer.h" />
+    <ClInclude Include="XRender\MaxLights.h" />
+    <ClInclude Include="XRender\mediaplayer\XBoxMediaPlayer.h" />
+    <ClInclude Include="XRender\Query\OcclusionQuery.h" />
+    <ClInclude Include="XRender\Render.h" />
+    <ClInclude Include="XRender\rendertargets\RenderTarget.h" />
+    <ClInclude Include="XRender\rendertargets\RenderTargetDepth.h" />
+    <ClInclude Include="XRender\Resource.h" />
+    <ClInclude Include="XRender\shaders\changelist\ChangeList.h" />
+    <ClInclude Include="XRender\shaders\IncludeHandler.h" />
+    <ClInclude Include="XRender\shaders\Shader.h" />
+    <ClInclude Include="XRender\shaders\ShaderManager.h" />
+    <ClInclude Include="XRender\shaders\ShaderVar.h" />
+    <ClInclude Include="XRender\shaders\statefilter\StateFilter.h" />
+    <ClInclude Include="XRender\textures\BaseTexture.h" />
+    <ClInclude Include="XRender\textures\Texture.h" />
+    <ClInclude Include="XRender\TXX.h" />
+    <ClInclude Include="XRender\TXXLoader.h" />
+    <ClInclude Include="XRender\VariablesDB.h" />
+    <ClInclude Include="XRender\vertexbuffers\VBuffer.h" />
+    <ClInclude Include="XRender\VideoCodec\DShowTextures.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\amextra.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\amfilter.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\amvideo.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\audevcod.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\cache.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\combase.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\comlite.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\cprop.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\ctlutil.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\dllsetup.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\dsschedule.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\edevdefs.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\errors.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\evcode.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\fourcc.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\measure.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\msgthrd.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\mtype.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\outputq.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\pstream.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\refclock.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\reftime.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\renbase.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\source.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\streams.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\strmctl.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\sysclock.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\transfrm.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\transip.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\vfwmsgs.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\videoctl.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\vtrans.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\winctrl.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\winutil.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\wxdebug.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\wxlist.h" />
+    <ClInclude Include="XRender\VideoCodec\sdk_baseclasses\wxutil.h" />
+    <ClInclude Include="XRender\VideoCodec\wmvcodec.h" />
+    <ClInclude Include="XRender\VideoCodec\wmvgraph.h" />
+    <ClInclude Include="XRender\VideoCodec\wmvinterfaces.h" />
+    <ClInclude Include="XRender\VideoCodec\xmvcodec.h" />
+    <ClInclude Include="XRender\xliveshower\IXLiveShower.h" />
+    <ClInclude Include="XRender\xliveshower\XLiveShowerPC.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ENGINE\resource\ini\codepages.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\common_h\StarForce_SDK\ufyvidyr.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <Library Include="xboxlive\pc\steam_api.lib" />
+    <CustomBuild Include="XRender\VideoCodec\strmbase.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="XRender\VideoCodec\strmbased.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\dbgInfoSprite.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\dbgLine.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\dbgRects.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\dbgSolidBox.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\dbgSphere.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Debug\stdPolygon.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\EDRamRestore.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Font.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Background.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showbatches.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\ShowBiNormals.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showdiffuse.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showgloss.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showLightcomplex.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\shownormalmap.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\ShowNormals.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showocclusion.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\ShowOverDraw.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showparralax.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\showshinines.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Debug\ShowTangents.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Decal.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\dummy.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\DynamicLight.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\foam.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\foliage.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Grass.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\LightMap.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\Overlay.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\shaders.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\singletexture.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\VolumetricRays.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\gmxService\Shaders\WeaponSFX.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\histogram\histogram.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostProcess\Line.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Video.fx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

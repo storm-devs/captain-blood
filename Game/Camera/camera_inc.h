@@ -1,0 +1,2 @@
+
+#include "BaseCamera\BaseCamera.h"

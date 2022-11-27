@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final Release|Win32">
+      <Configuration>Final Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Pix profile|Win32">
+      <Configuration>Pix profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{64E3AB3B-AAD4-4896-8862-BEF5B5ABD0C2}</ProjectGuid>
+    <RootNamespace>Editors</RootNamespace>
+    <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
+    <SccLocalPath>..</SccLocalPath>
+    <SccProvider>MSSCCI:Alienbrain</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/$(ProjectName).tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/$(ProjectName).tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/$(ProjectName).tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/$(ProjectName).tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;STOP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2010;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common_h\compression\Compressor.h" />
+    <CustomBuild Include="..\common_h\gui.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_button.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_checkbox.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_cliper.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_colorpicker.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_combobox.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_control.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_cursor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_edit.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_events.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_font.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_helper.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_image.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_label.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_listbox.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_memo.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_messagebox.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_messages.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_opendialog.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_panel.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_point.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_radiobutton.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_rectangle.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_savedialog.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_ScrollBar.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_stringlist.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_treeview.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_urllabel.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\controls\gui_window.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui\gui_IManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\common_h\gui_controls.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="..\common_h\tinyxml\tinystr.h" />
+    <ClInclude Include="..\common_h\tinyxml\tinyxml.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\GUI\GUI_Common.h" />
+    <ClInclude Include="anxeditor\ant.h" />
+    <ClInclude Include="anxeditor\AntFile.h" />
+    <ClInclude Include="anxeditor\AnxBase.h" />
+    <ClInclude Include="anxeditor\AnxEditor.h" />
+    <ClInclude Include="anxeditor\AnxExporter.h" />
+    <ClInclude Include="anxeditor\AnxOptions.h" />
+    <ClInclude Include="anxeditor\AnxProject.h" />
+    <ClInclude Include="anxeditor\AnxStreams.h" />
+    <ClInclude Include="anxeditor\ClipsRepository.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_ChangeHrcNode.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_Copy.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_CopyPasteEvent.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_CreateLink.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_CreateNode.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_DelSelectedNodes.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_ExecuteEvent.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_GotoNode.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_Import.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_LinkState.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_MoveNodes.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_NodeState.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_OpenNodesList.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_Paste.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_Redo.h" />
+    <ClInclude Include="anxeditor\commands\AnxCmd_Undo.h" />
+    <ClInclude Include="anxeditor\commands\Command.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxAnimationViewer.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxItemsList.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxMenu.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxToolButton.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxToolEdit.h" />
+    <ClInclude Include="anxeditor\editorcontrols\AnxToolListBox.h" />
+    <ClInclude Include="anxeditor\forms\AnxEditorMainWindow.h" />
+    <ClInclude Include="anxeditor\forms\AnxEditorToolBar.h" />
+    <ClInclude Include="anxeditor\forms\AnxExportLog.h" />
+    <ClInclude Include="anxeditor\forms\GroupNodeListElement.h" />
+    <ClInclude Include="anxeditor\forms\LinkForm.h" />
+    <ClInclude Include="anxeditor\forms\LoadModelForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeAnimationConstsAttackForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeAnimationConstsForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeAnimationEventsForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeAnimationForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeAnimationMoveClip.h" />
+    <ClInclude Include="anxeditor\forms\NodeGroupForm.h" />
+    <ClInclude Include="anxeditor\forms\NodeInOutForm.h" />
+    <ClInclude Include="anxeditor\graph\GraphLink.h" />
+    <ClInclude Include="anxeditor\graph\GraphLinks.h" />
+    <ClInclude Include="anxeditor\graph\GraphManager.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeAnimation.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeBase.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeGroup.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeHierarchy.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeIn.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeInOut.h" />
+    <ClInclude Include="anxeditor\graph\GraphNodeOut.h" />
+    <ClInclude Include="anxeditor\graph\LinkData.h" />
+    <ClInclude Include="anxeditor\MasterSkeleton.h" />
+    <ClInclude Include="ForceEditor\ForceEditor.h" />
+    <ClInclude Include="ForceEditor\ForceEditorMainWindow.h" />
+    <ClInclude Include="ForceEditor\GraphEditor.h" />
+    <ClInclude Include="ForceEditor\gui\fe_grapheditor.h" />
+    <ClInclude Include="ForceEditor\gui\fe_graphline.h" />
+    <ClInclude Include="ForceEditor\gui\fe_linelist.h" />
+    <ClInclude Include="GUI_Manager\gui_manager.h" />
+    <ClInclude Include="project builder\ProjectBuilder.h" />
+    <ClInclude Include="RagDollED\editor\camera\Camera.h" />
+    <ClInclude Include="RagDollED\editor\customcontrols\gui_edit2.h" />
+    <ClInclude Include="RagDollED\editor\customcontrols\gui_radiobutton2.h" />
+    <ClInclude Include="RagDollED\editor\customcontrols\gui_secktor.h" />
+    <ClInclude Include="RagDollED\editor\customcontrols\gui_viewport.h" />
+    <ClInclude Include="RagDollED\editor\EditorMain.h" />
+    <ClInclude Include="RagDollED\editor\forms\mainwindow.h" />
+    <ClInclude Include="RagDollED\gizmo\gizmo.h" />
+    <ClInclude Include="RagDollED\gui_scrollbar2.h" />
+    <ClInclude Include="RagDollED\primitiverender\Box.h" />
+    <ClInclude Include="RagDollED\primitiverender\Capsule.h" />
+    <ClInclude Include="RagDollED\primitiverender\Cone.h" />
+    <ClInclude Include="RagDollED\primitiverender\ConeSecktor.h" />
+    <ClInclude Include="RagDollED\primitiverender\Cylinder.h" />
+    <ClInclude Include="RagDollED\primitiverender\Pie.h" />
+    <ClInclude Include="RagDollED\primitiverender\Sphere.h" />
+    <ClInclude Include="RagDollED\RagDollAnimation.h" />
+    <ClInclude Include="RagDollED\textfile.h" />
+    <ClInclude Include="SoundEditor\forms\ComboBox\FormComboBox.h" />
+    <ClInclude Include="SoundEditor\forms\ComboBox\FormComboBoxList.h" />
+    <ClInclude Include="SoundEditor\forms\dev\WaveDecomposer.h" />
+    <ClInclude Include="SoundEditor\forms\external\FormTestGizmo.h" />
+    <ClInclude Include="SoundEditor\forms\external\FormTestViewer.h" />
+    <ClInclude Include="SoundEditor\forms\external\FormTimeLine.h" />
+    <ClInclude Include="SoundEditor\forms\external\PreviewAnimation.h" />
+    <ClInclude Include="SoundEditor\forms\FormAddWaveToSound.h" />
+    <ClInclude Include="SoundEditor\forms\FormAnimation.h" />
+    <ClInclude Include="SoundEditor\forms\FormAttGraph.h" />
+    <ClInclude Include="SoundEditor\forms\FormButton.h" />
+    <ClInclude Include="SoundEditor\forms\FormCheckBox.h" />
+    <ClInclude Include="SoundEditor\forms\FormControlBase.h" />
+    <ClInclude Include="SoundEditor\forms\FormEdit.h" />
+    <ClInclude Include="SoundEditor\forms\FormEditName.h" />
+    <ClInclude Include="SoundEditor\forms\FormExportSoundBank.h" />
+    <ClInclude Include="SoundEditor\forms\FormGame.h" />
+    <ClInclude Include="SoundEditor\forms\FormImportWaves.h" />
+    <ClInclude Include="SoundEditor\forms\FormLabel.h" />
+    <ClInclude Include="SoundEditor\forms\FormMessageBox.h" />
+    <ClInclude Include="SoundEditor\forms\FormNewAnimation.h" />
+    <ClInclude Include="SoundEditor\forms\FormOptions.h" />
+    <ClInclude Include="SoundEditor\forms\FormPolygon.h" />
+    <ClInclude Include="SoundEditor\forms\FormSndBaseParams.h" />
+    <ClInclude Include="SoundEditor\forms\FormSoundBankOptions.h" />
+    <ClInclude Include="SoundEditor\forms\FormSounds.h" />
+    <ClInclude Include="SoundEditor\forms\FormWaves.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormGameList.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormListAnimations.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormListBase.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormListNodes.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormListSounds.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormPolygonList.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormSoundWaves.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormWaveFiles.h" />
+    <ClInclude Include="SoundEditor\forms\lists\FormWaveSelector.h" />
+    <ClInclude Include="SoundEditor\forms\sliders\BaseSlider.h" />
+    <ClInclude Include="SoundEditor\forms\sliders\FormScrollBar.h" />
+    <ClInclude Include="SoundEditor\forms\sliders\NumberSlider.h" />
+    <ClInclude Include="SoundEditor\forms\SndEditorMainWindow.h" />
+    <ClInclude Include="SoundEditor\project\ProjectAnimation.h" />
+    <ClInclude Include="SoundEditor\project\ProjectObject.h" />
+    <ClInclude Include="SoundEditor\project\ProjectSound.h" />
+    <ClInclude Include="SoundEditor\project\ProjectWave.h" />
+    <ClInclude Include="SoundEditor\project\ProjectWaveExporter.h" />
+    <ClInclude Include="SoundEditor\project\SndProject.h" />
+    <ClInclude Include="SoundEditor\project\SoundParams.h" />
+    <ClInclude Include="SoundEditor\SndBase.h" />
+    <ClInclude Include="SoundEditor\SndEditor.h" />
+    <ClInclude Include="SoundEditor\SndExporter.h" />
+    <ClInclude Include="SoundEditor\SndOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common_h\compression\Compressor.cpp" />
+    <ClCompile Include="..\common_h\gui\controls\gui_button.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_checkbox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_cliper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_colorpicker.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_combobox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_control.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_cursor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_edit.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_events.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_font.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_helper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_image.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_label.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_listbox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_memo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_messagebox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_opendialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_panel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_point.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_radiobutton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_rectangle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_savedialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_ScrollBar.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_stringlist.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_treeview.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_urllabel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\gui\controls\gui_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\common_h\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\common_h\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\common_h\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\common_h\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="anxeditor\AntFile.cpp" />
+    <ClCompile Include="anxeditor\AnxEditor.cpp" />
+    <ClCompile Include="anxeditor\AnxExporter.cpp" />
+    <ClCompile Include="anxeditor\AnxOptions.cpp" />
+    <ClCompile Include="anxeditor\AnxProject.cpp" />
+    <ClCompile Include="anxeditor\AnxStreams.cpp" />
+    <ClCompile Include="anxeditor\AnxVersionConverter.cpp" />
+    <ClCompile Include="anxeditor\ClipsRepository.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_ChangeHrcNode.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_Copy.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_CopyPasteEvent.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_CreateLink.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_CreateNode.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_DelSelectedNodes.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_ExecuteEvent.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_GotoNode.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_Import.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_LinkState.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_MoveNodes.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_NodeState.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_OpenNodesList.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_Paste.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_Redo.cpp" />
+    <ClCompile Include="anxeditor\commands\AnxCmd_Undo.cpp" />
+    <ClCompile Include="anxeditor\commands\Command.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxAnimationViewer.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxItemsList.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxMenu.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxToolButton.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxToolEdit.cpp" />
+    <ClCompile Include="anxeditor\editorcontrols\AnxToolListBox.cpp" />
+    <ClCompile Include="anxeditor\forms\AnxEditorMainWindow.cpp" />
+    <ClCompile Include="anxeditor\forms\AnxEditorToolBar.cpp" />
+    <ClCompile Include="anxeditor\forms\AnxExportLog.cpp" />
+    <ClCompile Include="anxeditor\forms\GroupNodeListElement.cpp" />
+    <ClCompile Include="anxeditor\forms\LinkForm.cpp" />
+    <ClCompile Include="anxeditor\forms\LoadModelForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeAnimationConstsAttackForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeAnimationConstsForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeAnimationEventsForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeAnimationForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeAnimationMoveClip.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeGroupForm.cpp" />
+    <ClCompile Include="anxeditor\forms\NodeInOutForm.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphLink.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphLinks.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphManager.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeAnimation.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeBase.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeGroup.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeHierarchy.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeIn.cpp" />
+    <ClCompile Include="anxeditor\graph\GraphNodeOut.cpp" />
+    <ClCompile Include="anxeditor\graph\LinkData.cpp" />
+    <ClCompile Include="anxeditor\MasterSkeleton.cpp" />
+    <ClCompile Include="ForceEditor\ForceEditor.cpp" />
+    <ClCompile Include="ForceEditor\ForceEditorMainWindow.cpp" />
+    <ClCompile Include="ForceEditor\GraphEditor.cpp" />
+    <ClCompile Include="ForceEditor\gui\fe_grapheditor.cpp" />
+    <ClCompile Include="ForceEditor\gui\fe_graphline.cpp" />
+    <ClCompile Include="ForceEditor\gui\fe_linelist.cpp" />
+    <ClCompile Include="GUI_Manager\gui_manager.cpp" />
+    <ClCompile Include="project builder\ProjectBuilder.cpp" />
+    <ClCompile Include="RagDollED\editor\camera\Camera.cpp" />
+    <ClCompile Include="RagDollED\editor\customcontrols\gui_edit2.cpp" />
+    <ClCompile Include="RagDollED\editor\customcontrols\gui_radiobutton2.cpp" />
+    <ClCompile Include="RagDollED\editor\customcontrols\gui_secktor.cpp" />
+    <ClCompile Include="RagDollED\editor\customcontrols\gui_viewport.cpp" />
+    <ClCompile Include="RagDollED\editor\EditorMain.cpp" />
+    <ClCompile Include="RagDollED\editor\forms\mainwindow.cpp" />
+    <ClCompile Include="RagDollED\gizmo\gizmo.cpp" />
+    <ClCompile Include="RagDollED\gui_scrollbar2.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Box.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Capsule.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Cone.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\ConeSecktor.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Cylinder.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Pie.cpp" />
+    <ClCompile Include="RagDollED\primitiverender\Sphere.cpp" />
+    <ClCompile Include="RagDollED\RagDollAnimation.cpp" />
+    <ClCompile Include="SoundEditor\forms\ComboBox\FormComboBox.cpp" />
+    <ClCompile Include="SoundEditor\forms\ComboBox\FormComboBoxList.cpp" />
+    <ClCompile Include="SoundEditor\forms\dev\WaveDecomposer.cpp" />
+    <ClCompile Include="SoundEditor\forms\external\FormTestGizmo.cpp" />
+    <ClCompile Include="SoundEditor\forms\external\FormTestViewer.cpp" />
+    <ClCompile Include="SoundEditor\forms\external\FormTimeLine.cpp" />
+    <ClCompile Include="SoundEditor\forms\external\PreviewAnimation.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormAddWaveToSound.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormAnimation.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormAttGraph.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormButton.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormCheckBox.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormControlBase.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormEdit.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormEditName.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormExportSoundBank.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormGame.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormImportWaves.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormLabel.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormMessageBox.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormNewAnimation.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormOptions.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormPolygon.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormSndBaseParams.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormSoundBankOptions.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormSounds.cpp" />
+    <ClCompile Include="SoundEditor\forms\FormWaves.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormGameList.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormListAnimations.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormListBase.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormListNodes.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormListSounds.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormPolygonList.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormSoundWaves.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormWaveFiles.cpp" />
+    <ClCompile Include="SoundEditor\forms\lists\FormWaveSelector.cpp" />
+    <ClCompile Include="SoundEditor\forms\sliders\BaseSlider.cpp" />
+    <ClCompile Include="SoundEditor\forms\sliders\FormScrollBar.cpp" />
+    <ClCompile Include="SoundEditor\forms\sliders\NumberSlider.cpp" />
+    <ClCompile Include="SoundEditor\forms\SndEditorMainWindow.cpp" />
+    <ClCompile Include="SoundEditor\project\ProjectAnimation.cpp" />
+    <ClCompile Include="SoundEditor\project\ProjectObject.cpp" />
+    <ClCompile Include="SoundEditor\project\ProjectSound.cpp" />
+    <ClCompile Include="SoundEditor\project\ProjectWave.cpp" />
+    <ClCompile Include="SoundEditor\project\ProjectWaveExporter.cpp" />
+    <ClCompile Include="SoundEditor\project\SndProject.cpp" />
+    <ClCompile Include="SoundEditor\project\SoundParams.cpp" />
+    <ClCompile Include="SoundEditor\SndEditor.cpp" />
+    <ClCompile Include="SoundEditor\SndExporter.cpp" />
+    <ClCompile Include="SoundEditor\SndOptions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SoundEditor\Strings.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\ENGINE\modules\Shaders\GUI\GUI_Base.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\GUI\GUI_Selected.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\GUI\GUI_Sprite.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\GUI_Font.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\ragdoll\ragdoll.fx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

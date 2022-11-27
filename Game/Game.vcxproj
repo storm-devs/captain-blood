@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final Release|Win32">
+      <Configuration>Final Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Pix profile|Win32">
+      <Configuration>Pix profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Xbox360 Release|Win32">
+      <Configuration>Xbox360 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3FCA62A0-4351-4193-BCBF-72A0A59BF8C5}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
+    <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
+    <SccLocalPath>..</SccLocalPath>
+    <SccProvider>MSSCCI:Alienbrain</SccProvider>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\include\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\include\win32\vs2005;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\lib\win32\vs2005;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\include\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\include\win32\vs2005;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\lib\win32\vs2005;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\include\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\include\win32\vs2005;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\Microsoft Xbox 360 SDK\lib\win32\vs2005;C:\Program Files\Microsoft Xbox 360 SDK\lib\win32\vs2005;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CORE_EXPORTS;STOP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <AssemblerOutput />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common_h\gui\controls\gui_helper.cpp" />
+    <ClCompile Include="Camera\anicamera\AniCamera.cpp" />
+    <ClCompile Include="Camera\arenacamera\ArenaCamera.cpp" />
+    <ClCompile Include="Camera\basecamera\BaseCamera.cpp" />
+    <ClCompile Include="Camera\cameracontroller\CameraController.cpp" />
+    <ClCompile Include="camera\camerashocker\CameraShocker.cpp" />
+    <ClCompile Include="Camera\charactercamera\CharacterCamera.cpp" />
+    <ClCompile Include="Camera\cutscenecamera\CutSceneCamera.cpp" />
+    <ClCompile Include="Camera\fixedcamera\FixedCamera.cpp" />
+    <ClCompile Include="Camera\freecamera\FreeCamera.cpp" />
+    <ClCompile Include="Camera\postprocess\filters\BlackAndWhite.cpp" />
+    <ClCompile Include="Camera\postprocess\filters\Blur.cpp" />
+    <ClCompile Include="Camera\postprocess\filters\MotionBlur.cpp" />
+    <ClCompile Include="Camera\postprocess\filters\MotionEffect.cpp" />
+    <ClCompile Include="Camera\postprocess\filters\Splash.cpp" />
+    <ClCompile Include="Camera\postprocess\PostProcess.cpp" />
+    <ClCompile Include="Camera\pvpcamera\PvPCamera.cpp" />
+    <ClCompile Include="Camera\rotatedcamera\RotatedCamera.cpp" />
+    <ClCompile Include="Camera\splashmanager\SplashManager.cpp" />
+    <ClCompile Include="Camera\staticcamera\StaticCamera.cpp" />
+    <ClCompile Include="Camera\trackcamera\PathTracks.cpp" />
+    <ClCompile Include="Camera\trackcamera\TrackCamera.cpp" />
+    <ClCompile Include="Camera\trackcamera\TrackCameraED.cpp" />
+    <ClCompile Include="coolthings\achievements\Achievements.cpp">
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">false</PreprocessSuppressLineNumbers>
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</PreprocessSuppressLineNumbers>
+    </ClCompile>
+    <ClCompile Include="coolthings\achievements\Bosses.cpp">
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">false</PreprocessSuppressLineNumbers>
+      <PreprocessToFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</PreprocessSuppressLineNumbers>
+    </ClCompile>
+    <ClCompile Include="coolthings\achievements\Land.cpp" />
+    <ClCompile Include="coolthings\achievements\Sea.cpp" />
+    <ClCompile Include="CoolThings\activeobject\ActiveObject.cpp" />
+    <ClCompile Include="CoolThings\animatedmodel\AnimatedModel.cpp" />
+    <ClCompile Include="CoolThings\animatedmodel\AnimatedModelsArbiter.cpp" />
+    <ClCompile Include="CoolThings\animatedmodel\Track.cpp" />
+    <ClCompile Include="CoolThings\anxcounter\AnxCounter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CoolThings\bonuses\BonusesManagerImp.cpp" />
+    <ClCompile Include="CoolThings\bonuses\BonusesModelsManager.cpp" />
+    <ClCompile Include="CoolThings\bonuses\BonusesTable.cpp" />
+    <ClCompile Include="CoolThings\cacheservice\CacheService.cpp" />
+    <ClCompile Include="CoolThings\cannonball\cannonBall.cpp" />
+    <ClCompile Include="CoolThings\cloudsmap\CloudsMap.cpp" />
+    <ClCompile Include="CoolThings\console\Console.cpp" />
+    <ClCompile Include="CoolThings\damageeffect\DamageEffect.cpp" />
+    <ClCompile Include="CoolThings\flares\Flares.cpp" />
+    <ClCompile Include="CoolThings\flares\FlaresManager.cpp" />
+    <ClCompile Include="CoolThings\flyerscloud\FlyersCloud.cpp" />
+    <ClCompile Include="CoolThings\flyer\Flyer.cpp" />
+    <ClCompile Include="CoolThings\flymanager\Fly.cpp" />
+    <ClCompile Include="CoolThings\flymanager\FlyManager.cpp" />
+    <ClCompile Include="CoolThings\grass\Generator.cpp" />
+    <ClCompile Include="CoolThings\grass\Grass.cpp" />
+    <ClCompile Include="CoolThings\grass\GrassExecutor.cpp" />
+    <ClCompile Include="CoolThings\hint\hint.cpp" />
+    <ClCompile Include="CoolThings\joysticktrigger\JoystickTrigger.cpp" />
+    <ClCompile Include="CoolThings\lights\AmbientLight.cpp" />
+    <ClCompile Include="CoolThings\lights\DirectionLight.cpp" />
+    <ClCompile Include="CoolThings\lights\Light.cpp" />
+    <ClCompile Include="CoolThings\lights\LightPoint.cpp" />
+    <ClCompile Include="CoolThings\localeffect\LocalEffect.cpp" />
+    <ClCompile Include="CoolThings\missiontimecalculator\MissionTimeCalculator.cpp" />
+    <ClCompile Include="CoolThings\multiplayertrigger\MultiplayerTrigger.cpp" />
+    <ClCompile Include="CoolThings\multiplayertrigger\UserCheckerService.cpp" />
+    <ClCompile Include="CoolThings\objecttip\ObjectTip.cpp" />
+    <ClCompile Include="CoolThings\posteffects\Filters\DoF.cpp" />
+    <ClCompile Include="CoolThings\posteffects\Filters\Glow.cpp" />
+    <ClCompile Include="CoolThings\posteffects\Filters\RadialBlur.cpp" />
+    <ClCompile Include="CoolThings\posteffects\Filters\Sharpness.cpp" />
+    <ClCompile Include="CoolThings\posteffects\PostEffects.cpp" />
+    <ClCompile Include="CoolThings\posteffects\UberFilter.cpp" />
+    <ClCompile Include="CoolThings\pssm\pssm.cpp" />
+    <ClCompile Include="CoolThings\quitobject\QuitObject.cpp" />
+    <ClCompile Include="CoolThings\rain\rain.cpp" />
+    <ClCompile Include="CoolThings\shadowmap\pcsmwtrastc.cpp" />
+    <ClCompile Include="CoolThings\shadowmap\shadowsserv.cpp" />
+    <ClCompile Include="CoolThings\shootermg\AnimBlender.cpp" />
+    <ClCompile Include="CoolThings\shootermg\AnimHandler.cpp" />
+    <ClCompile Include="CoolThings\shootermg\AnimListener.cpp" />
+    <ClCompile Include="CoolThings\shootermg\Minigun.cpp" />
+    <ClCompile Include="CoolThings\shootermg\Shooter.cpp" />
+    <ClCompile Include="CoolThings\shootermg\ShooterEffect.cpp" />
+    <ClCompile Include="CoolThings\shootermg\ShooterKickOut.cpp" />
+    <ClCompile Include="CoolThings\shootermg\ShooterTargets.cpp" />
+    <ClCompile Include="CoolThings\SndConverter\SndConverter.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CoolThings\stainkiller\StainKiller.cpp" />
+    <ClCompile Include="CoolThings\stainmanager\StainManager.cpp" />
+    <ClCompile Include="CoolThings\stalactite\Stalactite.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CoolThings\sunglow\SunGlow.cpp" />
+    <ClCompile Include="CoolThings\TextureMapper\TextureMapper.cpp" />
+    <ClCompile Include="CoolThings\trailer\Trailer.cpp" />
+    <ClCompile Include="CoolThings\trailmanager\register\register.cpp" />
+    <ClCompile Include="CoolThings\trailmanager\Trail.cpp" />
+    <ClCompile Include="CoolThings\trailmanager\TrailManager.cpp" />
+    <ClCompile Include="CoolThings\trailparams\TrailParams.cpp" />
+    <ClCompile Include="CoolThings\traps\flamethrower\flamethrower.cpp" />
+    <ClCompile Include="CoolThings\traps\flamethrower\flamethrowerpattern.cpp" />
+    <ClCompile Include="CoolThings\traps\thorn\thorn.cpp" />
+    <ClCompile Include="CoolThings\traps\thorn\thornpattern.cpp" />
+    <ClCompile Include="CoolThings\traps\trapbase.cpp" />
+    <ClCompile Include="CoolThings\vibrator\Vibrator.cpp" />
+    <ClCompile Include="CoolThings\videoplayer\videoplayer.cpp" />
+    <ClCompile Include="CoolThings\waterfoam\waterfoam.cpp" />
+    <ClCompile Include="CoolThings\watertrails\TrackService.cpp" />
+    <ClCompile Include="CoolThings\watertrails\WaterTrack.cpp" />
+    <ClCompile Include="CoolThings\weather\Fog.cpp" />
+    <ClCompile Include="CoolThings\weather\Sky.cpp" />
+    <ClCompile Include="CoolThings\weather\Weather.cpp" />
+    <ClCompile Include="CoolThings\weather\Wind.cpp" />
+    <ClCompile Include="Interface\circularbar\CircularBar.cpp" />
+    <ClCompile Include="Interface\combopreview\ComboPreview.cpp" />
+    <ClCompile Include="Interface\gameui\BaseGUICursor.cpp" />
+    <ClCompile Include="Interface\gameui\BaseGUIElement.cpp" />
+    <ClCompile Include="Interface\gameui\BaseGUITable.cpp" />
+    <ClCompile Include="Interface\gameui\BaseGUIText.cpp" />
+    <ClCompile Include="Interface\gameui\GUIButton.cpp" />
+    <ClCompile Include="Interface\gameui\GUICharacter.cpp" />
+    <ClCompile Include="Interface\gameui\GUIEventWatcher.cpp" />
+    <ClCompile Include="Interface\gameui\GUIList.cpp" />
+    <ClCompile Include="Interface\gameui\GUIPanel.cpp" />
+    <ClCompile Include="Interface\gameui\GUISelector.cpp" />
+    <ClCompile Include="Interface\gameui\GUISlider.cpp" />
+    <ClCompile Include="Interface\gameui\GUITable.cpp" />
+    <ClCompile Include="Interface\gameui\GUIWidget.cpp" />
+    <ClCompile Include="Interface\gameui\render\QuadRender.cpp" />
+    <ClCompile Include="Interface\progressbar\csProgressBar.cpp" />
+    <ClCompile Include="Interface\progress\Progress.cpp" />
+    <ClCompile Include="Interface\taskpointer\TaskPointer.cpp" />
+    <ClCompile Include="Interface\taskviewer\TaskViewer.cpp" />
+    <ClCompile Include="Interface\utils\InterfaceUtils.cpp" />
+    <ClCompile Include="Mission\Mission.cpp" />
+    <ClCompile Include="Mission\MissionLoader.cpp" />
+    <ClCompile Include="Mission\MissionObjectsList.cpp" />
+    <ClCompile Include="Mission\MissionProfiler.cpp" />
+    <ClCompile Include="Mission\MissionsManager.cpp" />
+    <ClCompile Include="Mission\ObjectsFindManager.cpp" />
+    <ClCompile Include="Mission\objects\AcceptDetector.cpp" />
+    <ClCompile Include="Mission\objects\ActivateTrigger.cpp" />
+    <ClCompile Include="Mission\objects\AliveDetector.cpp" />
+    <ClCompile Include="Mission\objects\Balancer.cpp" />
+    <ClCompile Include="Mission\objects\CollisionBox.cpp" />
+    <ClCompile Include="Mission\objects\ControlTrigger.cpp" />
+    <ClCompile Include="Mission\objects\ConvexAreaDetector.cpp" />
+    <ClCompile Include="Mission\objects\Counter.cpp" />
+    <ClCompile Include="Mission\objects\DamageDetector.cpp" />
+    <ClCompile Include="Mission\objects\Delay.cpp" />
+    <ClCompile Include="Mission\objects\Fader.cpp" />
+    <ClCompile Include="Mission\objects\GamerProfile.cpp" />
+    <ClCompile Include="Mission\objects\Inverter.cpp" />
+    <ClCompile Include="Mission\objects\LiveWatcher.cpp" />
+    <ClCompile Include="Mission\objects\LoadingTrigger.cpp" />
+    <ClCompile Include="Mission\objects\LogicSwitcher.cpp" />
+    <ClCompile Include="Mission\objects\Mission3DSound.cpp" />
+    <ClCompile Include="Mission\objects\MissionEnvSound.cpp" />
+    <ClCompile Include="Mission\objects\MissionGeometry.cpp" />
+    <ClCompile Include="Mission\objects\MissionLocator.cpp" />
+    <ClCompile Include="Mission\objects\MissionMusic.cpp" />
+    <ClCompile Include="Mission\objects\MissionParticles.cpp" />
+    <ClCompile Include="Mission\objects\MissionPhysObject.cpp" />
+    <ClCompile Include="Mission\objects\MissionPhysObjPattern.cpp" />
+    <ClCompile Include="Mission\objects\MissionRandomSound.cpp" />
+    <ClCompile Include="Mission\objects\MissionReloader.cpp" />
+    <ClCompile Include="Mission\objects\MissionSoundBase.cpp" />
+    <ClCompile Include="Mission\objects\MissionSoundEnvironment.cpp" />
+    <ClCompile Include="Mission\objects\MissionStarter.cpp" />
+    <ClCompile Include="Mission\objects\MissionTime.cpp" />
+    <ClCompile Include="Mission\objects\MissionVolumeSound.cpp" />
+    <ClCompile Include="Mission\objects\MovieFrame.cpp" />
+    <ClCompile Include="Mission\objects\MultiDelay.cpp" />
+    <ClCompile Include="Mission\objects\ObjectsGroup.cpp" />
+    <ClCompile Include="Mission\objects\PhysicObjLocator.cpp" />
+    <ClCompile Include="Mission\objects\qttest\qttest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Mission\objects\RandomSelector.cpp" />
+    <ClCompile Include="Mission\objects\RectDetector.cpp" />
+    <ClCompile Include="Mission\objects\SetLanguage.cpp" />
+    <ClCompile Include="Mission\objects\SoundsManagment.cpp" />
+    <ClCompile Include="Mission\objects\SphereDetector.cpp" />
+    <ClCompile Include="Mission\objects\StateAccessors.cpp" />
+    <ClCompile Include="Mission\objects\SwingMachine.cpp" />
+    <ClCompile Include="Mission\objects\Synchronizer.cpp" />
+    <ClCompile Include="Mission\objects\verlettest\Verlet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Mission\objects\WaterLevel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common_h\Achievements.h" />
+    <ClInclude Include="..\common_h\bonuses.h" />
+    <ClInclude Include="..\common_h\FreeCamera.h" />
+    <ClInclude Include="..\common_h\gui\controls\gui_helper.h" />
+    <ClInclude Include="..\common_h\ICameraController.h" />
+    <ClInclude Include="..\common_h\ICameraShocker.h" />
+    <ClInclude Include="..\common_h\IConsole.h" />
+    <ClInclude Include="..\common_h\IFly.h" />
+    <ClInclude Include="..\common_h\IGUIElement.h" />
+    <ClInclude Include="..\common_h\IGUIText.h" />
+    <ClInclude Include="..\common_h\IMissionPhysObject.h" />
+    <ClInclude Include="..\common_h\IPlayerChecker.h" />
+    <ClInclude Include="..\common_h\ishadows.h" />
+    <ClInclude Include="..\common_h\IShooter.h" />
+    <ClInclude Include="..\common_h\IStainManager.h" />
+    <ClInclude Include="..\common_h\ITrail.h" />
+    <ClInclude Include="..\common_h\IVideoCodec.h" />
+    <ClInclude Include="..\common_h\Mission.h" />
+    <ClInclude Include="..\common_h\mission\Groups.h" />
+    <ClInclude Include="..\common_h\mission\Levels.h" />
+    <ClInclude Include="..\common_h\mission\Mission.h" />
+    <ClInclude Include="..\common_h\mission\MissionFile.h" />
+    <ClInclude Include="..\common_h\mission\MOParams.h" />
+    <ClInclude Include="..\common_h\mission\ObjectsFinder.h" />
+    <ClInclude Include="..\common_h\postprocess\filters\IAfterImage.h" />
+    <ClInclude Include="..\common_h\postprocess\filters\IBlur.h" />
+    <ClInclude Include="..\common_h\postprocess\filters\IMotionBlur.h" />
+    <ClInclude Include="..\common_h\postprocess\filters\IRadialBlur.h" />
+    <ClInclude Include="..\common_h\postprocess\IPostProcess.h" />
+    <ClInclude Include="..\common_h\templates\Array.h" />
+    <ClInclude Include="..\common_h\templates\dsmooth.h" />
+    <ClInclude Include="..\common_h\templates\dtimer.h" />
+    <ClInclude Include="..\common_h\templates\HTable.h" />
+    <ClInclude Include="..\common_h\templates\map.h" />
+    <ClInclude Include="..\common_h\templates\stack.h" />
+    <ClInclude Include="..\common_h\templates\string.h" />
+    <ClInclude Include="..\common_h\templates\tcommon.h" />
+    <ClInclude Include="..\common_h\Weather.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\PostEffects\common.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\PostProcess\common.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\Shadows\shd_Variables.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\shadows_pssm\pssm_vars.h" />
+    <ClInclude Include="Camera\anicamera\AniCamera.h" />
+    <ClInclude Include="Camera\arenacamera\ArenaCamera.h" />
+    <ClInclude Include="Camera\basecamera\BaseCamera.h" />
+    <ClInclude Include="Camera\basecamera\CamerasBlender.h" />
+    <ClInclude Include="Camera\cameracontroller\CameraController.h" />
+    <ClInclude Include="camera\camerashocker\CameraShocker.h" />
+    <ClInclude Include="Camera\camera_inc.h" />
+    <ClInclude Include="Camera\charactercamera\CharacterCamera.h" />
+    <ClInclude Include="Camera\cutscenecamera\CutSceneCamera.h" />
+    <ClInclude Include="Camera\fixedcamera\FixedCamera.h" />
+    <ClInclude Include="Camera\freecamera\FreeCamera.h" />
+    <ClInclude Include="Camera\postprocess\filters\BlackAndWhite.h" />
+    <ClInclude Include="Camera\postprocess\filters\Blur.h" />
+    <ClInclude Include="Camera\postprocess\filters\MotionBlur.h" />
+    <ClInclude Include="Camera\postprocess\filters\MotionEffect.h" />
+    <ClInclude Include="Camera\postprocess\filters\Splash.h" />
+    <ClInclude Include="Camera\postprocess\PostProcess.h" />
+    <ClInclude Include="Camera\pvpcamera\PvPCamera.h" />
+    <ClInclude Include="Camera\rotatedcamera\RotatedCamera.h" />
+    <ClInclude Include="Camera\splashmanager\SplashManager.h" />
+    <ClInclude Include="Camera\staticcamera\StaticCamera.h" />
+    <ClInclude Include="Camera\trackcamera\CameraTracksFile.h" />
+    <ClInclude Include="Camera\trackcamera\PathTracks.h" />
+    <ClInclude Include="Camera\trackcamera\TrackCamera.h" />
+    <ClInclude Include="Camera\trackcamera\TrackCameraED.h" />
+    <ClInclude Include="coolthings\achievements\Achievements.h" />
+    <ClInclude Include="CoolThings\activeobject\ActiveObject.h" />
+    <ClInclude Include="CoolThings\animatedmodel\AnimatedModel.h" />
+    <ClInclude Include="CoolThings\animatedmodel\AnimatedModelsArbiter.h" />
+    <ClInclude Include="CoolThings\animatedmodel\Shell.h" />
+    <ClInclude Include="CoolThings\animatedmodel\Track.h" />
+    <CustomBuild Include="CoolThings\anxcounter\AnxCounter.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="CoolThings\bonuses\BonusesManagerImp.h" />
+    <ClInclude Include="CoolThings\bonuses\BonusesModelsManager.h" />
+    <ClInclude Include="CoolThings\bonuses\BonusesTable.h" />
+    <ClInclude Include="CoolThings\cacheservice\CacheService.h" />
+    <ClInclude Include="CoolThings\cannonball\cannonBall.h" />
+    <ClInclude Include="CoolThings\cloudsmap\CloudsMap.h" />
+    <ClInclude Include="CoolThings\console\Console.h" />
+    <ClInclude Include="CoolThings\console\SimpleParser.h" />
+    <ClInclude Include="CoolThings\damageeffect\DamageEffect.h" />
+    <ClInclude Include="CoolThings\flares\Flares.h" />
+    <ClInclude Include="CoolThings\flares\FlaresManager.h" />
+    <ClInclude Include="CoolThings\flyerscloud\FlyersCloud.h" />
+    <ClInclude Include="CoolThings\flyer\Flyer.h" />
+    <ClInclude Include="CoolThings\flymanager\Fly.h" />
+    <ClInclude Include="CoolThings\flymanager\FlyManager.h" />
+    <ClInclude Include="CoolThings\grass\Grass.h" />
+    <ClInclude Include="CoolThings\hint\hint.h" />
+    <ClInclude Include="CoolThings\joysticktrigger\JoystickTrigger.h" />
+    <ClInclude Include="CoolThings\lights\AmbientLight.h" />
+    <ClInclude Include="CoolThings\lights\DirectionLight.h" />
+    <ClInclude Include="CoolThings\lights\Light.h" />
+    <ClInclude Include="CoolThings\lights\LightPoint.h" />
+    <ClInclude Include="CoolThings\localeffect\LocalEffect.h" />
+    <ClInclude Include="CoolThings\missiontimecalculator\MissionTimeCalculator.h" />
+    <ClInclude Include="CoolThings\multiplayertrigger\MultiplayerTrigger.h" />
+    <ClInclude Include="CoolThings\multiplayertrigger\UserCheckerService.h" />
+    <ClInclude Include="CoolThings\objecttip\ObjectTip.h" />
+    <ClInclude Include="CoolThings\posteffects\Common.h" />
+    <ClInclude Include="CoolThings\posteffects\Filters\DoF.h" />
+    <ClInclude Include="CoolThings\posteffects\Filters\Glow.h" />
+    <ClInclude Include="CoolThings\posteffects\Filters\RadialBlur.h" />
+    <ClInclude Include="CoolThings\posteffects\Filters\Sharpness.h" />
+    <ClInclude Include="CoolThings\posteffects\PostEffects.h" />
+    <ClInclude Include="CoolThings\posteffects\UberFilter.h" />
+    <ClInclude Include="CoolThings\pssm\pssm.h" />
+    <ClInclude Include="CoolThings\quitobject\QuitObject.h" />
+    <ClInclude Include="CoolThings\rain\rain.h" />
+    <ClInclude Include="CoolThings\shadowmap\pcsmwtrastc.h" />
+    <ClInclude Include="CoolThings\shadowmap\shadowsserv.h" />
+    <ClInclude Include="CoolThings\shootermg\AnimBlender.h" />
+    <ClInclude Include="CoolThings\shootermg\AnimHandler.h" />
+    <ClInclude Include="CoolThings\shootermg\AnimListener.h" />
+    <ClInclude Include="CoolThings\shootermg\Minigun.h" />
+    <ClInclude Include="CoolThings\shootermg\physic.h" />
+    <ClInclude Include="CoolThings\shootermg\Shooter.h" />
+    <ClInclude Include="CoolThings\shootermg\ShooterEffect.h" />
+    <ClInclude Include="CoolThings\shootermg\ShooterKickOut.h" />
+    <ClInclude Include="CoolThings\shootermg\ShooterTargets.h" />
+    <CustomBuild Include="CoolThings\SndConverter\SndConverter.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="CoolThings\stainkiller\StainKiller.h" />
+    <ClInclude Include="CoolThings\stainmanager\StainManager.h" />
+    <CustomBuild Include="CoolThings\stalactite\Stalactite.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="CoolThings\sunglow\SunGlow.h" />
+    <ClInclude Include="CoolThings\TextureMapper\TextureMapper.h" />
+    <ClInclude Include="CoolThings\trailer\Trailer.h" />
+    <ClInclude Include="CoolThings\trailmanager\register\register.h" />
+    <ClInclude Include="CoolThings\trailmanager\Trail.h" />
+    <ClInclude Include="CoolThings\trailmanager\TrailManager.h" />
+    <ClInclude Include="CoolThings\trailparams\TrailParams.h" />
+    <ClInclude Include="CoolThings\traps\flamethrower\flamethrower.h" />
+    <ClInclude Include="CoolThings\traps\flamethrower\flamethrowerpattern.h" />
+    <ClInclude Include="CoolThings\traps\thorn\thorn.h" />
+    <ClInclude Include="CoolThings\traps\thorn\thornpattern.h" />
+    <ClInclude Include="CoolThings\traps\trapbase.h" />
+    <ClInclude Include="CoolThings\vibrator\Vibrator.h" />
+    <ClInclude Include="CoolThings\videoplayer\videoplayer.h" />
+    <ClInclude Include="CoolThings\waterfoam\waterfoam.h" />
+    <ClInclude Include="CoolThings\watertrails\RingBuffer.h" />
+    <ClInclude Include="CoolThings\watertrails\TrackService.h" />
+    <ClInclude Include="CoolThings\watertrails\WaterTrack.h" />
+    <ClInclude Include="CoolThings\weather\Fog.h" />
+    <ClInclude Include="CoolThings\weather\Sky.h" />
+    <ClInclude Include="CoolThings\weather\Weather.h" />
+    <ClInclude Include="CoolThings\weather\Wind.h" />
+    <ClInclude Include="Interface\circularbar\CircularBar.h" />
+    <ClInclude Include="Interface\combopreview\ComboPreview.h" />
+    <ClInclude Include="Interface\gameui\BaseGUICursor.h" />
+    <ClInclude Include="Interface\gameui\BaseGUIElement.h" />
+    <ClInclude Include="Interface\gameui\BaseGUITable.h" />
+    <ClInclude Include="Interface\gameui\BaseGUIText.h" />
+    <ClInclude Include="Interface\gameui\GUIButton.h" />
+    <ClInclude Include="Interface\gameui\GUICharacter.h" />
+    <ClInclude Include="Interface\gameui\GUIEventWatcher.h" />
+    <ClInclude Include="Interface\gameui\GUIList.h" />
+    <ClInclude Include="Interface\gameui\GUIPanel.h" />
+    <ClInclude Include="Interface\gameui\GUISelector.h" />
+    <ClInclude Include="Interface\gameui\GUISlider.h" />
+    <ClInclude Include="Interface\gameui\GUITable.h" />
+    <ClInclude Include="Interface\gameui\GUIWidget.h" />
+    <ClInclude Include="Interface\gameui\render\QuadRender.h" />
+    <ClInclude Include="Interface\progressbar\csProgressBar.h" />
+    <ClInclude Include="Interface\progress\Progress.h" />
+    <ClInclude Include="Interface\taskpointer\TaskPointer.h" />
+    <ClInclude Include="Interface\taskviewer\TaskViewer.h" />
+    <ClInclude Include="Interface\utils\InterfaceUtils.h" />
+    <ClInclude Include="Mission\CAPROFAPI.h" />
+    <ClInclude Include="Mission\IMissionsManagerService.h" />
+    <ClInclude Include="Mission\Mission.h" />
+    <ClInclude Include="Mission\MissionLoader.h" />
+    <ClInclude Include="Mission\MissionObjectsList.h" />
+    <ClInclude Include="Mission\MissionProfiler.h" />
+    <ClInclude Include="Mission\MissionsManager.h" />
+    <ClInclude Include="Mission\ObjectsFindManager.h" />
+    <ClInclude Include="Mission\objects\AcceptDetector.h" />
+    <ClInclude Include="Mission\objects\ActivateTrigger.h" />
+    <ClInclude Include="Mission\objects\AliveDetector.h" />
+    <ClInclude Include="Mission\objects\Balancer.h" />
+    <ClInclude Include="Mission\objects\CollisionBox.h" />
+    <ClInclude Include="Mission\objects\ControlTrigger.h" />
+    <ClInclude Include="Mission\objects\ConvexAreaDetector.h" />
+    <ClInclude Include="Mission\objects\Counter.h" />
+    <ClInclude Include="Mission\objects\DamageDetector.h" />
+    <ClInclude Include="Mission\objects\Delay.h" />
+    <ClInclude Include="Mission\objects\Fader.h" />
+    <ClInclude Include="Mission\objects\GamerProfile.h" />
+    <ClInclude Include="Mission\objects\Inverter.h" />
+    <ClInclude Include="Mission\objects\LiveWatcher.h" />
+    <ClInclude Include="Mission\objects\LoadingTrigger.h" />
+    <ClInclude Include="Mission\objects\LogicSwitcher.h" />
+    <ClInclude Include="Mission\objects\Mission3DSound.h" />
+    <ClInclude Include="Mission\objects\MissionEnvSound.h" />
+    <ClInclude Include="Mission\objects\MissionGeometry.h" />
+    <ClInclude Include="Mission\objects\MissionLocator.h" />
+    <ClInclude Include="Mission\objects\MissionMusic.h" />
+    <ClInclude Include="Mission\objects\MissionParticles.h" />
+    <ClInclude Include="Mission\objects\MissionPhysObject.h" />
+    <ClInclude Include="Mission\objects\MissionPhysObjPattern.h" />
+    <ClInclude Include="Mission\objects\MissionRandomSound.h" />
+    <ClInclude Include="Mission\objects\MissionReloader.h" />
+    <ClInclude Include="Mission\objects\MissionSoundBase.h" />
+    <ClInclude Include="Mission\objects\MissionSoundEnvironment.h" />
+    <ClInclude Include="Mission\objects\MissionStarter.h" />
+    <ClInclude Include="Mission\objects\MissionTime.h" />
+    <ClInclude Include="Mission\objects\MissionVolumeSound.h" />
+    <ClInclude Include="Mission\objects\MovieFrame.h" />
+    <ClInclude Include="Mission\objects\MultiDelay.h" />
+    <ClInclude Include="Mission\objects\ObjectsGroup.h" />
+    <ClInclude Include="Mission\objects\PhysicObjLocator.h" />
+    <CustomBuild Include="Mission\objects\qttest\qttest.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="Mission\objects\RandomSelector.h" />
+    <ClInclude Include="Mission\objects\RectDetector.h" />
+    <ClInclude Include="Mission\objects\SetLanguage.h" />
+    <ClInclude Include="Mission\objects\SoundsManagment.h" />
+    <ClInclude Include="Mission\objects\SphereDetector.h" />
+    <ClInclude Include="Mission\objects\StateAccessors.h" />
+    <ClInclude Include="Mission\objects\SwingMachine.h" />
+    <ClInclude Include="Mission\objects\Synchronizer.h" />
+    <CustomBuild Include="Mission\objects\verlettest\Verlet.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="Mission\objects\WaterLevel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\ENGINE\modules\Shaders\bloodstains\BloodStains.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\bonus\bonus.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Camera\BloodPuff.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\CircularBar.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\damageeffect\DamageEffect.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\fly\Fly.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\GUI\GUI_Quad.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\interface\interface.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\interface\taskpointer.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\localeffect\Cloud.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\localeffect\Grass2.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\localeffect\LocalEffect.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\mobjects\camerafrustum.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\mobjects\detectors.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\mobjects\Flare.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\mobjects\Lights.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\mobjects\ShooterTrace.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\Ocean\SkyFog.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\DOF.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\gaussblur.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\glow.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\glowobjects.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\RadialBlur.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostEffects\Sharpness.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostProcess\FillScreen.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\PostProcess\splash\splash.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\rain\rain.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\Blur\Blur.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\MultiTex\pssm_mt_cast.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\MultiTex\pssm_mt_recv.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\Projected\pssm_proj.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\Projected\pssm_proj_cast.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\SingleTex\pssm_st_recv.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\shadows_pssm\zpass.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\SUN\bb_structs.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\taskviewer.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\trail\Trail.fx" />
+    <FxCompile Include="..\ENGINE\modules\Shaders\WaterTracks\SeaTrack.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Camera\trackcamera\math.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CoolThings\shootermg\minigame-shooter.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Mission\CAProfAPI32.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

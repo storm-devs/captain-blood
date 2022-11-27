@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final Release|Win32">
+      <Configuration>Final Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Pix profile|Win32">
+      <Configuration>Pix profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Xbox360 Release|Win32">
+      <Configuration>Xbox360 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D9EA73CF-2949-43C2-907B-FAEC190B3CEF}</ProjectGuid>
+    <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
+    <SccLocalPath>..</SccLocalPath>
+    <SccProvider>MSSCCI:Alienbrain</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\temp\Release\</OutDir>
+    <IntDir>.\temp\Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\temp\Debug\</OutDir>
+    <IntDir>.\temp\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Particles.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>ENABLE_PARTICLE_THREADS;WIN32;NDEBUG;_WINDOWS;_USRDLL;PARTICLES_EXPORTS;USE_XML_FILE_FORMAT_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\temp\Release/Particles.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\temp\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\temp\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\temp\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/Particles.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>ENABLE_PARTICLE_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\temp\Debug/Particles.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\temp\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\temp\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\temp\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>ENABLE_PARTICLE_THREADS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Particles.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>ENABLE_PARTICLE_THREADS;WIN32;NDEBUG;_WINDOWS;_USRDLL;PARTICLES_EXPORTS;USE_XML_FILE_FORMAT_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\temp\Release/Particles.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\temp\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\temp\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\temp\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Particles.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>ENABLE_PARTICLE_THREADS;WIN32;NDEBUG;_WINDOWS;_USRDLL;PARTICLES_EXPORTS;USE_XML_FILE_FORMAT_;STOP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\temp\Release/Particles.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\temp\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\temp\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\temp\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <ShowProgress>NotSet</ShowProgress>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <ProfileGuidedDatabase />
+      <ImportLibrary>$(ProjectDir)$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common_h\particles.h" />
+    <ClInclude Include="..\common_h\particles\iparticlemanager.h" />
+    <ClInclude Include="..\common_h\particles\iparticlesservice.h" />
+    <ClInclude Include="..\common_h\particles\iparticlesystem.h" />
+    <ClInclude Include="..\Common_h\tinyxml\tinystr.h" />
+    <ClInclude Include="..\Common_h\tinyxml\tinyxml.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\Particles\ParticlesCommon.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\Particles\ParticlesPixelShader.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\Particles\ParticlesStruct.h" />
+    <ClInclude Include="..\ENGINE\modules\Shaders\Particles\ParticlesVertexShader.h" />
+    <ClInclude Include="DataCache\DataCache.h" />
+    <ClInclude Include="Editor\ArcBall\ArcBall.h" />
+    <ClInclude Include="Editor\CustomControls\coloredit.h" />
+    <ClInclude Include="Editor\customcontrols\gui_grapheditor.h" />
+    <ClInclude Include="Editor\customcontrols\gui_graphline.h" />
+    <ClInclude Include="Editor\customcontrols\gui_linelist.h" />
+    <ClInclude Include="Editor\customcontrols\gui_viewport.h" />
+    <ClInclude Include="Editor\CustomControls\StrUtil.h" />
+    <ClInclude Include="Editor\CustomControls\texturesselector.h" />
+    <ClInclude Include="Editor\CustomControls\texview.h" />
+    <ClInclude Include="Editor\EditorMain.h" />
+    <ClInclude Include="Editor\Editors\base.h" />
+    <ClInclude Include="Editor\Editors\bool.h" />
+    <ClInclude Include="Editor\Editors\color.h" />
+    <ClInclude Include="Editor\Editors\float.h" />
+    <ClInclude Include="Editor\Editors\graph.h" />
+    <ClInclude Include="Editor\Editors\position.h" />
+    <ClInclude Include="Editor\Editors\string.h" />
+    <ClInclude Include="Editor\Editors\uv.h" />
+    <ClInclude Include="Editor\Forms\choosename.h" />
+    <ClInclude Include="Editor\Forms\mainwindow.h" />
+    <ClInclude Include="Editor\Forms\projectbrowser.h" />
+    <ClInclude Include="Editor\Forms\rename.h" />
+    <ClInclude Include="Editor\Forms\systemselect.h" />
+    <ClInclude Include="gizmo\gizmo.h" />
+    <ClInclude Include="ICommon\BillBoard.h" />
+    <ClInclude Include="ICommon\ColorVertex.h" />
+    <ClInclude Include="ICommon\EditorTypes.h" />
+    <ClInclude Include="ICommon\GraphTime.h" />
+    <ClInclude Include="ICommon\GraphVertex.h" />
+    <ClInclude Include="ICommon\IEmitter.h" />
+    <ClInclude Include="ICommon\MemFile.h" />
+    <ClInclude Include="ICommon\Names.h" />
+    <ClInclude Include="ICommon\Particle.h" />
+    <ClInclude Include="ICommon\Types.h" />
+    <ClInclude Include="Manager\particlemanager.h" />
+    <ClInclude Include="manager\SyncParams.h" />
+    <ClInclude Include="Service\particleservice.h" />
+    <ClInclude Include="System\DataDesc\data_desc.h" />
+    <ClInclude Include="System\DataSource\DataBool.h" />
+    <ClInclude Include="System\DataSource\DataColor.h" />
+    <ClInclude Include="System\DataSource\DataFloat.h" />
+    <ClInclude Include="System\DataSource\DataGraph.h" />
+    <ClInclude Include="System\DataSource\DataPosition.h" />
+    <ClInclude Include="System\DataSource\DataSource.h" />
+    <ClInclude Include="System\DataSource\DataString.h" />
+    <ClInclude Include="System\DataSource\DataUV.h" />
+    <ClInclude Include="System\DataSource\FieldList.h" />
+    <ClInclude Include="System\Emitters\base.h" />
+    <ClInclude Include="System\Emitters\point.h" />
+    <ClInclude Include="System\ParticleProcessor\bb_processor.h" />
+    <ClInclude Include="System\ParticleProcessor\nameparser.h" />
+    <ClInclude Include="System\ParticleProcessor\physic.h" />
+    <ClInclude Include="System\ParticleSystem\particlesystem.h" />
+    <ClInclude Include="system\particlesystem\SystemProxy.h" />
+    <ClInclude Include="textfile.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common_h\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\Common_h\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\Common_h\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\Common_h\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="DataCache\DataCache.cpp" />
+    <ClCompile Include="Editor\ArcBall\ArcBall.cpp" />
+    <ClCompile Include="Editor\CustomControls\coloredit.cpp" />
+    <ClCompile Include="Editor\customcontrols\gui_grapheditor.cpp" />
+    <ClCompile Include="Editor\customcontrols\gui_graphline.cpp" />
+    <ClCompile Include="Editor\customcontrols\gui_linelist.cpp" />
+    <ClCompile Include="Editor\customcontrols\gui_viewport.cpp" />
+    <ClCompile Include="Editor\CustomControls\StrUtil.cpp" />
+    <ClCompile Include="Editor\CustomControls\texturesselector.cpp" />
+    <ClCompile Include="Editor\CustomControls\texview.cpp" />
+    <ClCompile Include="Editor\EditorMain.cpp" />
+    <ClCompile Include="Editor\Editors\bool.cpp" />
+    <ClCompile Include="Editor\Editors\color.cpp" />
+    <ClCompile Include="Editor\Editors\float.cpp" />
+    <ClCompile Include="Editor\Editors\graph.cpp" />
+    <ClCompile Include="Editor\Editors\position.cpp" />
+    <ClCompile Include="Editor\Editors\string.cpp" />
+    <ClCompile Include="Editor\Editors\uv.cpp" />
+    <ClCompile Include="Editor\Forms\choosename.cpp" />
+    <ClCompile Include="Editor\Forms\mainwindow.cpp" />
+    <ClCompile Include="Editor\Forms\projectbrowser.cpp" />
+    <ClCompile Include="Editor\Forms\rename.cpp" />
+    <ClCompile Include="Editor\Forms\systemselect.cpp" />
+    <ClCompile Include="gizmo\gizmo.cpp" />
+    <ClCompile Include="Manager\particlemanager.cpp" />
+    <ClCompile Include="Service\particleservice.cpp" />
+    <ClCompile Include="System\DataDesc\data_desc.cpp" />
+    <ClCompile Include="System\DataSource\DataBool.cpp" />
+    <ClCompile Include="System\DataSource\DataColor.cpp" />
+    <ClCompile Include="System\DataSource\DataFloat.cpp" />
+    <ClCompile Include="System\DataSource\DataGraph.cpp" />
+    <ClCompile Include="System\DataSource\DataPosition.cpp" />
+    <ClCompile Include="System\DataSource\DataSource.cpp" />
+    <ClCompile Include="System\DataSource\DataString.cpp" />
+    <ClCompile Include="System\DataSource\DataUV.cpp" />
+    <ClCompile Include="System\DataSource\FieldList.cpp" />
+    <ClCompile Include="System\Emitters\base.cpp" />
+    <ClCompile Include="System\Emitters\point.cpp" />
+    <ClCompile Include="System\ParticleProcessor\bb_processor.cpp" />
+    <ClCompile Include="System\ParticleSystem\particlesystem.cpp" />
+    <ClCompile Include="system\particlesystem\SystemProxy.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ICommon\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="doc\PARTICLES EDITOR.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\ENGINE\modules\Shaders\Particles\Types\Particles.fx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

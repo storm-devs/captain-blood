@@ -1,0 +1,76 @@
+
+#define _CRT_SECURE_NO_DEPRECATE
+
+#undef UNICODE
+
+#include <windows.h>
+#include <stdio.h>
+
+struct Rec
+{
+	char file[MAX_PATH];
+	unsigned long ptr;
+	unsigned long size;
+};
+
+
+Rec map[1024];
+long count = 0;
+
+void main()
+{
+	//Файл на чтение
+	FILE * fl = fopen("xbox_memory_map.txt", "rt");
+	if(!fl)
+	{
+		printf("Can't read file xbox_memory_map.txt");
+		return;
+	}
+	//Читаем таблицу из файла
+	for(count = 0; count < 1024; count++)
+	{
+		if(fscanf(fl, "%s", map[count].file) == EOF) break;
+		if(fscanf(fl, "%x", &map[count].ptr) == EOF) break;
+		if(fscanf(fl, "%x", &map[count].size) == EOF) break;
+	}
+	fclose(fl);
+	if(count <= 0)
+	{
+		printf("Stop processing, no data");
+		return;
+	}
+	rename("xbox_memory_map.txt", "xbox_memory_map.txt.bak");
+	//Файл на запись
+	fl = fopen("xbox_memory_map.txt", "w+b");
+	if(!fl)
+	{
+		printf("Can't create file xbox_memory_map.txt");
+		return;
+	}
+	//Пересчитываем адреса
+	unsigned int baseAddres = map[0].ptr;
+	for(long i = 0; i < count; i++)
+	{
+		map[i].ptr = baseAddres;
+		map[i].size = (map[i].size + 0x7fff) & 0xffff8000;
+		baseAddres += (map[i].size + 0xffff) & 0xffff0000;
+		fprintf(fl, "%s    0x%.8x  0x%.8x\r\n", map[i].file, map[i].ptr, map[i].size);
+	}
+	fclose(fl);
+/*
+	//
+	HANDLE hFind = ::FindFirstFile("Engine\\Modules\\xbox360\\*.xdl", &findFileData);
+	if(hFind != INVALID_HANDLE_VALUE) 
+	{
+		do
+		{
+			unsigned long size = ((findFileData.nFileSizeLow + 0xffff) & 0xffff0000) + 0x10000;
+			fprintf(fl, "%s    0x%.8x  0x%.8x\r\n", findFileData.cFileName, baseAddres, size);
+			baseAddres += (size + 0xffff) & 0xffff0000;
+		}while(FindNextFile(hFind, &findFileData));
+		FindClose(hFind);
+	}else{
+		printf("Engine\\Modules\\xbox360\\*.xdl files not found");
+	}
+*/
+}

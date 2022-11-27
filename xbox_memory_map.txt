@@ -1,0 +1,7 @@
+CaptainBlood.xex    0x88000000  0x00200000
+Systems.xdl    0x88200000  0x01000000
+Game.xdl    0x89200000  0x00800000
+Particles.xdl    0x89a00000  0x00100000
+ArcadeSea.xdl    0x89b00000  0x00200000
+Character.xdl    0x89d00000  0x00200000
+Physics.xdl    0x89f00000  0x00800000

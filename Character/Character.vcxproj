@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Final Release|Win32">
+      <Configuration>Final Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Pix profile|Win32">
+      <Configuration>Pix profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Xbox360 Debug|Win32">
+      <Configuration>Xbox360 Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Xbox360 Release|Win32">
+      <Configuration>Xbox360 Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6EED3776-A42C-4666-8D57-74B6A4638BF1}</ProjectGuid>
+    <RootNamespace>Character</RootNamespace>
+    <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
+    <SccLocalPath>..</SccLocalPath>
+    <SccProvider>MSSCCI:Alienbrain</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/Character.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_UseDebugInfo;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/Character.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
+      <ImportLibrary>.\Debug/Character.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Character.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CHARACTER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/Character.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>.\Release/Character.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">
+    <ClCompile>
+      <AssemblerOutput />
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
+    <ClCompile>
+      <AssemblerOutput />
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Character.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CHARACTER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/Character.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
+      <ImportLibrary>.\Release/Character.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/Character.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CHARACTER_EXPORTS;STOP_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/Character.pch</PrecompiledHeaderOutputFile>
+      <AssemblerOutput />
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat />
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0419</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>.\Release/Character.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <FxCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ENGINE\modules\Shaders</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+      <ShaderType>Effect</ShaderType>
+      <ShaderModel>2.0</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common_h\graphic\Graphic.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="ai\brains\aiBoatswain.cpp" />
+    <ClCompile Include="ai\brains\aiBombardeer.cpp" />
+    <ClCompile Include="ai\brains\aiBossParams.cpp" />
+    <ClCompile Include="ai\Brains\aiBrain.cpp" />
+    <ClCompile Include="ai\brains\aiCannon.cpp" />
+    <ClCompile Include="ai\brains\aiChainman.cpp" />
+    <ClCompile Include="ai\brains\aiEasterling.cpp" />
+    <ClCompile Include="ai\brains\aiExecutor.cpp" />
+    <ClCompile Include="ai\brains\aiFatGuy.cpp" />
+    <ClCompile Include="ai\brains\aiFinalBoss.cpp" />
+    <ClCompile Include="ai\brains\aiKnight.cpp" />
+    <ClCompile Include="ai\brains\aiKomendant.cpp" />
+    <ClCompile Include="ai\brains\aiLevasserAlly.cpp" />
+    <ClCompile Include="Ai\brains\aiMusketeer.cpp" />
+    <ClCompile Include="ai\brains\aiNPC.cpp" />
+    <ClCompile Include="ai\brains\aiOfficerShoot.cpp" />
+    <ClCompile Include="ai\brains\aiParams.cpp" />
+    <ClCompile Include="ai\brains\aiPitt.cpp" />
+    <ClCompile Include="ai\brains\aiPittWarrior.cpp" />
+    <ClCompile Include="ai\brains\aiServant.cpp" />
+    <ClCompile Include="ai\brains\aiTerroristAhmed.cpp" />
+    <ClCompile Include="Ai\brains\aiWarrior.cpp" />
+    <ClCompile Include="Ai\Doodle\CharacterAI_Doodle.cpp" />
+    <ClCompile Include="ai\thoughts\aiBlocking.cpp" />
+    <ClCompile Include="Ai\thoughts\aiKick.cpp" />
+    <ClCompile Include="Ai\thoughts\aiPursuit.cpp" />
+    <ClCompile Include="ai\thoughts\aiStanding.cpp" />
+    <ClCompile Include="Ai\thoughts\aiStrafing.cpp" />
+    <ClCompile Include="ai\thoughts\aiThought.cpp" />
+    <ClCompile Include="ai\thoughts\Boatswain\aiBoatswainWirst.cpp" />
+    <ClCompile Include="ai\thoughts\Bombardeer\aiBombardeerDropBomb.cpp" />
+    <ClCompile Include="ai\thoughts\Bombardeer\aiBombardeerPlaceBomb.cpp" />
+    <ClCompile Include="ai\thoughts\Chainman\aiChainmanStanding.cpp" />
+    <ClCompile Include="ai\thoughts\Easterling\aiEasterlingDrink.cpp" />
+    <ClCompile Include="ai\thoughts\Easterling\aiEasterlingRage.cpp" />
+    <ClCompile Include="ai\thoughts\Executor\aiExecutorKick.cpp" />
+    <ClCompile Include="ai\thoughts\Executor\aiExecutorPray.cpp" />
+    <ClCompile Include="ai\thoughts\FatGuy\aiFatGuyBlocking.cpp" />
+    <ClCompile Include="ai\thoughts\Knight\aiKnightRage.cpp" />
+    <ClCompile Include="ai\thoughts\LevasserAlly\aiLevasserAllyKick.cpp" />
+    <ClCompile Include="ai\thoughts\LevasserAlly\aiLevasserAllyRoll.cpp" />
+    <ClCompile Include="ai\thoughts\Mushketer\aiMushketerShoot.cpp" />
+    <ClCompile Include="ai\thoughts\OfficerShoot\aiOfficerShootShoot.cpp" />
+    <ClCompile Include="ai\thoughts\Pitt\aiPittBlocking.cpp" />
+    <ClCompile Include="ai\thoughts\Pitt\aiPittFatality.cpp" />
+    <ClCompile Include="ai\thoughts\Pitt\aiPittRoll.cpp" />
+    <ClCompile Include="ai\util\aiActionStack.cpp" />
+    <ClCompile Include="Auxiliary objects\ActorTimeLine\ActorTimeLine.cpp" />
+    <ClCompile Include="auxiliary objects\AI Zones\AIZones.cpp" />
+    <ClCompile Include="Auxiliary objects\Arbiter\CharactersArbiter.cpp" />
+    <ClCompile Include="auxiliary objects\arbiter\CharactersTime.cpp" />
+    <ClCompile Include="auxiliary objects\attack params\AttackParams.cpp" />
+    <ClCompile Include="auxiliary objects\AutoZoom\AutoZoom.cpp" />
+    <ClCompile Include="auxiliary objects\BasePattern\BasePattern.cpp" />
+    <ClCompile Include="Auxiliary objects\BombBoom\BombBoom.cpp" />
+    <ClCompile Include="auxiliary objects\bombpattern\BombPattern.cpp" />
+    <ClCompile Include="auxiliary objects\BombSafe\BombSafe.cpp" />
+    <ClCompile Include="Auxiliary objects\BombTarget\BombTarget.cpp" />
+    <ClCompile Include="auxiliary objects\BonusMaker\BonusMaker.cpp" />
+    <ClCompile Include="auxiliary objects\ButtonMiniGame\ButtonMiniGame.cpp" />
+    <ClCompile Include="auxiliary objects\charactereffect\CharacterEffect.cpp" />
+    <ClCompile Include="Auxiliary objects\CharacterMagnet\CharacterMagnet.cpp" />
+    <ClCompile Include="auxiliary objects\CombatPoints\CombatPoints.cpp" />
+    <ClCompile Include="auxiliary objects\EffectTable\EffectTable.cpp" />
+    <ClCompile Include="auxiliary objects\Fatality Params\FatalityParams.cpp" />
+    <ClCompile Include="auxiliary objects\hair params\HairParams.cpp" />
+    <ClCompile Include="auxiliary objects\lockcounter\LockCounter.cpp" />
+    <ClCompile Include="auxiliary objects\mpkilldetector\MPKillDetector.cpp" />
+    <ClCompile Include="auxiliary objects\NoFatality\NoFatality.cpp" />
+    <ClCompile Include="auxiliary objects\NPCPoints\NPCPoints.cpp" />
+    <ClCompile Include="auxiliary objects\PitOfPain\PitOfPain.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\Barrel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="auxiliary objects\Quick Events\Chest.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\ChestKeeper.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\ChestPattern.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\Door.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\DoorBlender.cpp" />
+    <ClCompile Include="auxiliary objects\quick events\NewTaran.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\QuickEvent.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\Rotor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="auxiliary objects\Quick Events\SingleAction.cpp" />
+    <ClCompile Include="auxiliary objects\Quick Events\Taran.cpp" />
+    <ClCompile Include="auxiliary objects\quick events\TaranBlender.cpp" />
+    <ClCompile Include="Auxiliary objects\RespawnGizmo\RespawnGizmo.cpp" />
+    <ClCompile Include="auxiliary objects\SafatyPoints\SafatyPoints.cpp" />
+    <ClCompile Include="auxiliary objects\slowmo\Slowmo.cpp" />
+    <ClCompile Include="Auxiliary objects\SoundTools\SoundTools.cpp" />
+    <ClCompile Include="auxiliary objects\Tips\Tips.cpp" />
+    <ClCompile Include="auxiliary objects\Tips\TipsManager.cpp" />
+    <ClCompile Include="auxiliary objects\WayPoints\aiPathFinder.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="character\Bonuses\BaseBonus.cpp" />
+    <ClCompile Include="character\Bonuses\BombBonus.cpp" />
+    <ClCompile Include="character\Bonuses\HPBonus.cpp" />
+    <ClCompile Include="character\Bonuses\MoneyBonus.cpp" />
+    <ClCompile Include="character\Bonuses\PistolChargeBonus.cpp" />
+    <ClCompile Include="character\Bonuses\QuadDamageBonus.cpp" />
+    <ClCompile Include="character\Bonuses\RageBonus.cpp" />
+    <ClCompile Include="Character\Character.cpp" />
+    <ClCompile Include="character\CharacterPattern.cpp" />
+    <ClCompile Include="Character\Components\AnimationsBlender.cpp" />
+    <ClCompile Include="character\components\BodyParts\CharacterBlender.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="character\components\BodyParts\CharacterBodyParts.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="character\components\BodyParts\Face\CharacterFace.cpp" />
+    <ClCompile Include="character\components\BodyParts\Hair\CharacterHair.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="character\components\BodyParts\Hair\CharacterRope.cpp" />
+    <ClCompile Include="character\components\BodyParts\Head\CharacterHeadAim.cpp" />
+    <ClCompile Include="character\components\BodyParts\Legs\CharacterLegs.cpp" />
+    <ClCompile Include="character\components\bodyparts\torso\CharacterTorsoAim.cpp" />
+    <ClCompile Include="character\components\ButtonMG.cpp" />
+    <ClCompile Include="character\components\CharacterAchievements.cpp" />
+    <ClCompile Include="character\components\CharacterAnimation.cpp" />
+    <ClCompile Include="Character\Components\CharacterAnimationEvents.cpp" />
+    <ClCompile Include="character\components\CharacterArmor.cpp" />
+    <ClCompile Include="character\components\CharacterInitAI.cpp" />
+    <ClCompile Include="Character\Components\CharacterItems.cpp" />
+    <ClCompile Include="Character\Components\CharacterLogic.cpp" />
+    <ClCompile Include="Character\Components\CharacterPhysics.cpp" />
+    <ClCompile Include="Character\Components\SwordTrail.cpp" />
+    <ClCompile Include="Milagrosa minigame\Milagrosa Minigame.cpp" />
+    <ClCompile Include="Player\PlayerController.cpp" />
+    <ClCompile Include="Utils\StorageWork.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common_h\Ai\aiPath.h" />
+    <ClInclude Include="..\common_h\Ai\aiPathFinder.h" />
+    <ClInclude Include="..\common_h\graphic\Graphic.h" />
+    <ClInclude Include="..\common_h\ICharacter.h" />
+    <ClInclude Include="..\common_h\ICharactersArbiter.h" />
+    <ClInclude Include="..\common_h\ISlowmo.h" />
+    <ClInclude Include="..\common_h\ITips.h" />
+    <ClInclude Include="ai\brains\aiBoatswain.h" />
+    <ClInclude Include="ai\brains\aiBombardeer.h" />
+    <ClInclude Include="ai\brains\aiBossParams.h" />
+    <ClInclude Include="ai\Brains\aiBrain.h" />
+    <ClInclude Include="ai\brains\aiCannon.h" />
+    <ClInclude Include="ai\brains\aiChainman.h" />
+    <ClInclude Include="ai\brains\aiEasterling.h" />
+    <ClInclude Include="ai\brains\aiExecutor.h" />
+    <ClInclude Include="ai\brains\aiFatGuy.h" />
+    <ClInclude Include="ai\brains\aiFinalBoss.h" />
+    <ClInclude Include="ai\brains\aiKnight.h" />
+    <ClInclude Include="ai\brains\aiKomendant.h" />
+    <ClInclude Include="ai\brains\aiLevasserAlly.h" />
+    <ClInclude Include="Ai\brains\aiMusketeer.h" />
+    <ClInclude Include="ai\brains\aiNPC.h" />
+    <ClInclude Include="ai\brains\aiOfficerShoot.h" />
+    <ClInclude Include="ai\brains\aiParams.h" />
+    <ClInclude Include="ai\brains\aiPitt.h" />
+    <ClInclude Include="ai\brains\aiPittWarrior.h" />
+    <ClInclude Include="ai\brains\aiServant.h" />
+    <ClInclude Include="ai\brains\aiTerroristAhmed.h" />
+    <ClInclude Include="Ai\brains\aiWarrior.h" />
+    <ClInclude Include="Ai\CharacterAI.h" />
+    <ClInclude Include="ai\thoughts\aiBlocking.h" />
+    <ClInclude Include="Ai\thoughts\aiKick.h" />
+    <ClInclude Include="Ai\thoughts\aiPursuit.h" />
+    <ClInclude Include="ai\thoughts\aiStanding.h" />
+    <ClInclude Include="Ai\thoughts\aiStrafing.h" />
+    <ClInclude Include="ai\Thoughts\aiThought.h" />
+    <ClInclude Include="ai\thoughts\Boatswain\aiBoatswainWirst.h" />
+    <ClInclude Include="ai\thoughts\Bombardeer\aiBombardeerDropBomb.h" />
+    <ClInclude Include="ai\thoughts\Bombardeer\aiBombardeerPlaceBomb.h" />
+    <ClInclude Include="ai\thoughts\Chainman\aiChainmanStanding.h" />
+    <ClInclude Include="ai\thoughts\Easterling\aiEasterlingDrink.h" />
+    <ClInclude Include="ai\thoughts\Easterling\aiEasterlingRage.h" />
+    <ClInclude Include="ai\thoughts\Executor\aiExecutorKick.h" />
+    <ClInclude Include="ai\thoughts\Executor\aiExecutorPray.h" />
+    <ClInclude Include="ai\thoughts\FatGuy\aiFatGuyBlocking.h" />
+    <ClInclude Include="ai\thoughts\Knight\aiKnightRage.h" />
+    <ClInclude Include="ai\thoughts\LevasserAlly\aiLevasserAllyKick.h" />
+    <ClInclude Include="ai\thoughts\LevasserAlly\aiLevasserAllyRoll.h" />
+    <ClInclude Include="ai\thoughts\Mushketer\aiMushketerShoot.h" />
+    <ClInclude Include="ai\thoughts\OfficerShoot\aiOfficerShootShoot.h" />
+    <ClInclude Include="ai\thoughts\Pitt\aiPittBlocking.h" />
+    <ClInclude Include="ai\thoughts\Pitt\aiPittFatality.h" />
+    <ClInclude Include="ai\thoughts\Pitt\aiPittRoll.h" />
+    <ClInclude Include="ai\util\aiActionStack.h" />
+    <ClInclude Include="Auxiliary objects\ActorTimeLine\ActorTimeLine.h" />
+    <ClInclude Include="auxiliary objects\AI Zones\AIZones.h" />
+    <ClInclude Include="Auxiliary objects\Arbiter\CharactersArbiter.h" />
+    <ClInclude Include="auxiliary objects\arbiter\CharactersTime.h" />
+    <ClInclude Include="auxiliary objects\attack params\AttackParams.h" />
+    <ClInclude Include="auxiliary objects\AutoZoom\AutoZoom.h" />
+    <ClInclude Include="auxiliary objects\BasePattern\BasePattern.h" />
+    <ClInclude Include="Auxiliary objects\BombBoom\BombBoom.h" />
+    <ClInclude Include="auxiliary objects\bombpattern\BombPattern.h" />
+    <ClInclude Include="auxiliary objects\BombSafe\BombSafe.h" />
+    <ClInclude Include="Auxiliary objects\BombTarget\BombTarget.h" />
+    <ClInclude Include="auxiliary objects\BonusMaker\BonusMaker.h" />
+    <ClInclude Include="auxiliary objects\ButtonMiniGame\ButtonMiniGame.h" />
+    <ClInclude Include="auxiliary objects\charactereffect\CharacterEffect.h" />
+    <ClInclude Include="Auxiliary objects\CharacterMagnet\CharacterMagnet.h" />
+    <ClInclude Include="auxiliary objects\CombatPoints\CombatPoints.h" />
+    <ClInclude Include="auxiliary objects\EffectTable\EffectTable.h" />
+    <ClInclude Include="auxiliary objects\Fatality Params\FatalityParams.h" />
+    <ClInclude Include="auxiliary objects\hair params\HairParams.h" />
+    <ClInclude Include="auxiliary objects\lockcounter\LockCounter.h" />
+    <ClInclude Include="auxiliary objects\mpkilldetector\MPKillDetector.h" />
+    <ClInclude Include="auxiliary objects\NoFatality\NoFatality.h" />
+    <ClInclude Include="auxiliary objects\NPCPoints\NPCPoints.h" />
+    <ClInclude Include="auxiliary objects\PitOfPain\PitOfPain.h" />
+    <CustomBuild Include="auxiliary objects\Quick Events\Barrel.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="auxiliary objects\Quick Events\Chest.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\ChestKeeper.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\ChestPattern.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\Door.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\DoorBlender.h" />
+    <ClInclude Include="auxiliary objects\quick events\NewTaran.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\QuickEvent.h" />
+    <CustomBuild Include="auxiliary objects\Quick Events\Rotor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="auxiliary objects\Quick Events\SingleAction.h" />
+    <ClInclude Include="auxiliary objects\Quick Events\Taran.h" />
+    <ClInclude Include="auxiliary objects\quick events\TaranBlender.h" />
+    <ClInclude Include="Auxiliary objects\RespawnGizmo\RespawnGizmo.h" />
+    <ClInclude Include="auxiliary objects\SafatyPoints\SafatyPoints.h" />
+    <ClInclude Include="auxiliary objects\slowmo\Slowmo.h" />
+    <ClInclude Include="Auxiliary objects\SoundTools\SoundTools.h" />
+    <ClInclude Include="auxiliary objects\tips\Tips.h" />
+    <ClInclude Include="auxiliary objects\Tips\TipsManager.h" />
+    <ClInclude Include="auxiliary objects\WayPoints\aiPathFinder.h" />
+    <ClInclude Include="character\Bonuses\BaseBonus.h" />
+    <ClInclude Include="character\Bonuses\BombBonus.h" />
+    <ClInclude Include="character\Bonuses\HPBonus.h" />
+    <ClInclude Include="character\Bonuses\MoneyBonus.h" />
+    <ClInclude Include="character\Bonuses\PistolChargeBonus.h" />
+    <ClInclude Include="character\Bonuses\QuadDamageBonus.h" />
+    <ClInclude Include="character\Bonuses\RageBonus.h" />
+    <ClInclude Include="Character\Character.h" />
+    <ClInclude Include="Character\CharacterController.h" />
+    <ClInclude Include="character\CharacterPattern.h" />
+    <ClInclude Include="Character\Components\AnimationsBlender.h" />
+    <ClInclude Include="character\components\BodyParts\CharacterBlender.h" />
+    <ClInclude Include="character\components\BodyParts\CharacterBodyParts.h" />
+    <ClInclude Include="character\components\BodyParts\Face\CharacterFace.h" />
+    <ClInclude Include="character\components\BodyParts\Hair\CharacterHair.h" />
+    <ClInclude Include="character\components\BodyParts\Hair\CharacterRope.h" />
+    <ClInclude Include="character\components\BodyParts\Head\CharacterHeadAim.h" />
+    <ClInclude Include="character\components\BodyParts\Legs\CharacterLegs.h" />
+    <ClInclude Include="character\components\bodyparts\torso\CharacterTorsoAim.h" />
+    <ClInclude Include="character\components\ButtonMG.h" />
+    <ClInclude Include="character\components\CharacterAchievements.h" />
+    <ClInclude Include="character\components\CharacterAnimation.h" />
+    <ClInclude Include="Character\Components\CharacterAnimationEvents.h" />
+    <ClInclude Include="character\components\CharacterArmor.h" />
+    <ClInclude Include="character\components\CharacterInitAI.h" />
+    <ClInclude Include="Character\Components\CharacterItems.h" />
+    <ClInclude Include="Character\Components\CharacterLogic.h" />
+    <ClInclude Include="Character\Components\CharacterPhysics.h" />
+    <ClInclude Include="Character\Components\SwordTrail.h" />
+    <ClInclude Include="Milagrosa minigame\Milagrosa Minigame.h" />
+    <ClInclude Include="Player\PlayerController.h" />
+    <ClInclude Include="utils\SafePointerEx.h" />
+    <ClInclude Include="Utils\StorageWork.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\ENGINE\modules\shaders\mobjects\BulletTrace.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="commands.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

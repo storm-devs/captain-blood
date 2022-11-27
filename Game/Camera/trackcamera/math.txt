@@ -1,0 +1,114 @@
+
+
+Известно:
+
+	Track 1:  s1,e1
+	Track 2:  s2,e2
+	Position: p
+
+
+			k
+     s1-----p1----------e1
+	 |      |            |
+   t ps-----p-----------pe
+	 |		|			 |
+	 |		|			 |
+	 s2-----p2----------e2
+
+
+
+1 Точки на отрезках:
+
+	p1 = s1 + (e1 - s1)*k
+	p2 = s2 + (e2 - s2)*k
+
+2 Система уравнений k,t по координатам x,z:
+
+	p = p1 + (p2 - p1)*t
+
+	/p.x = p1.x + (p2.x - p1.x)*t
+	\p.z = p1.z + (p2.z - p1.z)*t
+
+3 Подставляем p1, p2 и выделяем t
+
+	p = s1 + (e1 - s1)*k + (s2 + (e2 - s2)*k - s1 - (e1 - s1)*k)*t
+
+	p = s1 + (e1 - s1)*k + s2*t + (e2 - s2)*t*k - s1*t - (e1 - s1)*t*k
+
+	p = s1 + (e1 - s1)*k + s2*t + (e2 - s2)*t*k - s1*t - (e1 - s1)*t*k
+
+	p - s1 - (e1 - s1)*k = s2*t + (e2 - s2)*t*k - s1*t - (e1 - s1)*t*k
+
+	p - s1 - (e1 - s1)*k = (s2 + (e2 - s2)*k - s1 - (e1 - s1)*k)*t
+	
+4 Выражаем t:
+
+	p.x - s1.x - (e1.x - s1.x)*k = (s2.x + (e2.x - s2.x)*k - s1.x - (e1.x - s1.x)*k)*t
+	p.z - s1.z - (e1.z - s1.z)*k = (s2.z + (e2.z - s2.z)*k - s1.z - (e1.z - s1.z)*k)*t
+
+
+	p.x - s1.x - (e1.x - s1.x)*k = (s2.x + (e2.x - s2.x)*k - s1.x - (e1.x - s1.x)*k)*t
+
+	t = (p.x - s1.x - (e1.x - s1.x)*k)/(s2.x + (e2.x - s2.x)*k - s1.x - (e1.x - s1.x)*k)
+	
+5 Подставляем t:
+		
+	(p.z - s1.z - (e1.z - s1.z)*k)*(s2.x + (e2.x - s2.x)*k - s1.x - (e1.x - s1.x)*k) = (s2.z + (e2.z - s2.z)*k - s1.z - (e1.z - s1.z)*k)*(p.x - s1.x - (e1.x - s1.x)*k)
+
+	((p.z - s1.z) + (s1.z - e1.z)*k)*((s2.x - s1.x) + (e2.x - s2.x - e1.x + s1.x)*k) = ((s2.z - s1.z) + (e2.z - s2.z - e1.z + s1.z)*k)*((p.x - s1.x) + (s1.x - e1.x)*k)
+	
+	
+	c1 = p.z - s1.z
+	c2 = s1.z - e1.z
+	c3 = s2.x - s1.x
+	c4 = e2.x - s2.x - e1.x + s1.x
+	c5 = s2.z - s1.z
+	c6 = e2.z - s2.z - e1.z + s1.z
+	c7 = p.x - s1.x
+	c8 = s1.x - e1.x
+
+
+	(c1 + c2*k)*(c3 + c4*k) = (c5 + c6*k)*(c7 + c8*k)
+
+	c1*c3 + c1*c4*k + c2*k*c3 + c2*k*c4*k - c5*c7 - c5*c8*k - c6*c7*k - c6*k*c8*k = 0
+
+	c2*k*c4*k - c6*k*c8*k + c1*c4*k + c2*k*c3 - c5*c8*k - c6*c7*k + c1*c3 - c5*c7 = 0
+	
+	(c2*c4 - c6*c8)*k*k + (c1*c4 + c2*c3 - c5*c8 - c6*c7)*k + (c1*c3 - c5*c7) = 0
+
+	a = c2*c4 - c6*c8
+	b = c1*c4 + c2*c3 - c5*c8 - c6*c7
+	c = c1*c3 - c5*c7
+
+	a*k*k + b*k + c = 0
+
+	D = b*b - 4*a*c
+
+	k = (-b +- sqrt(D))/(2*a)
+
+6 Полное решение:
+
+	c1 = p.z - s1.z
+	c2 = s1.z - e1.z
+	c3 = s2.x - s1.x
+	c4 = e2.x - s2.x - e1.x + s1.x
+	c5 = s2.z - s1.z
+	c6 = e2.z - s2.z - e1.z + s1.z
+	c7 = p.x - s1.x
+	c8 = s1.x - e1.x
+
+	a = c2*c4 - c6*c8
+	b = c1*c4 + c2*c3 - c5*c8 - c6*c7
+	c = c1*c3 - c5*c7
+
+	D = b*b - 4*a*c
+
+	k1 = (-b + sqrt(D))/(2*a)
+	k2 = (-b - sqrt(D))/(2*a)
+
+	Выбирать k подходящий под условие k = 0..1
+
+
+
+
+
