@@ -1,0 +1,33 @@
+# Visual Studio
+.vs
+.vscode
+Debug
+debugInfo
+Release
+Final Release
+*.filters
+*.user
+
+#CMake
+CMakeFiles
+CMakeCache.txt
+cmake-build-debug
+cmake-build-release
+build
+out
+
+# Compiled Object files
+#*.slo
+#*.lo
+#*.o
+
+# Compiled Dynamic libraries
+#*.so
+#*.dylib
+*.dll
+
+# Compiled Static libraries
+#*.lai
+#*.la
+#*.a
+#*.lib
