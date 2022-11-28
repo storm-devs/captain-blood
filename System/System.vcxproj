@@ -345,7 +345,7 @@
     <ClCompile Include="xboxlive\marketplace\ContentGUIUpdater.cpp" />
     <ClCompile Include="xboxlive\marketplace\contentmanager.cpp" />
     <ClCompile Include="xboxlive\marketplace\contenttest.cpp" />
-    <ClCompile Include="xboxlive\marketplace\pc\LiveService.cpp" />
+    <ClCompile Include="xboxlive\marketplace\pc\PCLiveService.cpp" />
     <ClCompile Include="xboxlive\marketplace\pc\PCContentEnumerator.cpp" />
     <ClCompile Include="xboxlive\marketplace\xbox\content.cpp" />
     <ClCompile Include="xboxlive\marketplace\xbox\ContentEnumerator.cpp" />
@@ -522,7 +522,7 @@
     <ClInclude Include="xboxlive\marketplace\defines.h" />
     <ClInclude Include="xboxlive\marketplace\icontent.h" />
     <ClInclude Include="xboxlive\marketplace\ILiveService.h" />
-    <ClInclude Include="xboxlive\marketplace\pc\LiveService.h" />
+    <ClInclude Include="xboxlive\marketplace\pc\PCLiveService.h" />
     <ClInclude Include="xboxlive\marketplace\pc\PCContentEnumerator.h" />
     <ClInclude Include="xboxlive\marketplace\xbox\content.h" />
     <ClInclude Include="xboxlive\marketplace\xbox\ContentEnumerator.h" />
