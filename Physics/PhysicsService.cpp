@@ -27,7 +27,7 @@ CREATE_SERVICE(PhysicsService, 19)
 #endif
 
 #pragma comment(lib, "NxCharacter.lib")
-#pragma comment(lib, "NxCooking.lib")
+#pragma comment(lib, "PhysXCooking.lib")
 
 #ifndef STOP_DEBUG
 	bool PhysicsService::m_gShowColliders = false;
