@@ -66,15 +66,6 @@ float SphereProxy::GetMass()
 	return m_realSphere->GetMass();
 }
 
-//Установить центр масс
-Vector SphereProxy::GetCenterMass()
-{
-	if (!m_realSphere)
-		return m_helper.GetCenterMass();
-
-	return m_realSphere->GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup SphereProxy::GetGroup()
 {

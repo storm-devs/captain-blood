@@ -72,15 +72,6 @@ float BoxProxy::GetMass()
 	return m_helper.GetMass();
 }
 
-//Установить центр масс
-Vector BoxProxy::GetCenterMass()
-{
-	if (m_realBox)
-		return m_realBox->GetCenterMass();
-
-	return m_helper.GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup BoxProxy::GetGroup()
 {

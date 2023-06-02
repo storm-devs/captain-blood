@@ -85,15 +85,6 @@ float CapsuleProxy::GetMass()
 	return m_realCapsule->GetMass();
 }
 
-//Установить центр масс
-Vector CapsuleProxy::GetCenterMass()
-{
-	if (!m_realCapsule)
-		return m_helper.GetCenterMass();
-
-	return m_realCapsule->GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup CapsuleProxy::GetGroup()
 {

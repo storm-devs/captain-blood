@@ -23,8 +23,6 @@ public:
 	float GetMass() const;
 	//Установить центр масс
 	void SetCenterMass(const Vector & cm);
-	//Установить центр масс
-	Vector GetCenterMass() const;
 	//Установить группу
 	void SetGroup(PhysicsCollisionGroup group);
 	//Получить группы
@@ -105,8 +103,6 @@ public:
 	virtual float GetMass() { return 0.0f; }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return Vector(0.0f); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group){ rbactor.SetGroup(group); }
 	//Получить группы
@@ -175,8 +171,6 @@ public:
 	virtual float GetMass() { return rbactor.GetMass(); }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ rbactor.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return rbactor.GetCenterMass(); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group)
 	{ 
@@ -247,8 +241,6 @@ public:
 	virtual float GetMass() { return rbactor.GetMass(); }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ rbactor.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return rbactor.GetCenterMass(); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group){ rbactor.SetGroup(group); }
 	//Получить группы
@@ -320,8 +312,6 @@ public:
 	virtual float GetMass() { return rbactor.GetMass(); }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ rbactor.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return rbactor.GetCenterMass(); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group){ rbactor.SetGroup(group); }
 	//Получить группы
@@ -386,8 +376,6 @@ public:
 	virtual float GetMass() { return rbactor.GetMass(); }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ rbactor.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return rbactor.GetCenterMass(); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group){ rbactor.SetGroup(group); }
 	//Получить группы
@@ -517,8 +505,6 @@ public:
 	virtual void SetMass(float mass){ rbactor.SetMass(mass); }
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm){ rbactor.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass(){ return rbactor.GetCenterMass(); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group){ rbactor.SetGroup(group); }
 	//Получить группы

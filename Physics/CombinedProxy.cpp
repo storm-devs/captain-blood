@@ -51,15 +51,6 @@ float CombinedProxy::GetMass()
 		return m_totalMass;
 }
 
-//Получить центр масс
-Vector CombinedProxy::GetCenterMass()
-{
-	if (m_haveBuildCommand && m_isBuilt)
-		return m_realCombined->GetCenterMass();
-	else
-		return m_helper.GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup CombinedProxy::GetGroup()
 {

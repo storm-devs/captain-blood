@@ -162,16 +162,6 @@ inline void PhysRigidBodyActor::SetCenterMass(const Vector & cm)
 	GetNxActor().setCMassOffsetLocalPosition(Nx(cm));
 }
 
-//Установить центр масс
-inline Vector PhysRigidBodyActor::GetCenterMass() const
-{
-	if(!GetNxActor().isDynamic())
-	{		
-		return Nx(GetNxActor().getGlobalPosition());
-	}
-	return Nx(GetNxActor().getCMassLocalPosition());
-}
-
 //Установить группы
 inline void PhysRigidBodyActor::SetGroup(PhysicsCollisionGroup group)
 {

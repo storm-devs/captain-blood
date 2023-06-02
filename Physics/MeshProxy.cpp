@@ -59,15 +59,6 @@ float MeshProxy::GetMass()
 	return m_realMesh->GetMass();
 }
 
-//Установить центр масс
-Vector MeshProxy::GetCenterMass()
-{
-	if (!m_realMesh)
-		return m_helper.GetCenterMass();
-
-	return m_realMesh->GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup MeshProxy::GetGroup()
 {

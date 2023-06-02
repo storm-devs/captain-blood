@@ -23,8 +23,6 @@ public:
 	virtual float GetMass() = null;
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm) = null;
-	//Установить центр масс
-	virtual Vector GetCenterMass() = null;
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group) = null;
 	//Получить группы

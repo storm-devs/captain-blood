@@ -57,8 +57,6 @@ public:
 			MakeDeferrer<T, void, const Vector&>(DEF_FREF(IPhysRigidBody::SetCenterMass), cm)
 		);
 	}
-	//Получить центр масс
-	virtual Vector GetCenterMass() { return m_cm; } //Assert(!"do not call it for that class"); return Vector(0.0f); }
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group)
 	{
