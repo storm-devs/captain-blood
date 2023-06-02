@@ -74,15 +74,6 @@ float PlaneProxy::GetMass()
 	return m_realPlane->GetMass();
 }
 
-//Установить центр масс
-Vector PlaneProxy::GetCenterMass()
-{
-	if (!m_realPlane)
-		return m_helper.GetCenterMass();
-
-	return m_realPlane->GetCenterMass();
-}
-
 //Получить группы
 PhysicsCollisionGroup PlaneProxy::GetGroup()
 {

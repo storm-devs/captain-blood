@@ -32,8 +32,6 @@ public:
 	virtual float GetMass();
 	//Установить центр масс
 	virtual void SetCenterMass(const Vector & cm) { m_helper.SetCenterMass(cm); }
-	//Установить центр масс
-	virtual Vector GetCenterMass();
 	//Установить группу
 	virtual void SetGroup(PhysicsCollisionGroup group) {m_helper.SetGroup(group); }
 	//Получить группы
