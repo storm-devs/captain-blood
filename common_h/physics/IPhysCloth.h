@@ -1,7 +1,7 @@
 #pragma once
 
-class NxClothMesh;
-class NxPhysicsSDK;
+// FIX_PX3 ClothMesh
+//class NxClothMesh;
 class IPhysicsScene;
 class IPhysRigidBody;
 struct PhysInternal;

@@ -18,30 +18,30 @@ void PhysicsService::ErrorStream::EnableWarnings(bool enable)
 	enabledWarnings = enable;
 }
 
-void PhysicsService::ErrorStream::reportError(NxErrorCode e, const char* message, const char* file, int line)
+void PhysicsService::ErrorStream::reportError(PxErrorCode::Enum code, const char* message, const char* file, int line)
 {
 	bool isTraceAsError = false;
 	const char * error = "unknown error";	
-	switch(e)
+	switch(code)
 	{
-	case NXE_INVALID_PARAMETER:
+	case PxErrorCode::Enum::eINVALID_PARAMETER:
 		error = "invalid parameter";
 		isTraceAsError = true;
 		break;
-	case NXE_INVALID_OPERATION:
+	case PxErrorCode::Enum::eINVALID_OPERATION:
 		error = "invalid operation";
 		isTraceAsError = true;
 		break;
-	case NXE_OUT_OF_MEMORY:
+	case PxErrorCode::Enum::eOUT_OF_MEMORY:
 		error = "out of memory";
 		isTraceAsError = true;
 		break;
-	case NXE_DB_INFO:
+	case PxErrorCode::Enum::eDEBUG_INFO:
 		if (!enabledWarnings)
 			return;
 		error = "info";
 		break;
-	case NXE_DB_WARNING:
+	case PxErrorCode::Enum::eDEBUG_WARNING:
 		if (!enabledWarnings)
 			return;
 		error = "warning";
@@ -54,12 +54,6 @@ void PhysicsService::ErrorStream::reportError(NxErrorCode e, const char* message
 		api->Trace("PhysX error: %s, (\"%s\", %s, %d)", error, message, file, line);
 }
 
-NxAssertResponse PhysicsService::ErrorStream::reportAssertViolation(const char * message, const char * file, int line)
-{
-	__Storm_Assert__(false, file, line, message);
-	return NX_AR_BREAKPOINT;
-}
-
 void PhysicsService::ErrorStream::print(const char * message)
 {
 	api->Trace(message);
@@ -70,6 +64,8 @@ void PhysicsService::ErrorStream::print(const char * message)
 //PhysicsService::MemoryReadStream
 //============================================================================================
 
+// FIX_PX3 Don't need NxStream
+/*
 PhysicsService::MemoryReadStream::MemoryReadStream(const void * _source, dword _size)
 {
 	current = 0;
@@ -154,7 +150,7 @@ NxStream & PhysicsService::MemoryReadStream::storeDword(NxU32 d)
 	return *this;
 }
 
-NxStream & PhysicsService::MemoryReadStream::storeFloat(NxReal f)
+NxStream & PhysicsService::MemoryReadStream::storeFloat(PxReal f)
 {
 	Assert(false);
 	return *this;
@@ -236,7 +232,7 @@ NxStream & PhysicsService::MemoryWriteStream::storeDword(NxU32 d)
 	return writeData(d);
 }
 
-NxStream & PhysicsService::MemoryWriteStream::storeFloat(NxReal f)
+NxStream & PhysicsService::MemoryWriteStream::storeFloat(PxReal f)
 {
 	return writeData(f);
 }
@@ -276,4 +272,4 @@ dword PhysicsService::MemoryWriteStream::Size()
 {
 	return data;
 }
-
+*/

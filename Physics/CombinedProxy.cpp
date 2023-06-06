@@ -140,7 +140,7 @@ void CombinedProxy::AddBox(const Vector & size, const Matrix & transform)
 {
 	m_realCombined->AddBox(size, transform);
 
-	AddObjectDesc(transform, NxComputeBoxMass(Nx(size), m_density), size * 0.5f);
+	AddObjectDesc(transform, computeBoxMass(Nx(size), m_density), size * 0.5f);
 }
 
 //Добавить шар
@@ -148,7 +148,7 @@ void CombinedProxy::AddSphere(float radius, const Matrix & transform)
 {
 	m_realCombined->AddSphere(radius, transform);
 
-	AddObjectDesc(transform, NxComputeSphereMass(radius, m_density), 0.0f, radius);
+	AddObjectDesc(transform, computeSphereMass(radius, m_density), 0.0f, radius);
 }
 
 //Добавить капсулу
@@ -156,7 +156,7 @@ void CombinedProxy::AddCapsule(float radius, float height, const Matrix & transf
 {
 	m_realCombined->AddCapsule(radius, height, transform);
 
-	AddObjectDesc(transform, NxComputeSphereMass(radius, m_density) + NxComputeCylinderMass(radius, height, m_density), 0.0f, radius, height);
+	AddObjectDesc(transform, computeSphereMass(radius, m_density) + computeCylinderMass(radius, height, m_density), 0.0f, radius, height);
 }
 
 void CombinedProxy::AddObjectDesc(const Matrix & transform, float fMass, const Vector & size, float radius, float height)

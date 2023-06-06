@@ -1,14 +1,16 @@
 #pragma once
 
 #include "..\Common_h\Physics.h"
-#include "NxDebugRenderable.h"
-#include "NxStream.h"
-#include "ControllerManager.h"
+#include <PxPhysicsAPI.h>
+#include <PxScene.h>
+#include <PxControllerManager.h>
+#include <PxRigidBodyExt.h>
 
 #include "PhysRigidBody.h"
 
 class PhysicsService;
 class IProxy;
+using namespace physx;
 
 //Физическая сцена
 class PhysicsScene : public IPhysicsScene
@@ -85,9 +87,9 @@ public:
 	virtual void RealDebugDraw();
 #endif
 	//Получить физическую сцену
-	virtual NxScene & Scene();
+	virtual PxScene & Scene();
 	//Получить мэнеджер контролеров для персонажей
-	NxControllerManager & CtrManager();
+	PxControllerManager & CtrManager();
 
 	//Пересчитать состояние перед началом кадра
 	virtual void UpdateBeginFrame(float dltTime);
@@ -95,7 +97,7 @@ public:
 	virtual void UpdateEndFrame(float dltTime);
 
 	//Удалить персонажа
-	void DeleteCharacterCtl(NxController * ctr);
+	void DeleteCharacterCtl(PxController * ctr);
 
 	//Ищем прокси объект с данным актером
 	IProxy * FindProxyObject(NxActor * actor);
@@ -119,7 +121,7 @@ private:
 
 private:
 	PhysicsService *	m_service;
-	NxScene *			m_scene;
+	PxScene *			m_scene;
 	float				m_currentTime;
 	float				m_lastDeltaTime;
 	dword				m_normalizeObjectIndex;
@@ -130,19 +132,26 @@ private:
 	array<IProxy*>			m_proxies, m_conproxies, m_clothproxies;
 	array<IPhysBase*>		m_meshes;
 
-	array<NxTriangleMeshShape*>		m_OverlapShapes;
+	// FIX_PX3 NxTriangleMeshShape
+	//array<NxTriangleMeshShape*>		m_OverlapShapes;
 
 	HANDLE				m_hSimulateDoneEvent;
 
 	bool				m_debugDraw;
 
 private:
-	class ContactReport : public NxUserContactReport
+	class ContactReport : public PxSimulationEventCallback
 	{
 	public:
 		PhysicsScene * m_scene;
 
-		virtual void onContactNotify(NxContactPair & pair, NxU32 events);
+		// FIX_PX3 Collision Filtering
+		//virtual void onContactNotify(NxContactPair & pair, PxU32 events);
+		virtual void onConstraintBreak(PxConstraintInfo* constraints, PxU32 count);
+		virtual void onWake(PxActor** actors, PxU32 count);
+		virtual void onSleep(PxActor** actors, PxU32 count);
+		virtual void onContact(const PxContactPairHeader& pairHeader, const PxContactPair* pairs, PxU32 nbPairs);
+		virtual void onTrigger(PxTriggerPair* pairs, PxU32 count);
 	};
 	
 	ContactReport		m_contactReport;

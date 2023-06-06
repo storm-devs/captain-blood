@@ -3,14 +3,15 @@
 #include "PhysicsService.h"
 #include "PhysInternal.h"
 
-class NxCloth;
 class PhysCloth : public IPhysCloth
 {
-	NxCloth*			m_physCloth;
-	NxMeshData			m_internalSimData;
+	PxCloth*			m_physCloth;
+	// FIX_PX3 NxMeshData
+	//NxMeshData			m_internalSimData;
 	IClothMeshBuilder&	m_builder;
 
-	PhysicsService::MemoryWriteStream m_sleepStream;
+	// FIX_PX3 Don't need NxStream
+	//PhysicsService::MemoryWriteStream m_sleepStream;
 	bool  m_isSleeping;
 
 public:

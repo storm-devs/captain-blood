@@ -47,8 +47,9 @@ enum PhysForceMode
 	pfm_force = 0,
 	pfm_impulse,
 	pfm_velocity_change,
-	pfm_smooth_impulse,
-	pfm_smooth_velocity_change,
+	// FIX_PX3 PxForceMode
+	//pfm_smooth_impulse,
+	//pfm_smooth_velocity_change,
 	pfm_acceleration,
 
 	pfm_forcedword = 0x7FFFFFFF

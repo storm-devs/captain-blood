@@ -1,12 +1,12 @@
 #pragma once
 
-class NxActor;
-class NxCloth;
-class NxJoint;
+class physx::NxActor;
+class physx::PxCloth;
+class physx::PxJoint;
 struct PhysInternal
 {
 	PhysInternal() : actor(NULL), cloth(NULL), joint(NULL) {}
-	NxActor* actor;
-	NxCloth* cloth;
-	NxJoint* joint;
+	physx::NxActor* actor;
+	physx::PxCloth* cloth;
+	physx::PxJoint* joint;
 };

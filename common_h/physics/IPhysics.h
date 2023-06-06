@@ -206,5 +206,6 @@ public:
 	// готова ли сетка для PhysX
 	virtual bool IsReady() const = 0;
 	// вернуть сетку
-	virtual NxClothMesh& GetMesh() const = 0;
+	// FIX_PX3 NxClothMesh
+	//virtual NxClothMesh& GetMesh() const = 0;
 };

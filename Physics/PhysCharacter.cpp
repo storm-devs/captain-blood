@@ -2,23 +2,16 @@
 #include "PhysCharacter.h"
 #include "PhysicsScene.h"
 
-
-
-class UserControllerHitReport : public NxUserControllerHitReport
+class UserControllerHitReport : public PxUserControllerHitReport
 {
 public:
-
-
-
-	virtual NxControllerAction  onShapeHit(const NxControllerShapeHit& hit)
+	virtual void onShapeHit(const PxControllerShapeHit& hit)
 	{
-		
-		//return NX_ACTION_NONE;
-
-
 		if(hit.shape)
 		{
-			NxActor& actor = hit.shape->getActor();
+			PxRigidActor* actor = hit.shape->getActor();
+			api->Trace("FIX_PX3 NxActorGroup UserControllerHitReport::onShapeHit");
+			/*
 			if(actor.isDynamic())
 			{
 				NxCollisionGroup group = hit.shape->getGroup();
@@ -26,7 +19,7 @@ public:
 				{
 					if(hit.dir.y < -0.8f)
 					{
-						NxVec3 vec = hit.dir*Clampf(hit.length, -0.01f, 0.01f);
+						PxVec3 vec = hit.dir*Clampf(hit.length, -0.01f, 0.01f);
 						vec.x = 0.0f;
 						vec.z = 0.0f;
 						//actor.addForceAtLocalPos(vec, NxVec3(0,0,0), NX_IMPULSE);
@@ -34,42 +27,36 @@ public:
 					}
 				}
 
-				NxActor* ControllerActor = hit.controller->getActor();
+				PxRigidDynamic* ControllerActor = hit.controller->getActor();
 				PhysCharacter* pChar = (PhysCharacter*)ControllerActor->userData;
 
 				bool bKinematic = actor.readBodyFlag(NX_BF_KINEMATIC);
 
 				if(group != phys_ragdoll && pChar->isApplyForce && !bKinematic)
 				{
-					NxVec3 vec = hit.dir* pChar->force;
+					PxVec3 vec = hit.dir* pChar->force;
 					vec.y = 0.0f;
 
-					NxActor& actor = hit.shape->getActor();
-					actor.addForceAtLocalPos(vec, NxVec3(0,0,0), NX_FORCE );
+					PxRigidActor* actor = hit.shape->getActor();
+					PxRigidBodyExt::addForceAtLocalPos(*actor, vec, PxVec3(0,0,0), PxForceMode::Enum::eFORCE);
 				}
 			}
-
+			*/
 		}
-
-		return NX_ACTION_NONE;
 	};
 
-	virtual NxControllerAction  onControllerHit(const NxControllersHit& hit)
+	virtual void onControllerHit(const PxControllersHit& hit)
 	{
 //		NxVec3 p = hit.controller->getPosition();
 //		NxVec3 e = hit.other->getPosition();
-
-
-
-		return NX_ACTION_NONE;
 	};
 
+	virtual void onObstacleHit(const PxControllerObstacleHit& hit) {};
 
 	static UserControllerHitReport report;
 };
 
 UserControllerHitReport UserControllerHitReport::report;
-
 
 
 PhysCharacter::PhysCharacter(const char * filename, long fileline, float r, float h, IPhysicsScene * _scene) : 
@@ -87,13 +74,14 @@ PhysCharacter::PhysCharacter(const char * filename, long fileline, float r, floa
 //	desc.skinWidth = 0.05f;
 //#else
 	desc.stepOffset = 0.23f;
-	desc.skinWidth = 0.1f;
+	api->Trace("FIX_PX3 PxCapsuleControllerDesc has no skinWidth PhysCharacter::PhysCharacter");
+	//desc.skinWidth = 0.1f;
 //#endif
-	desc.upDirection = NX_Y;
-	static float slopeLimit = cosf(NxMath::degToRad(65.0f));
+	desc.upDirection = PxVec3(0, 1, 0);
+	static float slopeLimit = cosf(degToRad(65.0f));
 	desc.slopeLimit = slopeLimit;
 	desc.userData = this;
-	desc.position = NxExtendedVec3(0.0f, 0.0f, 0.0f);
+	desc.position = PxExtendedVec3(0.0f, 0.0f, 0.0f);
 	desc.callback = &UserControllerHitReport::report;
 	isApplyForce = false;
 	force = 0.0f;
@@ -108,7 +96,8 @@ PhysCharacter::~PhysCharacter()
 {
 	if(controller)
 	{
-		((PhysicsScene *)scene)->CtrManager().releaseController(*controller);
+		api->Trace("FIX_PX3 use CharacterControllerManager PhysCharacter::~PhysCharacter");
+		//((PhysicsScene *)scene)->CtrManager().releaseController(*controller);
 		controller = null;
 	}
 }
@@ -152,7 +141,8 @@ float PhysCharacter::GetHeight()
 void PhysCharacter::SetPosition(const Vector & pos)
 {
 	desc.position = Nxe(pos);
-	desc.position.y += desc.skinWidth * 1.1f;
+	api->Trace("FIX_PX3 PxCapsuleControllerDesc has no skinWidth PhysCharacter::SetPosition");
+	//desc.position.y += desc.skinWidth * 1.1f;
 
 	if(controller)
 	{
@@ -165,8 +155,10 @@ Vector PhysCharacter::GetPosition()
 {
 	if(controller)
 	{
-		desc.position = controller->getFilteredPosition();
-		desc.position.y -= desc.skinWidth;
+		api->Trace("FIX_PX3 use CharacterControllerManager PhysCharacter::GetPosition");
+		//desc.position = controller->getFilteredPosition();
+		api->Trace("FIX_PX3 PxCapsuleControllerDesc has no skinWidth PhysCharacter::GetPosition");
+		//desc.position.y -= desc.skinWidth;
 	}
 	return Nxe(desc.position);
 }
@@ -175,8 +167,8 @@ Vector PhysCharacter::GetPosition()
 dword PhysCharacter::Move(const Vector & move, dword collisionGroups)
 {
 	if(!controller) return 0;
-	NxU32 flags;
-	NxVec3 m = Nx(move);
+	PxU32 flags;
+	PxVec3 m = Nx(move);
 	if(fabs(m.y) < 1e-35f)
 	{
 		if(m.y <= 0.0f)
@@ -188,6 +180,8 @@ dword PhysCharacter::Move(const Vector & move, dword collisionGroups)
 	}
 
 	dword newSceneChangedIndex = scene->GetSceneChangedIndex();
+	api->Trace("FIX_PX3 use CharacterControllerManager PhysCharacter::Move");
+	/*
 	if (newSceneChangedIndex != sceneChangedIndex)
 	{
 		sceneChangedIndex = newSceneChangedIndex;
@@ -195,6 +189,7 @@ dword PhysCharacter::Move(const Vector & move, dword collisionGroups)
 	}
 
 	controller->move(m, collisionGroups, 0.001f, flags, 1.0f);
+	*/
 	move_collisionflags = flags;
 
 	/*IPhysicsScene::RaycastResult detail;
@@ -221,11 +216,13 @@ dword PhysCharacter::Move(const Vector & move, dword collisionGroups)
 //Активировать/деактивировать персонажа
 void PhysCharacter::Activate(bool isActive)
 {	
+	api->Trace("FIX_PX3 use CharacterControllerManager PhysCharacter::Activate");
+	/*
 	if(isActive)
 	{
 		if (!controller)
 		{
-			controller = (NxCapsuleController *)((PhysicsScene *)scene)->CtrManager().createController(&((PhysicsScene *)scene)->Scene(), desc);
+			controller = (PxCapsuleController *)((PhysicsScene *)scene)->CtrManager().createController(&((PhysicsScene *)scene)->Scene(), desc);
 
 			NxActor * controllerActor = controller->getActor();
 			// VANO:: TEMP CHANGE	{
@@ -265,6 +262,7 @@ void PhysCharacter::Activate(bool isActive)
 			controller = null;
 		}
 	}
+	*/
 }
 
 //Если не 0.0f, то на все объекты при столкновении будет приложена сила v
@@ -279,7 +277,3 @@ dword PhysCharacter::GetMoveCollisionFlags()
 {
 	return dword(move_collisionflags);
 }
-
-
-
-

@@ -2,7 +2,7 @@
 #include "PhysTriangleMesh.h"
 
 
-PhysTriangleMesh::PhysTriangleMesh(NxTriangleMesh * trgMesh, IPhysics * srv) : IPhysTriangleMesh(srv)
+PhysTriangleMesh::PhysTriangleMesh(PxTriangleMesh* trgMesh, IPhysics * srv) : IPhysTriangleMesh(srv)
 {
 	Assert(trgMesh);
 	triangleMesh = trgMesh;
@@ -12,7 +12,7 @@ PhysTriangleMesh::~PhysTriangleMesh()
 {
 }
 
-NxTriangleMesh * PhysTriangleMesh::TriangleMesh()
+PxTriangleMesh* PhysTriangleMesh::TriangleMesh()
 {
 	return triangleMesh;
 }

@@ -34,7 +34,7 @@ class CookBinManager : public MissionObject
 	dword GetLoadBuffSize();
 
 	__forceinline dword GetCookAbbr() {dword dw = (dword)'C' + (((dword)'o')<<8) + (((dword)'o')<<16) + (((dword)'k')<<24); return dw;}
-	__forceinline dword GetCookVersion() {return NX_PHYSICS_SDK_VERSION;}
+	__forceinline dword GetCookVersion() {return PX_PHYSICS_VERSION;}
 public:
 
 	CookBinManager(void);

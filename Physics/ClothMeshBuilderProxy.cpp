@@ -1,6 +1,6 @@
 #include "ClothMeshBuilderProxy.h"
 
-ClothMeshBuilderProxy::ClothMeshBuilderProxy(NxPhysicsSDK * sdk) :
+ClothMeshBuilderProxy::ClothMeshBuilderProxy(PxPhysics* sdk) :
 ClothMeshBuilder(sdk),
 IProxy(*((PhysicsScene*)null))
 {

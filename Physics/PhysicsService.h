@@ -2,9 +2,9 @@
 
 #include "common.h"
 #include "../Common_h/IConsole.h"
-#include "NxDebugRenderable.h"
-#include "NxStream.h"
-#include "ControllerManager.h"
+//#include "NxDebugRenderable.h"
+//#include "NxStream.h"
+#include <PxControllerManager.h>
 
 class IProxy;
 class PhysicsScene;
@@ -14,28 +14,29 @@ class PhysicsService : public IPhysics
 {
 	friend class PhysicsScene;
 
-
-	class Allocator : public NxUserAllocator
+	// FIX_PX3 Need PxAllocatorCallback?
+	/*
+	class Allocator : public PxAllocatorCallback
 	{
 	public:
-		virtual void * malloc(NxU32 size);
-		virtual void * mallocDEBUG(NxU32 size,const char * fileName, int line);
-		virtual void * realloc(void * memory, NxU32 size);
+		virtual void * malloc(PxU32 size);
+		virtual void * mallocDEBUG(PxU32 size,const char * fileName, int line);
+		virtual void * realloc(void * memory, PxU32 size);
 		virtual void free(void * memory);
 	};
+	*/
 
-	class ErrorStream : public NxUserOutputStream
+	class ErrorStream : public PxErrorCallback
 	{
 	public:
 		ErrorStream();
 
-		void reportError(NxErrorCode e, const char * message, const char * file, int line);
-		NxAssertResponse reportAssertViolation(const char * message, const char * file, int line);
-		void print(const char * message);
+		void reportError(PxErrorCode::Enum code, const char* message, const char* file, int line);
+		void print(const char* message);
 		void EnableWarnings(bool enable);
 
 	private:
-		bool enabledWarnings;
+		bool enabledWarnings;// FIX_PX3 remove?
 	};
 
 	// вывод локализованной ошибки в лог
@@ -43,15 +44,17 @@ class PhysicsService : public IPhysics
 
 public:
 
+	// FIX_PX3 Don't need NxStream
+	/*
 	class MemoryReadStream : public NxStream
 	{
 	public:
 		MemoryReadStream(const void * _source, dword _size);
 		virtual ~MemoryReadStream();
 
-		virtual NxU8 readByte() const;
-		virtual NxU16 readWord() const;
-		virtual NxU32 readDword() const;
+		virtual PxU8 readByte() const;
+		virtual PxU16 readWord() const;
+		virtual PxU32 readDword() const;
 		virtual float readFloat() const;
 		virtual double readDouble() const;
 		virtual void readBuffer(void * buffer, NxU32 size) const;
@@ -59,7 +62,7 @@ public:
 		virtual NxStream & storeByte(NxU8 b);
 		virtual NxStream & storeWord(NxU16 w);
 		virtual NxStream & storeDword(NxU32 d);
-		virtual NxStream & storeFloat(NxReal f);
+		virtual NxStream & storeFloat(PxReal f);
 		virtual NxStream & storeDouble(NxF64 f);
 		virtual NxStream & storeBuffer(const void * buffer, NxU32 size);
 
@@ -88,7 +91,7 @@ public:
 		virtual NxStream & storeByte(NxU8 b);
 		virtual NxStream & storeWord(NxU16 w);
 		virtual NxStream & storeDword(NxU32 d);
-		virtual NxStream & storeFloat(NxReal f);
+		virtual NxStream & storeFloat(PxReal f);
 		virtual NxStream & storeDouble(NxF64 f);
 		virtual NxStream & storeBuffer(const void * buffer, NxU32 size);
 
@@ -101,7 +104,7 @@ public:
 	private:
 		array<byte> data;
 	};
-
+	*/
 
 public:
 	PhysicsService();
@@ -128,7 +131,7 @@ public:
 	IProxy * FindProxyObject(NxActor * actor);
 
 	//Получить мэнеджер контролеров для персонажей
-	NxControllerManager & CtrManager() { return *m_ctrManager; }
+	PxControllerManager & CtrManager() { return *m_ctrManager; }
 
 	void AddScene2Execute(PhysicsScene * scene);
 
@@ -165,17 +168,19 @@ private:
 	array<PhysicsScene*> m_scenes2Execute;
 	CritSection	csArrayUpdate;
 	CritSection	csSimulate;
-	NxPhysicsSDK * physicsSDK;
-	Allocator allocator;
-	NxControllerManager	* m_ctrManager;
+	PxPhysics* physicsSDK;
+	PxFoundation* m_Foundation;
+	PxCooking* m_Cooking;
+	PxControllerManager* m_ctrManager;
+	PxAllocatorCallback* allocator;
 	ErrorStream errorStream;
 	array<PhysicsScene *> scenes;
-	array<IPhysTriangleMesh *> meshes;
-	array<IClothMeshBuilder *> builders;
+	array<IPhysTriangleMesh*> meshes;
+	array<IClothMeshBuilder*> builders;
 	bool isEnableDebug;
 	bool isHardware;
 	bool isStop;
 	bool isMultiThreading;
-	IConsole * console;
+	IConsole* console;
 };
 

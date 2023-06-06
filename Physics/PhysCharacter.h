@@ -1,12 +1,10 @@
 
 
 #include "..\Common_h\Physics.h"
-#include "NxCharacter.h"
-#include "CapsuleController.h"
+#include <PxCharacter.h>
+#include <PxCapsuleController.h>
 
-
-class PhysicsScene;
-
+using namespace physx;
 
 class PhysCharacter : public IPhysCharacter
 {
@@ -43,11 +41,11 @@ public:
 	dword GetMoveCollisionFlags();
 
 private:
-	NxCapsuleController * controller;
-	NxCapsuleControllerDesc desc;
+	PxCapsuleController* controller;
+	PxCapsuleControllerDesc desc;
 	dword bublegum;
 	float force;
-	NxU32 move_collisionflags;
+	PxU32 move_collisionflags;
 	dword sceneChangedIndex;
 	bool isApplyForce;
 };

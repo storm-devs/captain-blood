@@ -89,8 +89,8 @@ class PhysRagdoll : public IPhysEditableRagdoll
 	protected:
 		PhysBone * parent;					//Указатель на родителя
 		NxActor * actor;					//Указатель на актёра, представляющего кость
-		NxSphericalJoint * sphereJoint;		//Сферический сустав
-		NxRevoluteJoint * revoluteJoint;	//Шаргнирный сустав
+		PxSphericalJoint * sphereJoint;		//Сферический сустав
+		PxRevoluteJoint * revoluteJoint;	//Шаргнирный сустав
 		PhysRagdoll & ragdoll;				//Кому принадлежим
 		string name;						//Имя анимационной кости
 		dword hash;							//Хэшь для имени анимационной кости
@@ -288,7 +288,7 @@ public:
 
 public:
 	//Получить сцену, которой принадлежим
-	NxScene & Scene();
+	PxScene & Scene();
 	//Добавить кость
 	void AddBone(IBone * bone);
 	//Установить ящик для кости

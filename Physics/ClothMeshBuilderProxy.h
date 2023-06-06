@@ -3,12 +3,10 @@
 #include "ClothMeshBuilder.h"
 #include "IProxy.h"
 
-
-class NxPhysicsSDK;
 class ClothMeshBuilderProxy : public ClothMeshBuilder, public IProxy
 {
 public:
-	ClothMeshBuilderProxy(NxPhysicsSDK * sdk);
+	ClothMeshBuilderProxy(PxPhysics* sdk);
 	virtual ~ClothMeshBuilderProxy(void);
 
 	//////////////////////////////////////////////////////////////////////////

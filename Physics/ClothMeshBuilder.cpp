@@ -2,7 +2,7 @@
 #include "../common_h/FileService.h"
 #include "PhysicsService.h"
 #include "PhysicsScene.h"
-#include "NxCooking.h"
+#include "PxCooking.h"
 #include "ClothMeshBuilder.h"
 #include "CookedBinaries/CookBinManager.h"
 #include <cmath>
@@ -16,7 +16,9 @@ struct ClothMeshBuilder::Data
 				ibCombined_(__FILE__, __LINE__),
 				mesh_(NULL), sdk_(NULL),
 				uScale(1.0f), vScale(1.0f), uOffset(0.0f), vOffset(0.0f) {}
-	~Data()	{ if (mesh_ && sdk_) sdk_->releaseClothMesh(*mesh_); }
+	// FIX_PX3 ClothMesh
+	//~Data()	{ if (mesh_ && sdk_) sdk_->releaseClothMesh(*mesh_); }
+	~Data() {}
 
 	// кусок ткани
 	struct Piece
@@ -28,8 +30,9 @@ struct ClothMeshBuilder::Data
 	};
 
 	array<Piece>				buildBuffer_;	// буфер для хранения кусков ткани
-	NxClothMesh*				mesh_;			// скуканый меш
-	NxPhysicsSDK*				sdk_;			// 
+	// FIX_PX3 ClothMesh
+	PxCloth*					mesh_;			// скуканый меш
+	PxPhysics*					sdk_;			// 
 	bool						tearable_;		// флаг разрывности
 	array<Vertex>				vbCombined_;
 	array<unsigned short>		ibCombined_;
@@ -63,7 +66,7 @@ struct ClothMeshBuilder::Data
 
 
 
-ClothMeshBuilder::ClothMeshBuilder(NxPhysicsSDK* sdk) :
+ClothMeshBuilder::ClothMeshBuilder(PxPhysics* sdk) :
 internal_(NEW Data())
 {
 	Assert(internal_);
@@ -123,7 +126,7 @@ bool ClothMeshBuilder::IsReady() const
 }
 
 // отдать сетку
-NxClothMesh& ClothMeshBuilder::GetMesh() const
+PxCloth& ClothMeshBuilder::GetMesh() const
 {
 	Assert(internal_->mesh_);
 	return *(internal_->mesh_);
@@ -568,13 +571,16 @@ unsigned int ClothMeshBuilder::Connect(unsigned int index1, unsigned int index2,
 	return internal_->buildBuffer_.Last();
 }
 
-bool Cook(NxClothMeshDesc& desc, NxPlatform target, PhysicsService::MemoryWriteStream& wb)
+bool Cook(PxClothMeshDesc& desc, PxPlatform::Enum target) // FIX_PX3 Don't need NxStream: PhysicsService::MemoryWriteStream& wb)
 {
-	NxCookingParams params;
+	api->Trace("FIX_PX3 NxCookClothMesh ClothMeshBuilder.cpp");
+	/*
+	PxCookingParams params;
 	params.targetPlatform = target;
 	NxSetCookingParams(params);
 
 	if (!NxCookClothMesh(desc, wb)) 
+		*/
 		return false;
 
 	return true;
@@ -585,13 +591,15 @@ bool ClothMeshBuilder::Build(IPhysicsScene& scene, bool isTearable, IMission* mi
 {
 	internal_->tearable_ = isTearable;
 
+	api->Trace("FIX_PX3 ClothMesh ClothMeshBuilder.cpp");
+	/*
 	if ( internal_->mesh_ )
 	{
 		internal_->sdk_->releaseClothMesh(*(internal_->mesh_));
 		internal_->mesh_ = NULL;
 	}
 
-	NxClothMeshDesc desc;
+	PxClothMeshDesc desc;
 	desc.flags = 0;
 	if (isTearable)
 		desc.flags |= NX_CLOTH_MESH_TEARABLE;
@@ -612,17 +620,21 @@ bool ClothMeshBuilder::Build(IPhysicsScene& scene, bool isTearable, IMission* mi
 	Assert(sizeof(internal_->ibCombined_[0]) == 2);
 
 
-	PhysicsService::MemoryWriteStream wbPC;
-	PhysicsService::MemoryWriteStream wbXBOX;
+	// FIX_PX3 Don't need NxStream
+	//PhysicsService::MemoryWriteStream wbPC;
+	//PhysicsService::MemoryWriteStream wbXBOX;
 	MOSafePointerType<CookBinManager> binMgr;
 	//CookBinManager* binMgr = NULL;
 	static const ConstString objName("CookBinManager");
 	if (mission)
 		(CookBinManager*)mission->CreateObject(binMgr.GetSPObject(), "CookBinManager", objName);
+	*/
 
 #ifndef _XBOX
+	api->Trace("FIX_PX3 NxClothMeshDesc ClothMeshBuilder::Build");
+	/*
 	bool bSuccessCook = true;
-	if( Cook(desc, PLATFORM_PC, wbPC) )
+	if(Cook(desc, PxPlatform::Enum::ePC))
 	{
 		if (binMgr.Validate())
 			binMgr.Ptr()->SaveCookedMesh(fileName, wbPC.Pointer(), wbPC.Size());
@@ -633,7 +645,7 @@ bool ClothMeshBuilder::Build(IPhysicsScene& scene, bool isTearable, IMission* mi
 		api->Trace("ClothMeshBuilder::Build() Error! Cook for PC failed!");
 	}
 
-	if( Cook(desc, PLATFORM_XENON, wbXBOX) )
+	if(Cook(desc, PxPlatform::Enum::eXENON))
 	{
 		if (binMgr.Validate())
 			binMgr.Ptr()->SaveCookedMesh(string("x360_")+fileName, wbXBOX.Pointer(), wbXBOX.Size());
@@ -649,6 +661,7 @@ bool ClothMeshBuilder::Build(IPhysicsScene& scene, bool isTearable, IMission* mi
 		PhysicsService::MemoryReadStream rb(wbPC.Pointer(), wbPC.Size());
 		internal_->mesh_ = internal_->sdk_->createClothMesh(rb);
 	}
+	*/
 /*#else // на XBox не бум ничего сами строить - должны быть скукенные уже.
 	Cook(desc, PLATFORM_XENON, wbXBOX);
 
@@ -684,8 +697,9 @@ bool ClothMeshBuilder::Load(IPhysicsScene& scene, IMission& mission, const char*
 	
 	if(!pData) return false;
 
-	PhysicsService::MemoryReadStream rb(pData, fileSize);
-	internal_->mesh_ = internal_->sdk_->createClothMesh(rb);
+	api->Trace("FIX_PX3 createClothMesh ClothMeshBuilder::Load");
+	//PhysicsService::MemoryReadStream rb(pData, fileSize);
+	//internal_->mesh_ = internal_->sdk_->createClothMesh(rb);
 
 	return internal_->mesh_ != NULL;
 }

@@ -7,7 +7,6 @@
 
 class MissionObject;
 class Ship;
-class NxActor;
 class ShipsDrawer;
 
 // рея

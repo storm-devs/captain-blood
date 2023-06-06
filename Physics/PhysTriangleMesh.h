@@ -9,11 +9,11 @@ class PhysTriangleMesh : public IPhysTriangleMesh
 {
 	friend class PhysicsService;
 public:
-	PhysTriangleMesh(NxTriangleMesh * trgMesh, IPhysics * srv);
+	PhysTriangleMesh(PxTriangleMesh * trgMesh, IPhysics * srv);
 	virtual ~PhysTriangleMesh();
 
-	NxTriangleMesh * TriangleMesh();
+	PxTriangleMesh * TriangleMesh();
 
 private:
-	NxTriangleMesh * triangleMesh;
+	PxTriangleMesh * triangleMesh;
 };

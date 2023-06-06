@@ -74,22 +74,25 @@ PhysRagdoll::PhysBone * PhysRagdoll::PhysBone::Find(const char * bname, dword bh
 
 void PhysRagdoll::PhysBone::Activate(bool isActive)
 {
+	api->Trace("FIX_PX3 NX_AF_DISABLE_COLLISION, NX_AF_DISABLE_RESPONSE, NX_BF_FROZEN PhysRagdoll::PhysBone::Activate. Use PxRigidBodyFlag::eENABLE_CCD?");
 	if(isActive)
 	{
 		if(actor && actor->isDynamic())
 		{
-			actor->clearActorFlag(NX_AF_DISABLE_COLLISION);
-			actor->clearActorFlag(NX_AF_DISABLE_RESPONSE);
-			actor->clearBodyFlag(NX_BF_FROZEN);
-			actor->raiseBodyFlag(NX_BF_VISUALIZATION);
+			//actor->clearActorFlag(NX_AF_DISABLE_COLLISION);
+			//actor->clearActorFlag(NX_AF_DISABLE_RESPONSE);
+			//actor->clearBodyFlag(NX_BF_FROZEN);
+			actor->setActorFlag(PxActorFlag::eDISABLE_SIMULATION, false);
+			actor->setActorFlag(PxActorFlag::eVISUALIZATION, true);
 		}
 	}else{
 		if(actor && actor->isDynamic())
 		{
-			actor->raiseActorFlag(NX_AF_DISABLE_COLLISION);
-			actor->raiseActorFlag(NX_AF_DISABLE_RESPONSE);
-			actor->raiseBodyFlag(NX_BF_FROZEN);
-			actor->clearBodyFlag(NX_BF_VISUALIZATION);
+			//actor->raiseActorFlag(NX_AF_DISABLE_COLLISION);
+			//actor->raiseActorFlag(NX_AF_DISABLE_RESPONSE);
+			//actor->raiseBodyFlag(NX_BF_FROZEN);
+			actor->setActorFlag(PxActorFlag::eDISABLE_SIMULATION, true);
+			actor->setActorFlag(PxActorFlag::eVISUALIZATION, false);
 		}
 	}
 	for(long i = 0; i < child; i++)
@@ -102,6 +105,8 @@ void PhysRagdoll::PhysBone::Activate(bool isActive)
 void PhysRagdoll::PhysBone::SetShape(const Matrix & worldTransform, const Matrix & localTransform, const Vector & size, float mass)
 {
 	ReleaseActor();
+	api->Trace("FIX_PX3 Desc PhysRagdoll::PhysBone::SetShape1");
+	/*
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 	NxBoxShapeDesc boxDesc;
@@ -125,12 +130,15 @@ void PhysRagdoll::PhysBone::SetShape(const Matrix & worldTransform, const Matrix
 	actor->setMaxAngularVelocity(100.0f);
 	Assert(actor);
 	ragdoll.SetBoneShape(this, worldTransform, localTransform, size, mass);
+	*/
 }
 
 //Представить кость капсулой
 void PhysRagdoll::PhysBone::SetShape(const Matrix & worldTransform, const Matrix & localTransform, float height, float radius, float mass)
 {
 	ReleaseActor();
+	api->Trace("FIX_PX3 Desc PhysRagdoll::PhysBone::SetShape2");
+	/*
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 	NxCapsuleShapeDesc capsuleDesc;
@@ -156,6 +164,7 @@ void PhysRagdoll::PhysBone::SetShape(const Matrix & worldTransform, const Matrix
 	actor->setMaxAngularVelocity(100.0f);
 	Assert(actor);
 	ragdoll.SetBoneShape(this, worldTransform, localTransform, height, radius, mass);
+	*/
 }
 
 //Получить родителя
@@ -205,13 +214,15 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const SphericalJointParam
 	Assert(actor);
 	Assert(chl.actor);
 	chl.ReleaseJoint();
+	api->Trace("FIX_PX3 Joint PhysRagdoll::PhysBone::CreateJoint1");
+	/*
 	NxSphericalJointDesc sphericalDesc;
 	sphericalDesc.actor[0] = actor;
 	sphericalDesc.actor[1] = chl.actor;
 	sphericalDesc.setGlobalAnchor(Nx(params.worldJointPosition));
 	Matrix mtx;
 	//Nx(mtx, actor->getGlobalPose());	
-	//sphericalDesc.setGlobalAxis(Nx(/*mtx* */params.swingAxisInParentSystem));	
+	//sphericalDesc.setGlobalAxis(Nx(params.swingAxisInParentSystem));	
 	
 	Nx(mtx, actor->getGlobalPose());
 	sphericalDesc.localAxis[0] = Nx(mtx.MulNormalByInverse(params.swingAxisInParentSystem));
@@ -226,9 +237,9 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const SphericalJointParam
 	sphericalDesc.flags |= NX_SJF_SWING_LIMIT_ENABLED | NX_SJF_SWING_SPRING_ENABLED;
 	Assert(params.swingLimit >= 0.0f);
 	Assert(params.swingLimit <= PI);
-	sphericalDesc.swingLimit.value = (NxReal)params.swingLimit;
-	sphericalDesc.swingSpring.spring = (NxReal)params.swingSpring;
-	sphericalDesc.swingSpring.damper = (NxReal)params.swingDamper;
+	sphericalDesc.swingLimit.value = (PxReal)params.swingLimit;
+	sphericalDesc.swingSpring.spring = (PxReal)params.swingSpring;
+	sphericalDesc.swingSpring.damper = (PxReal)params.swingDamper;
 	sphericalDesc.swingSpring.targetValue = 0;
 	//Прараметры скручивания
 	sphericalDesc.flags |= NX_SJF_TWIST_LIMIT_ENABLED | NX_SJF_TWIST_SPRING_ENABLED;	
@@ -237,15 +248,16 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const SphericalJointParam
 	Assert(params.twistMax >= -PI);
 	Assert(params.twistMax <= PI);
 	Assert(params.twistMin < params.twistMax);
-	sphericalDesc.twistLimit.low.value = (NxReal)params.twistMin;
-	sphericalDesc.twistLimit.high.value = (NxReal)params.twistMax;
-	sphericalDesc.twistSpring.spring = (NxReal)params.twistSpring;
-	sphericalDesc.twistSpring.damper = (NxReal)params.twistDamper;
+	sphericalDesc.twistLimit.low.value = (PxReal)params.twistMin;
+	sphericalDesc.twistLimit.high.value = (PxReal)params.twistMax;
+	sphericalDesc.twistSpring.spring = (PxReal)params.twistSpring;
+	sphericalDesc.twistSpring.damper = (PxReal)params.twistDamper;
 	sphericalDesc.twistSpring.targetValue = 0;
 	//Создаём кость
 	chl.sphereJoint = (NxSphericalJoint *)ragdoll.Scene().createJoint(sphericalDesc);
 	Assert(chl.sphereJoint);
 	ragdoll.SetBoneJoint(&chl, params);
+	*/
 }
 
 //Создать шарнирный сустав между текущей костью и ребёнком ребёнком
@@ -255,6 +267,8 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const RevoluteJointParams
 	Assert(actor);
 	Assert(chl.actor);
 	chl.ReleaseJoint();
+	api->Trace("FIX_PX3 Joint PhysRagdoll::PhysBone::CreateJoint2");
+	/*
 	NxRevoluteJointDesc revDesc;
 	revDesc.actor[0] = actor;
 	revDesc.actor[1] = chl.actor;
@@ -263,7 +277,7 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const RevoluteJointParams
 	Matrix mtx;
 	//Nx(mtx, actor->getGlobalPose());
 		
-	//revDesc.setGlobalAxis(Nx( /*mtx* */ params.axisInParentSystem));
+	//revDesc.setGlobalAxis(Nx(params.axisInParentSystem));
 
 	//Пока так, пофиксят - переделаю
 	//Vector up = params.axisInParentSystem ^ params.normalInParentSystem;
@@ -287,17 +301,18 @@ void PhysRagdoll::PhysBone::CreateJoint(IBone & child, const RevoluteJointParams
 	Assert(params.maxAngle <= PI);
 	Assert(params.minAngle < params.maxAngle);
 	revDesc.flags |= NX_RJF_LIMIT_ENABLED;
-	revDesc.limit.low.value = (NxReal)params.minAngle;
-	revDesc.limit.high.value = (NxReal)params.maxAngle;
+	revDesc.limit.low.value = (PxReal)params.minAngle;
+	revDesc.limit.high.value = (PxReal)params.maxAngle;
 	//Силы
-	/*revDesc.flags |= NX_RJF_SPRING_ENABLED;
-	revDesc.spring.spring = (NxReal)params.spring;
-	revDesc.spring.damper = (NxReal)params.damper;
-	revDesc.spring.targetValue = 0;*/
+	//revDesc.flags |= NX_RJF_SPRING_ENABLED;
+	//revDesc.spring.spring = (PxReal)params.spring;
+	//revDesc.spring.damper = (PxReal)params.damper;
+	//revDesc.spring.targetValue = 0;
 	//Создаём кость
 	chl.revoluteJoint = (NxRevoluteJoint *)ragdoll.Scene().createJoint(revDesc);
 	Assert(chl.revoluteJoint);
 	ragdoll.SetBoneJoint(&chl, params);
+	*/
 }
 
 //Устоновить кости позицию в мире
@@ -305,7 +320,7 @@ void PhysRagdoll::PhysBone::SetWorldTransform(const Matrix & mtx)
 {
 	if(actor)
 	{
-		actor->setGlobalPose(Nx(NxMat34(), mtx));
+		actor->setGlobalPose(PxTransform(PxMat44()), mtx);
 	}
 }
 
@@ -333,7 +348,7 @@ void PhysRagdoll::PhysBone::ApplyForce(const Vector & force, const Vector & loca
 
 	if(actor)
 	{
-		actor->addForceAtLocalPos(Nx(force), Nx(localPosition), NX_FORCE);
+		PxRigidBodyExt::addForceAtLocalPos(*actor->isRigidBody(), Nx(force), Nx(localPosition), PxForceMode::eFORCE);
 	}
 }
 
@@ -350,7 +365,7 @@ void PhysRagdoll::PhysBone::ApplyImpulse(const Vector & imp, const Vector & loca
 
 	if(actor)
 	{
-		actor->addForceAtLocalPos(Nx(imp), Nx(localPosition), NX_IMPULSE);
+		PxRigidBodyExt::addForceAtLocalPos(*actor->isRigidBody(), Nx(imp), Nx(localPosition), PxForceMode::eIMPULSE);
 	}
 }
 
@@ -367,7 +382,7 @@ inline void PhysRagdoll::PhysBone::ApplyTorque(const Vector & imp)
 
 	if (actor) 
 	{
-		actor->addTorque(Nx(imp), NX_IMPULSE);
+		actor->addTorque(Nx(imp), PxForceMode::Enum::eIMPULSE);
 	}
 }
 
@@ -384,7 +399,8 @@ inline void PhysRagdoll::PhysBone::ApplyLocalTorque(const Vector & imp)
 
 	if (actor) 
 	{
-		actor->addLocalTorque(Nx(imp), NX_IMPULSE);
+		api->Trace("FIX_PX3 used addTorque instead of addLocalTorque: %.3f, %.3f, %.3f", imp.x, imp.y, imp.z);
+		actor->addTorque(Nx(imp), PxForceMode::Enum::eIMPULSE);
 	}
 }
 
@@ -409,7 +425,7 @@ void PhysRagdoll::PhysBone::SetRotation(float ay)
 {
 	if(actor)
 	{
-		actor->setAngularVelocity(NxVec3(0.0f, ay, 0.0f));
+		actor->setAngularVelocity(PxVec3(0.0f, ay, 0.0f));
 	}
 }
 
@@ -418,17 +434,18 @@ void PhysRagdoll::PhysBone::SetGroup(PhysicsCollisionGroup group)
 {
 	if(actor)
 	{
-		actor->setGroup(group);
+		api->Trace("FIX_PX3 NxActorGroup with PxDefaultSimulationFilterShader.h");
+		//actor->setGroup(group);
 
 		int NumShapes = actor->getNbShapes (); 
 
 		if (NumShapes>0)
 		{		
-			NxShape *const* shapes = actor->getShapes();
+			PxShape* const* shapes = actor->getShapes();
 
 			for(int i = 0; i < NumShapes; i++)
 			{
-				shapes[i]->setGroup(group);
+				//shapes[i]->setGroup(group);
 			}
 		}
 	}
@@ -450,7 +467,8 @@ void PhysRagdoll::PhysBone::ReleaseActor()
 	}
 	if(actor)
 	{
-		ragdoll.Scene().releaseActor(*actor);
+		PHYSX3_LOCK_WRITE(&ragdoll.Scene());
+		actor->release();
 	}	
 }
 
@@ -458,6 +476,8 @@ void PhysRagdoll::PhysBone::ReleaseActor()
 //Убить суставы у себя
 void PhysRagdoll::PhysBone::ReleaseJoint()
 {
+	api->Trace("FIX_PX3 Joint PhysRagdoll::PhysBone::ReleaseJoint");
+	/*
 	if(sphereJoint)
 	{
 		ragdoll.Scene().releaseJoint(*sphereJoint);
@@ -468,6 +488,7 @@ void PhysRagdoll::PhysBone::ReleaseJoint()
 		ragdoll.Scene().releaseJoint(*revoluteJoint);
 		revoluteJoint = null;
 	}
+	*/
 }
 
 
@@ -880,7 +901,7 @@ PhysRagdoll::IBone * PhysRagdoll::GetBone(PhysRaycastId id)
 }
 
 //Получить сцену, которой принадлежим
-NxScene & PhysRagdoll::Scene()
+PxScene & PhysRagdoll::Scene()
 {
 	return ((PhysicsScene *)scene)->Scene();	
 }

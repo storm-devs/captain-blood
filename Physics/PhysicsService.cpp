@@ -11,7 +11,7 @@
 #include "PhysCloth.h"
 #include "PhysTriangleMesh.h"
 #include "PhysRagdoll.h"
-#include "NxCooking.h"
+#include "PxCooking.h"
 #include "ClothMeshBuilderProxy.h"
 #include "IProxy.h"
 #include "Deferrer.h"
@@ -22,12 +22,19 @@
 INTERFACE_FUNCTION
 CREATE_SERVICE(PhysicsService, 19)
 
-#ifndef _XBOX
-#pragma comment(lib, "PhysXLoader.lib")
+#ifdef _DEBUG
+#pragma comment(lib, "PhysX3DEBUG_x86.lib")
+#pragma comment(lib, "PhysX3CommonDEBUG_x86.lib")
+#pragma comment(lib, "PhysX3ExtensionsDEBUG.lib")
+#pragma comment(lib, "PhysX3CharacterKinematicDEBUG_x86.lib")
+#pragma comment(lib, "PhysX3CookingDEBUG_x86.lib")
+#else
+#pragma comment(lib, "PhysX3_x86.lib")
+#pragma comment(lib, "PhysX3Common_x86.lib")
+#pragma comment(lib, "PhysX3Extensions.lib")
+#pragma comment(lib, "PhysX3CharacterKinematic_x86.lib")
+#pragma comment(lib, "PhysX3Cooking_x86.lib")
 #endif
-
-#pragma comment(lib, "NxCharacter.lib")
-#pragma comment(lib, "NxCooking.lib")
 
 #ifndef STOP_DEBUG
 	bool PhysicsService::m_gShowColliders = false;
@@ -78,7 +85,7 @@ PhysicsService::~PhysicsService()
 	}
 
 	if (m_ctrManager)
-		NxReleaseControllerManager(m_ctrManager);
+		m_ctrManager->release();
 
 	while(scenes)
 	{
@@ -124,15 +131,19 @@ bool PhysicsService::IsEnableDebug()
 //Создать сетку, основываясь на бинарных данных
 IPhysTriangleMesh * PhysicsService::CreateTriangleMesh(const void * meshData, dword meshDataSize, const void * pMapData, dword pMapDataSize)
 {
+	// FIX_PX3 Don't need NxStream
+	api->Trace("FIX_PX3 createTriangleMesh PhysicsService::CreateTriangleMesh");
+	/* q4a comment
 	MemoryReadStream memoryStream(meshData, meshDataSize);
 
 	// останавливаем отдельный поток с физикой
 	csSimulate.Enter();
-		NxTriangleMesh * trgMesh = physicsSDK->createTriangleMesh(memoryStream);
+	PxTriangleMesh * trgMesh = physicsSDK->createTriangleMesh(memoryStream);
 	csSimulate.Leave();
 
 	if(!trgMesh) 
 		return null;
+	*/
 
 	/*if(pMapData && pMapDataSize)
 	{
@@ -141,9 +152,12 @@ IPhysTriangleMesh * PhysicsService::CreateTriangleMesh(const void * meshData, dw
 		pmap.dataSize = pMapDataSize;
 		trgMesh->loadPMap(pmap);
 	}*/
+	/* q4a comment
 	PhysTriangleMesh * mesh = NEW PhysTriangleMesh(trgMesh, this);
 	meshes.Add(mesh);
 	return mesh;
+	*/
+	return null;
 }
 
 //Создать построитель сеток ткани
@@ -163,10 +177,11 @@ IClothMeshBuilder* PhysicsService::CreateClothMeshBuilder()
 //Удаление сетки из списка
 void PhysicsService::UnregistryPhysTriangleMesh(IPhysTriangleMesh * obj)
 {
-	NxTriangleMesh * msh = ((PhysTriangleMesh *)obj)->triangleMesh;
-	NxU32 refcnt = msh->getReferenceCount();
+	PxTriangleMesh * msh = ((PhysTriangleMesh *)obj)->triangleMesh;
+	PxU32 refcnt = msh->getReferenceCount();
 	Assert(msh);
-	physicsSDK->releaseTriangleMesh(*msh);
+	api->Trace("FIX_PX3 releaseTriangleMesh PhysicsService::UnregistryPhysTriangleMesh");
+	//physicsSDK->releaseTriangleMesh(*msh);
 	meshes.Del(obj);
 }
 
@@ -202,7 +217,7 @@ bool PhysicsService::Init()
 	IFileService * fs = (IFileService *)api->GetService("FileService");
 
 	IIniFile * pIni = fs->SystemIni();
-	NxReal enableDebug = (NxReal)0;
+	PxReal enableDebug = (PxReal)0;
 	isEnableDebug = false;
 	isHardware = false;
 	bool isEnabledWarnings = false;
@@ -212,7 +227,7 @@ bool PhysicsService::Init()
 	{
 #ifndef STOP_DEBUG
 		isEnableDebug = pIni->GetLong("Physics", "debug", 0) != 0;
-		enableDebug = (isEnableDebug) ? (NxReal)1 : (NxReal)0;
+		enableDebug = (isEnableDebug) ? (PxReal)1 : (PxReal)0;
 		debugHost = pIni->GetString("Physics", "debughost", "");
 #endif
 		isHardware = pIni->GetLong("Physics", "hw", 0) != 0;
@@ -225,37 +240,61 @@ bool PhysicsService::Init()
 
 	errorStream.EnableWarnings(isEnabledWarnings);
 
+	PxDefaultAllocator gDefaultAllocatorCallback;
+	allocator = &gDefaultAllocatorCallback;
+	PxFoundation* m_Foundation = PxCreateFoundation(PX_PHYSICS_VERSION, *allocator, errorStream);
+	if (!m_Foundation)
+	{
+		Error(1000200, "PhysicsService: Can't create PxFoundation");
+		return false;
+	}
+
+	PxTolerancesScale scale;
+	//customizeTolerances(scale);
+
 	//Создаём объект
-	physicsSDK = NxCreatePhysicsSDK(NX_PHYSICS_SDK_VERSION, &allocator, &errorStream);
+	physicsSDK = PxCreatePhysics(PX_PHYSICS_VERSION, *m_Foundation, scale);
 
-	dword version = NX_PHYSICS_SDK_VERSION;
+	dword version = PX_PHYSICS_VERSION;
 
-	if (!physicsSDK) 
+	if (!physicsSDK)
 	{
 		Error(1000200, "PhysicsService: Can't init PhysX SDK");
 		return false;
 	}
 
-	m_ctrManager = NxCreateControllerManager(&allocator);
+	api->Trace("FIX_PX3 PxCreateControllerManager PhysicsService::Init");
+	//m_ctrManager = PxCreateControllerManager(&allocator);
 
-	NxInitCooking();
+	PxCookingParams params(scale);
+	m_Cooking = PxCreateCooking(PX_PHYSICS_VERSION, *m_Foundation, params);
+	if (!m_Cooking)
+	{
+		Error(1000200, "PhysicsService: Can't create PxCooking");
+		return false;
+	}
 
 #ifndef STOP_DEBUG
 	if(!debugHost.IsEmpty())
 	{
-		physicsSDK->getFoundationSDK().getRemoteDebugger()->connect(debugHost);
+		api->Trace("FIX_PX3 getRemoteDebugger PhysicsService::Init");
+		//physicsSDK->getFoundationSDK().getRemoteDebugger()->connect(debugHost);
 	}	
 #endif
 	
-	physicsSDK->setParameter(NX_SKIN_WIDTH, 0.01f);	
-	physicsSDK->setParameter(NX_DEFAULT_SLEEP_LIN_VEL_SQUARED, 0.2f*0.2f);
-	physicsSDK->setParameter(NX_DEFAULT_SLEEP_ANG_VEL_SQUARED, 0.15f*0.15f);
-	physicsSDK->setParameter(NX_VISUALIZATION_SCALE, 0.25f * enableDebug);
-	physicsSDK->setParameter(NX_VISUALIZE_COLLISION_SHAPES, enableDebug);
-	physicsSDK->setParameter(NX_VISUALIZE_JOINT_LIMITS, enableDebug);
-	physicsSDK->setParameter(NX_VISUALIZE_JOINT_LOCAL_AXES, enableDebug);
-	physicsSDK->setParameter(NX_STA_FRICT_SCALING, 1.0f);
-	physicsSDK->setParameter(NX_DYN_FRICT_SCALING, 1.0f);
+	// FIX_PX3: NX_SKIN_WIDTH and NxShapeDesc::skinWidth was replaced with PxShape::setContactOffset() and setRestOffset()
+	//physicsSDK->setParameter(NX_SKIN_WIDTH, 0.01f);	
+	// FIX_PX3: next 2 param are gone. PhysX 3 instead features per-body function PxRigidDynamic::setSleepThreshold()
+	//physicsSDK->setParameter(NX_DEFAULT_SLEEP_LIN_VEL_SQUARED, 0.2f*0.2f);
+	//physicsSDK->setParameter(NX_DEFAULT_SLEEP_ANG_VEL_SQUARED, 0.15f*0.15f);
+	api->Trace("FIX_PX3 NX_VISUALIZE_* PhysicsService::Init");
+	//physicsSDK->setParameter(NX_VISUALIZATION_SCALE, 0.25f * enableDebug);
+	//physicsSDK->setParameter(NX_VISUALIZE_COLLISION_SHAPES, enableDebug);
+	//physicsSDK->setParameter(NX_VISUALIZE_JOINT_LIMITS, enableDebug);
+	//physicsSDK->setParameter(NX_VISUALIZE_JOINT_LOCAL_AXES, enableDebug);
+	// FIX_PX3: The NX_DYN_FRICT_SCALING, NX_STA_FRICT_SCALING scaling factors have been removed. These values should now be pre-baked into friction coefficients.
+	//physicsSDK->setParameter(NX_STA_FRICT_SCALING, 1.0f);
+	//physicsSDK->setParameter(NX_DYN_FRICT_SCALING, 1.0f);
 
 	// Set the physics parameters
 
@@ -389,6 +428,8 @@ void PhysicsService::DrawSceneStat(unsigned int index)
 	api->Trace("Physics statistics. Scene #%d", index);
 	api->Trace("Name = Current, Max");
 
+	api->Trace("FIX_PX3 getStats2 PhysicsService::DrawSceneStat");
+	/*
 	const NxSceneStats2 * stats = scenes[index]->Scene().getStats2();
 	unsigned int count = 0;
 	for (unsigned int i = 0; i < stats->numStats; ++i)
@@ -400,6 +441,7 @@ void PhysicsService::DrawSceneStat(unsigned int index)
 
 		++count;
 	}
+	*/
 	
 	api->Trace("-----------------------------------------------------");
 	api->Trace("");
@@ -458,8 +500,9 @@ dword __stdcall PhysicsService::SimulationThread(void * ptr)
 			if (!scene)
 				break;
 
-			scene->Scene().simulate( scene->GetLastDeltaTime() );
-			scene->Scene().flushStream();
+			scene->Scene().simulate(scene->GetLastDeltaTime());
+			api->Trace("FIX_PX3 flushStream PhysicsService::SimulationThread");
+			//scene->Scene().flushStream();
 
 			scene->SimulationDone();
 		}
@@ -473,6 +516,8 @@ dword __stdcall PhysicsService::SimulationThread(void * ptr)
 //PhysicsService::Allocator
 //============================================================================================
 
+// FIX_PX3 Need PxAllocatorCallback?
+/*
 void * PhysicsService::Allocator::malloc(NxU32 size)
 {
 	return api->Reallocate(null, size, _FL_);
@@ -492,4 +537,4 @@ void PhysicsService::Allocator::free(void * memory)
 {
 	api->Free(memory, _FL_);
 }
-
+*/

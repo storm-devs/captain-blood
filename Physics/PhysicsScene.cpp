@@ -9,7 +9,7 @@
 #include "PhysTriangleMesh.h"
 #include "PhysRagdoll.h"
 #include "PhysMaterial.h"
-#include "NxCooking.h"
+#include "PxCooking.h"
 
 #include "ClothProxy.h"
 #include "CombinedProxy.h"
@@ -41,7 +41,8 @@ PhysicsScene::PhysicsScene(PhysicsService * srv) :
 	m_lastDeltaTime(0.0f),
 	m_normalizeObjectIndex(0),
 	m_debugDraw(false),
-	m_OverlapShapes(_FL_, 4),
+	// FIX_PX3 NxTriangleMeshShape
+	//m_OverlapShapes(_FL_, 4),
 	m_spheres(_FL_, 1024)
 {
 	m_contactReport.m_scene = this;
@@ -65,6 +66,8 @@ PhysicsScene::~PhysicsScene()
 
 void PhysicsScene::InitScene()
 {
+	api->Trace("FIX_PX3 Desc PhysicsScene::InitScene");
+	/*
 	//Создаём сцену
 	NxSceneDesc sceneDesc;
 	sceneDesc.gravity = NxVec3(0.0f, -9.8f, 0.0f);
@@ -80,9 +83,9 @@ void PhysicsScene::InitScene()
 
 	m_currentTime = 0.0f;
 	NxMaterial * defaultMaterial = m_scene->getMaterialFromIndex(0); 
-	defaultMaterial->setRestitution((NxReal)0.0);
-	defaultMaterial->setStaticFriction((NxReal)0.5);
-	defaultMaterial->setDynamicFriction((NxReal)0.5);
+	defaultMaterial->setRestitution((PxReal)0.0);
+	defaultMaterial->setStaticFriction((PxReal)0.5);
+	defaultMaterial->setDynamicFriction((PxReal)0.5);
 
 	PhysicsCollisionGroup groups[] = {	phys_world,				// 1
 										phys_player,			// 2
@@ -144,6 +147,7 @@ void PhysicsScene::InitScene()
 	m_materials.Add(NEW PhysMaterial(_FL_, this, m_scene->getMaterialFromIndex(0)));
 	for (unsigned int i = mtl_default+1; i < mtl_last; ++i)
 		CreatePhysMaterial(_FL_);
+	*/
 }
 
 void PhysicsScene::ReleaseScene()
@@ -169,7 +173,8 @@ void PhysicsScene::ReleaseScene()
 	m_materials.DelAll();
 
 	m_service->scenes.Del(this);
-	if(m_scene) m_service->physicsSDK->releaseScene(*m_scene);
+	api->Trace("FIX_PX3 releaseScene PhysicsScene::ReleaseScene");
+	//if(m_scene) m_service->physicsSDK->releaseScene(*m_scene);
 	m_scene = null;
 }
 
@@ -336,6 +341,8 @@ IPhysMaterial * PhysicsScene::GetPhysMaterial(PhysMaterialGroup group) const
 	return m_materials[group];
 }
 
+// FIX_PX3 NxUserEntityReport
+/*
 class PhysSceneMeshesReport : public NxUserEntityReport<NxShape*> 
 {
 private:
@@ -405,6 +412,7 @@ public:
 		return true;
 	}
 };
+*/
 
 // Тестит формы на пересечении со сферой, возвращает объект в котором куча треугольников, или null если ничего нету
 bool PhysicsScene::OverlapSphere(const Vector & pos, float radius, dword mask, bool staticShapes, bool dynamicShapes, array<Vector> & aTriangles, array<PhysTriangleMaterialID> * aTriangleMaterials)
@@ -412,6 +420,8 @@ bool PhysicsScene::OverlapSphere(const Vector & pos, float radius, dword mask, b
 	NxSphere		nxSphere(Nx(pos), radius);
 	
 	int nxShapeType = 0;
+	api->Trace("FIX_PX3 NxUserEntityReport PhysicsScene::OverlapSphere");
+	/*
 	if (staticShapes)	nxShapeType |= NX_STATIC_SHAPES;
 	if (dynamicShapes)	nxShapeType |= NX_DYNAMIC_SHAPES;
 	
@@ -435,14 +445,18 @@ bool PhysicsScene::OverlapSphere(const Vector & pos, float radius, dword mask, b
 	}
 
 	return !aTriangles.IsEmpty();
+	*/
+	return false;
 }
 
 //Тестит капсулу на пересечение с объектами, возвращает true если было пересечение
 bool PhysicsScene::CheckOverlapCapsule(const Vector & pos, float height, float radius, dword mask, bool staticShapes, bool dynamicShapes)
 {
 	Vector h = Vector(0.0f, height * 0.5f, 0.0f);
-	NxSegment seg(Nx(pos - h), Nx(pos + h));
-	NxCapsule capsule(seg, radius);
+	api->Trace("FIX_PX3 use checkOverlapCapsule_ from GeomUtils PhysicsScene::CheckOverlapCapsule");
+	/*
+	PxSegment seg(Nx(pos - h), Nx(pos + h));
+	PxCapsule capsule(seg, radius);
 
 	int	nxShapeType = 0;
 	if (staticShapes)	nxShapeType |= NX_STATIC_SHAPES;
@@ -454,6 +468,8 @@ bool PhysicsScene::CheckOverlapCapsule(const Vector & pos, float height, float r
 	bool result = m_scene->checkOverlapCapsule(capsule, NxShapesType(nxShapeType), mask);
 
 	return result;
+	*/
+	return false;
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -471,7 +487,9 @@ IPhysBase * PhysicsScene::Raycast(const Vector & from, const Vector & to, dword 
 	ray.orig = Nx(from);
 	ray.dir = Nx(dir);
 	//Трейсим луч
-	NxRaycastHit hit;
+	PxRaycastHit hit;
+	api->Trace("FIX_PX3 replace raycastClosestShape like in GroundEmitterActor.cpp PhysicsScene::Raycast");
+	/*
 	NxShape * shape = m_scene->raycastClosestShape(ray, NX_ALL_SHAPES, hit, mask, dist + 0.000001f);
 	if(!shape) return null;
 	if(detail)
@@ -491,6 +509,9 @@ IPhysBase * PhysicsScene::Raycast(const Vector & from, const Vector & to, dword 
 			return proxyObj;
 	}
 
+	return physObj;
+	*/
+	IPhysBase* physObj;
 	return physObj;
 }
 
@@ -518,6 +539,8 @@ void PhysicsScene::RealDebugDraw()
 
 	IRender & render = *(IRender *)api->GetService("DX9Render");
 
+	api->Trace("FIX_PX3 NxDebugRenderable PhysicsScene::RealDebugDraw");
+	/*
 	const NxDebugRenderable * renderable = m_scene->getDebugRenderable();
 	if(!renderable) return;
 	const NxDebugRenderable & data = *renderable;
@@ -582,17 +605,18 @@ void PhysicsScene::RealDebugDraw()
 	{
 		//m_SyncSection.Leave();
 	}
+	*/
 }
 #endif
 
 //Получить физическую сцену
-NxScene & PhysicsScene::Scene()
+PxScene & PhysicsScene::Scene()
 {
 	return *m_scene;
 }
 
 //Получить мэнеджер контролеров для персонажей
-NxControllerManager & PhysicsScene::CtrManager()
+PxControllerManager & PhysicsScene::CtrManager()
 {
 	return m_service->CtrManager();
 }
@@ -633,18 +657,20 @@ void PhysicsScene::UpdateEndFrame(float dltTime)
 	{
 		if (dltTime > 0.0f) 
 		{
-			m_scene->simulate((NxReal)dltTime);
-			m_scene->flushStream();
+			m_scene->simulate((PxReal)dltTime);
+			api->Trace("FIX_PX3 flushStream PhysicsScene::UpdateEndFrame");
+			//m_scene->flushStream();
 
-			NxU32 uErrorCode = 0;
-			m_scene->fetchResults(NX_RIGID_BODY_FINISHED, true, &uErrorCode );
+			PxU32 uErrorCode = 0;
+			m_scene->fetchResults(true, &uErrorCode);
 		}
 
 		ExecuteProxies(m_proxies);
 		ExecuteProxies(m_clothproxies);
 		ExecuteProxies(m_conproxies);
 
-		CtrManager().updateControllers();
+		api->Trace("FIX_PX3 updateControllers1 PhysicsScene::UpdateEndFrame");
+		//CtrManager().updateControllers();
 	}
 	else
 	{
@@ -654,14 +680,15 @@ void PhysicsScene::UpdateEndFrame(float dltTime)
 			// ждем окончания выполнения Simulate
 			WaitForSingleObject(m_hSimulateDoneEvent, INFINITE);
 
-			m_scene->fetchResults(NX_RIGID_BODY_FINISHED, true);
+			m_scene->fetchResults(true);
 		}
 
 		ExecuteProxies(m_proxies);
 		ExecuteProxies(m_clothproxies);
 		ExecuteProxies(m_conproxies);
 
-		CtrManager().updateControllers();
+		api->Trace("FIX_PX3 updateControllers2 PhysicsScene::UpdateEndFrame");
+		//CtrManager().updateControllers();
 	}
 
 	// нормализуем 1 объект в кадр
@@ -761,13 +788,15 @@ IProxy * PhysicsScene::FindProxyObject(NxActor * actor)
 void PhysicsScene::lockQueries()
 {
 	if (!IsMultiThreading()) return;
-	m_scene->lockQueries();
+	api->Trace("FIX_PX3 lockQueries PhysicsScene::lockQueries");
+	//m_scene->lockQueries();
 }
 
 void PhysicsScene::unlockQueries()
 {
 	if (!IsMultiThreading()) return;
-	m_scene->unlockQueries();
+	api->Trace("FIX_PX3 unlockQueries PhysicsScene::unlockQueries");
+	//m_scene->unlockQueries();
 }
 
 void PhysicsScene::SceneChanged()
@@ -780,7 +809,9 @@ dword PhysicsScene::GetSceneChangedIndex()
 	return m_sceneChangedIndex;
 }
 
-void PhysicsScene::ContactReport::onContactNotify(NxContactPair & pair, NxU32 events)
+// FIX_PX3 Collision Filtering
+/*
+void PhysicsScene::ContactReport::onContactNotify(NxContactPair & pair, PxU32 events)
 {
 	Vector force = Nx(pair.sumNormalForce);
 
@@ -879,4 +910,30 @@ void PhysicsScene::ContactReport::onContactNotify(NxContactPair & pair, NxU32 ev
 			}
 		}
 	}
+}
+*/
+
+void PhysicsScene::ContactReport::onConstraintBreak(PxConstraintInfo* constraints, PxU32 count)
+{
+	api->Trace("FIX_PX3 Collision Filtering PhysicsScene::ContactReport::onConstraintBreak");
+}
+
+void PhysicsScene::ContactReport::onWake(PxActor** actors, PxU32 count)
+{
+	api->Trace("FIX_PX3 Collision Filtering PhysicsScene::ContactReport::onWake");
+}
+
+void PhysicsScene::ContactReport::onSleep(PxActor** actors, PxU32 count)
+{
+	api->Trace("FIX_PX3 Collision Filtering PhysicsScene::ContactReport::onSleep");
+}
+
+void PhysicsScene::ContactReport::onContact(const PxContactPairHeader& pairHeader, const PxContactPair* pairs, PxU32 nbPairs)
+{
+	api->Trace("FIX_PX3 Collision Filtering PhysicsScene::ContactReport::onContact");
+}
+
+void PhysicsScene::ContactReport::onTrigger(PxTriggerPair* pairs, PxU32 count)
+{
+	api->Trace("FIX_PX3 Collision Filtering PhysicsScene::ContactReport::onTrigger");
 }

@@ -26,7 +26,8 @@ inline void PhysRigidBodyActor::Release()
 {
 	if(actor)
 	{
-		actor->getScene().releaseActor(*actor);
+		PHYSX3_LOCK_WRITE(actor->getScene());
+		actor->release();
 	}
 	actor = null;
 }
@@ -107,8 +108,8 @@ inline void PhysRigidBodyActor::SetTransform(const Matrix & mtx)
 {
 	Assert(PhysRigidBodyActorCheckMtx(mtx, null, GetFileName(), GetFileLine()));
 
-	NxMat34 m;
-	GetNxActor().setGlobalPose(Nx(m, mtx));
+	PxMat44 m;
+	GetNxActor().setGlobalPose(PxTransform(Nx(m, mtx)));
 }
 
 //Получить позицию и ориентацию в мире
@@ -159,13 +160,16 @@ float PhysRigidBodyActor::GetMass() const
 inline void PhysRigidBodyActor::SetCenterMass(const Vector & cm)
 {
 	if(!GetNxActor().isDynamic()) return;
-	GetNxActor().setCMassOffsetLocalPosition(Nx(cm));
+	api->Trace("FIX_PX3 NxActorGroup check setCMassLocalPose = setCMassOffsetLocalPosition PhysRigidBodyActor::SetCenterMass");
+	GetNxActor().setCMassLocalPose(PxTransform(Nx(cm)));
 }
 
 //Установить группы
 inline void PhysRigidBodyActor::SetGroup(PhysicsCollisionGroup group)
 {
-	this->group = group;	
+	this->group = group;
+	api->Trace("FIX_PX3 NxActorGroup with PxDefaultSimulationFilterShader.h PhysRigidBodyActor::SetGroup");
+	/*
 	if(!GetNxActor().isDynamic())
 	{		
 		if(GetNxActor().getGroup() == phys_nocollision)
@@ -174,11 +178,14 @@ inline void PhysRigidBodyActor::SetGroup(PhysicsCollisionGroup group)
 		}
 	}
 	sys_SetGroup(group);
+	*/
 }
 
 inline void PhysRigidBodyActor::sys_SetGroup(PhysicsCollisionGroup group)
 {
 	NxActor & act = GetNxActor();
+	api->Trace("FIX_PX3 NxActorGroup with PxDefaultSimulationFilterShader.h PhysRigidBodyActor::sys_SetGroup");
+	/*
 	act.setGroup((NxActorGroup)group);
 	NxU32 count = act.getNbShapes();
 	NxShape * const * shapes = act.getShapes();
@@ -186,6 +193,7 @@ inline void PhysRigidBodyActor::sys_SetGroup(PhysicsCollisionGroup group)
 	{
 		shapes[i]->setGroup((NxCollisionGroup)group);
 	}
+	*/
 
 	if (act.isDynamic())
 		act.wakeUp();
@@ -194,7 +202,11 @@ inline void PhysRigidBodyActor::sys_SetGroup(PhysicsCollisionGroup group)
 //Получить группы
 inline PhysicsCollisionGroup PhysRigidBodyActor::GetGroup() const
 {
+	api->Trace("FIX_PX3 NxActorGroup with PxDefaultSimulationFilterShader.h PhysRigidBodyActor::GetGroup");
+	/*
 	return (PhysicsCollisionGroup)GetNxActor().getGroup();
+	*/
+	return phys_nocollision;
 }
 
 //Приложить силу к кости в заданной локальной точке
@@ -213,7 +225,7 @@ inline void PhysRigidBodyActor::ApplyForce(const Vector & force, const Vector & 
 	}
 #endif
 
-	GetNxActor().addForceAtLocalPos(Nx(force), Nx(localPosition), NX_FORCE);
+	PxRigidBodyExt::addForceAtLocalPos(*GetNxActor().isRigidBody(), Nx(force), Nx(localPosition), PxForceMode::eFORCE);
 }
 
 //Приложить силу к кости в заданной локальной точке
@@ -234,7 +246,7 @@ inline void PhysRigidBodyActor::ApplyImpulse(const Vector & force, const Vector 
 
 	float k = GetNxActor().getMass();
 	k = Clampf(k, 0.01f, 4.0f);
-	GetNxActor().addForceAtLocalPos(Nx(force*k), Nx(localPosition), NX_IMPULSE);
+	PxRigidBodyExt::addForceAtLocalPos(*GetNxActor().isRigidBody(), Nx(force * k), Nx(localPosition), PxForceMode::eIMPULSE);
 }
 
 //приложить вращающий момент в СК актера
@@ -253,31 +265,33 @@ void PhysRigidBodyActor::ApplyLocalTorque(const Vector & torque)
 	}
 #endif
 
-	GetNxActor().addLocalTorque(Nx(torque));
+	api->Trace("FIX_PX3 used addTorque instead of addLocalTorque: %.3f, %.3f, %.3f", torque.x, torque.y, torque.z);
+	GetNxActor().addTorque(Nx(torque));
 }
 
 // установить затухание движения
-void PhysRigidBodyActor::SetMotionDamping ( float fDamping )
+void PhysRigidBodyActor::SetMotionDamping (float fDamping)
 {
-	GetNxActor().setLinearDamping ( fDamping );
-	GetNxActor().setAngularDamping ( fDamping );
+	GetNxActor().setLinearDamping(fDamping);
+	GetNxActor().setAngularDamping(fDamping);
 };
 
-void PhysRigidBodyActor::SetMotionDamping( float fLinDamping, float fAngDamping )
+void PhysRigidBodyActor::SetMotionDamping(float fLinDamping, float fAngDamping)
 {
-	GetNxActor().setLinearDamping ( fLinDamping );
-	GetNxActor().setAngularDamping ( fAngDamping );
+	GetNxActor().setLinearDamping(fLinDamping);
+	GetNxActor().setAngularDamping(fAngDamping);
 }
 
 // включить-выключить коллизию
-void PhysRigidBodyActor::EnableCollision ( bool bEnable )
+void PhysRigidBodyActor::EnableCollision(bool bEnable)
 {
 	NxActor & rActor = GetNxActor();
 
-	if (bEnable)
-		rActor.clearActorFlag(NX_AF_DISABLE_COLLISION);
-	else
-		rActor.raiseActorFlag(NX_AF_DISABLE_COLLISION);
+	api->Trace("FIX_PX3 NX_AF_DISABLE_COLLISION PhysRigidBodyActor::EnableCollision. Use PxRigidBodyFlag::eENABLE_CCD?");
+	//if (bEnable)
+	//	rActor.clearActorFlag(NX_AF_DISABLE_COLLISION);
+	//else
+	//	rActor.raiseActorFlag(NX_AF_DISABLE_COLLISION);
 
 	/*NxU32 iShapesCount =  rActor.getNbShapes ();
 	NxShape * const *  pShapes = rActor.getShapes ();
@@ -290,12 +304,9 @@ void PhysRigidBodyActor::EnableCollision ( bool bEnable )
 };
 
 // включить-выключить гравитацию
-void PhysRigidBodyActor::EnableGravity ( bool bEnable )
+void PhysRigidBodyActor::EnableGravity(bool bEnable)
 {
-	if (!bEnable)
-		GetNxActor().raiseBodyFlag(NX_BF_DISABLE_GRAVITY);
-	else
-		GetNxActor().clearBodyFlag(NX_BF_DISABLE_GRAVITY);
+	GetNxActor().setActorFlag(PxActorFlag::eDISABLE_GRAVITY, !bEnable);
 }
 
 // включить-выключить кинематическое поведение
@@ -313,14 +324,16 @@ void PhysRigidBodyActor::EnableKinematic(bool bEnable)
 inline void PhysRigidBodyActor::Activate(bool isActive)
 {
 	NxActor & a = GetNxActor();
+	api->Trace("FIX_PX3 NX_AF_DISABLE_COLLISION, NX_AF_DISABLE_RESPONSE, NX_BF_FROZEN PhysRigidBodyActor::Activate");
 	if(isActive)
 	{
 		if(a.isDynamic())
 		{
-			a.clearActorFlag(NX_AF_DISABLE_COLLISION);
-			a.raiseBodyFlag(NX_BF_VISUALIZATION);
-			a.clearActorFlag(NX_AF_DISABLE_RESPONSE);
-			a.clearBodyFlag(NX_BF_FROZEN);
+			//a.clearActorFlag(NX_AF_DISABLE_COLLISION);
+			a.setActorFlag(PxActorFlag::eVISUALIZATION, true);
+			//a.clearActorFlag(NX_AF_DISABLE_RESPONSE);
+			a.setActorFlag(PxActorFlag::eDISABLE_SIMULATION, false);
+			//a.clearBodyFlag(NX_BF_FROZEN);
 			a.wakeUp();
 		}else{
 			sys_SetGroup(group);
@@ -328,10 +341,11 @@ inline void PhysRigidBodyActor::Activate(bool isActive)
 	}else{
 		if(a.isDynamic())
 		{
-			a.raiseActorFlag(NX_AF_DISABLE_COLLISION);
-			a.clearBodyFlag(NX_BF_VISUALIZATION);
-			a.raiseActorFlag(NX_AF_DISABLE_RESPONSE);
-			a.raiseBodyFlag(NX_BF_FROZEN);
+			//a.raiseActorFlag(NX_AF_DISABLE_COLLISION);
+			a.setActorFlag(PxActorFlag::eVISUALIZATION, false);
+			//a.raiseActorFlag(NX_AF_DISABLE_RESPONSE);
+			a.setActorFlag(PxActorFlag::eDISABLE_SIMULATION, true);
+			//a.raiseBodyFlag(NX_BF_FROZEN);
 			a.wakeUp();
 		}else{
 			sys_SetGroup(phys_nocollision);
@@ -352,9 +366,7 @@ void PhysRigidBodyActor::SetNxActor(const char * filename, long fileline, NxActo
 
 	Assert(nxActor);
 	actor = nxActor;
-
-	if (actor->isDynamic())
-		actor->setContactReportThreshold(0.6f);
+	actor->setContactReportThreshold(0.6f);
 }
 
 //Получить ссылку на актёра
@@ -368,8 +380,9 @@ inline NxActor & PhysRigidBodyActor::GetNxActor() const
 void PhysRigidBodyActor::SetPhysMaterial(IPhysMaterial * material)
 {
 	this->material = material;
-	for (unsigned int i = 0; i < actor->getNbShapes(); ++i)
-		actor->getShapes()[i]->setMaterial(material->GetIndex());
+	api->Trace("FIX_PX3 setMaterial PhysRigidBodyActor::SetPhysMaterial");
+	//for (unsigned int i = 0; i < actor->getNbShapes(); ++i)
+	//	actor->getShapes()[i]->setMaterial(material->GetIndex());
 }
 
 // получить материал
@@ -391,6 +404,8 @@ PhysPlane::PhysPlane(const char * filename, long fileline, const Vector & n, flo
 {
 	SetFileLine(filename, fileline);
 
+	api->Trace("FIX_PX3 Desc PhysPlane::PhysPlane");
+	/*
 	NxPlaneShapeDesc planeDesc;
 	planeDesc.normal = Nx(n);
 	planeDesc.d = (NxReal)d;
@@ -402,7 +417,8 @@ PhysPlane::PhysPlane(const char * filename, long fileline, const Vector & n, flo
 	actorDesc.group = phys_world;
 	NxActor * nxActor = ((PhysicsScene *)scene)->Scene().createActor(actorDesc);
 	Assert(nxActor);
-	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);	
+	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);
+	*/
 }
 
 PhysPlane::~PhysPlane()
@@ -414,18 +430,22 @@ PhysPlane::~PhysPlane()
 void PhysPlane::SetPlane(Plane & p)
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxPlaneShape * plane = shape->isPlane();
-	plane->setPlane(Nx(p.n), (NxReal)p.d);
+	PxShape* shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxPlaneShape PhysPlane::SetPlane");
+	//NxPlaneShape * plane = shape->isPlane();
+	//plane->setPlane(Nx(p.n), (NxReal)p.d);
 }
 
 //Получить плоскость
 Plane PhysPlane::GetPlane()
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxPlaneShape * plane = shape->isPlane();
-	NxPlane p = plane->getPlane();
+	PxShape* shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxPlaneShape PhysPlane::GetPlane");
+	//NxPlaneShape * plane = shape->isPlane();
+	//NxPlane p = plane->getPlane();
+	//return Nx(p);
+	PxPlane p;
 	return Nx(p);
 }
 
@@ -436,6 +456,8 @@ PhysBox::PhysBox(const char * filename, long fileline, const Vector & size, cons
 {
 	SetFileLine(filename, fileline);
 
+	api->Trace("FIX_PX3 Desc PhysBox::PhysBox");
+	/*
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 	NxBoxShapeDesc boxDesc;
@@ -468,6 +490,7 @@ PhysBox::PhysBox(const char * filename, long fileline, const Vector & size, cons
 	}
 	Assert(nxActor);
 	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);
+	*/
 }
 
 PhysBox::~PhysBox()
@@ -479,19 +502,22 @@ PhysBox::~PhysBox()
 void PhysBox::SetSize(const Vector & size)
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxBoxShape * box = shape->isBox();
-	box->setDimensions(Nx(size*0.5f));
+	PxShape* shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxBoxShape PhysPlane::GetPlane");
+	//NxBoxShape * box = shape->isBox();
+	//box->setDimensions(Nx(size*0.5f));
 }
 
 //Получить размер ящика
 Vector PhysBox::GetSize()
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxBoxShape * box = shape->isBox();
-	Vector size = Nx(box->getDimensions())*2.0f;
-	return size;
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxBoxShape PhysPlane::GetPlane");
+	//NxBoxShape * box = shape->isBox();
+	//Vector size = Nx(box->getDimensions())*2.0f;
+	//return size;
+	return Vector(0.0f, 0.0f, 0.0f);
 }
 
 //Сфера
@@ -502,6 +528,8 @@ PhysSphere::PhysSphere(const char * filename, long fileline, float radius, const
 	SetFileLine(filename, fileline);
 
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysSphere::PhysSphere");
+	/*
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 	NxSphereShapeDesc sphereDesc;
@@ -517,6 +545,7 @@ PhysSphere::PhysSphere(const char * filename, long fileline, float radius, const
 	NxActor * nxActor = ((PhysicsScene *)scene)->Scene().createActor(actorDesc);
 	Assert(nxActor);
 	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);
+	*/
 }
 
 PhysSphere::~PhysSphere()
@@ -528,18 +557,21 @@ PhysSphere::~PhysSphere()
 void PhysSphere::SetRadius(float radius)
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxSphereShape * sphere = shape->isSphere();
-	sphere->setRadius(radius);
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxSphereShape PhysSphere::SetRadius");
+	//NxSphereShape * sphere = shape->isSphere();
+	//sphere->setRadius(radius);
 }
 
 //Получить радиус
 float PhysSphere::GetRadius()
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxSphereShape * sphere = shape->isSphere();
-	return (float)sphere->getRadius();
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxSphereShape PhysSphere::GetRadius");
+	//NxSphereShape * sphere = shape->isSphere();
+	//return (float)sphere->getRadius();
+	return 0;
 }
 
 //Капсула
@@ -550,6 +582,8 @@ PhysCapsule::PhysCapsule(const char * filename, long fileline, float radius, flo
 	SetFileLine(filename, fileline);
 
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysCapsule::PhysCapsule");
+	/*
 	NxActorDesc actorDesc;
 	NxBodyDesc bodyDesc;
 	NxCapsuleShapeDesc capsuleDesc;
@@ -566,6 +600,7 @@ PhysCapsule::PhysCapsule(const char * filename, long fileline, float radius, flo
 	NxActor * nxActor = ((PhysicsScene *)scene)->Scene().createActor(actorDesc);
 	Assert(nxActor);
 	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);
+	*/
 }
 
 PhysCapsule::~PhysCapsule()
@@ -577,36 +612,42 @@ PhysCapsule::~PhysCapsule()
 void PhysCapsule::SetRadius(float radius)
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxCapsuleShape * capsule = shape->isCapsule();
-	capsule->setRadius(radius);
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxCapsuleShape PhysCapsule::SetRadius");
+	//NxCapsuleShape * capsule = shape->isCapsule();
+	//capsule->setRadius(radius);
 }
 
 //Получить радиус
 float PhysCapsule::GetRadius()
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxCapsuleShape * capsule = shape->isCapsule();
-	return (float)capsule->getRadius();
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxCapsuleShape PhysCapsule::GetRadius");
+	//NxCapsuleShape * capsule = shape->isCapsule();
+	//return (float)capsule->getRadius();
+	return 0.0f;
 }
 
 //Установить высоту
 void PhysCapsule::SetHeight(float height)
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxCapsuleShape * capsule = shape->isCapsule();
-	capsule->setHeight(height);
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxCapsuleShape PhysCapsule::SetHeight");
+	//NxCapsuleShape * capsule = shape->isCapsule();
+	//capsule->setHeight(height);
 }
 
 //Получить высоту
 float PhysCapsule::GetHeight()
 {
 	Assert(rbactor.GetNxActor().getNbShapes() == 1);
-	NxShape * shape = rbactor.GetNxActor().getShapes()[0];
-	NxCapsuleShape * capsule = shape->isCapsule();
-	return (float)capsule->getHeight();
+	PxShape * shape = rbactor.GetNxActor().getShapes()[0];
+	api->Trace("FIX_PX3 NxCapsuleShape PhysCapsule::GetHeight");
+	//NxCapsuleShape * capsule = shape->isCapsule();
+	//return (float)capsule->getHeight();
+	return 0.0f;
 }
 
 //Объект состоящий из сетки треугольников
@@ -618,6 +659,8 @@ PhysMesh::PhysMesh(const char * filename, long fileline, const IPhysicsScene::Me
 	SetFileLine(filename, fileline);
 
 	AssertCoreThread
+	api->Trace("FIX_PX3 Desc PhysMesh::PhysMesh");
+	/*
 	NxActorDesc actorDesc;
 	actorDesc.shapes.reserve(numMeshes);
 	static NxTriangleMeshShapeDesc static_shapeDesc[16];
@@ -653,6 +696,7 @@ PhysMesh::PhysMesh(const char * filename, long fileline, const IPhysicsScene::Me
 
 	if (isDynamic)
 		EnableKinematic(true);
+	*/
 }
 
 void PhysMesh::EnableCollision(bool bEnable)
@@ -682,7 +726,8 @@ void PhysMesh::EnableKinematic(bool bEnable)
 	rbactor.EnableKinematic(true); 
 }
 
-
+// FIX_PX3 Desc
+/*
 PhysCombined::ObjectDesc::ObjectDesc() : descs(_FL_)
 {
 }
@@ -694,6 +739,7 @@ PhysCombined::ObjectDesc::~ObjectDesc()
 		delete descs[i];
 	}
 }
+*/
 
 //Комбинированный объект
 PhysCombined::PhysCombined(const char * filename, long fileline, const Matrix & transform, bool isDynamic, float density, IPhysicsScene * _scene) : 
@@ -703,21 +749,27 @@ PhysCombined::PhysCombined(const char * filename, long fileline, const Matrix & 
 	SetFileLine(filename, fileline);
 
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysCombined::PhysCombined");
+	/*
 	desc = NEW ObjectDesc();
 	Nx(desc->actorDesc.globalPose, transform);
 	desc->actorDesc.body = isDynamic ? &desc->bodyDesc : null;
 	desc->actorDesc.density = density;
 	desc->actorDesc.userData = this;
-	desc->actorDesc.group = phys_world;	
+	desc->actorDesc.group = phys_world;
+	*/
 }
 
 PhysCombined::~PhysCombined()
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::~PhysCombined");
+	/*
 	if(desc)
 	{
 		delete desc;
 		desc = null;
 	}
+	*/
 	
 	scene->SceneChanged(); 
 }
@@ -726,6 +778,8 @@ PhysCombined::~PhysCombined()
 void PhysCombined::AddBox(const Vector & size, const Matrix & transform)
 {
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysCombined::AddBox");
+	/*
 	Assert(desc);
 	NxBoxShapeDesc * boxDesc = NEW NxBoxShapeDesc;
 	boxDesc->dimensions.set(size.x*0.5f, size.y*0.5f, size.z*0.5f);
@@ -734,12 +788,15 @@ void PhysCombined::AddBox(const Vector & size, const Matrix & transform)
 	boxDesc->group = phys_world;
 	desc->actorDesc.shapes.pushBack(boxDesc);
 	desc->descs.Add(boxDesc);
+	*/
 }
 
 //Добавить шар
 void PhysCombined::AddSphere(float radius, const Matrix & transform)
 {
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysCombined::AddSphere");
+	/*
 	Assert(desc);
 	NxSphereShapeDesc * sphereDesc = NEW NxSphereShapeDesc;
 	sphereDesc->radius = radius;
@@ -748,12 +805,15 @@ void PhysCombined::AddSphere(float radius, const Matrix & transform)
 	sphereDesc->group = phys_world;
 	desc->actorDesc.shapes.pushBack(sphereDesc);
 	desc->descs.Add(sphereDesc);
+	*/
 }
 
 //Добавить капсулу
 void PhysCombined::AddCapsule(float radius, float height, const Matrix & transform)
 {
 	Assert(PhysRigidBodyActorCheckMtx(transform, null, GetFileName(), GetFileLine()));
+	api->Trace("FIX_PX3 Desc PhysCombined::AddCapsule");
+	/*
 	Assert(desc);
 	NxCapsuleShapeDesc * capsuleDesc = NEW NxCapsuleShapeDesc;
 	capsuleDesc->radius = radius;
@@ -763,27 +823,38 @@ void PhysCombined::AddCapsule(float radius, float height, const Matrix & transfo
 	capsuleDesc->group = phys_world;
 	desc->actorDesc.shapes.pushBack(capsuleDesc);
 	desc->descs.Add(capsuleDesc);
+	*/
 }
 
 //Установить массу элемента
 bool PhysCombined::SetMass(unsigned int index, float mass)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::SetMass");
+	/*
 	Assert(desc);
 	if ( index >= desc->descs.Size() ) return false;
 	desc->descs[index]->mass = mass;
 	return true;
+	*/
+	return false;
 }
 
 //Получить текущее число фигур для билда
 unsigned int PhysCombined::GetCountForBuild()
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetCountForBuild");
+	/*
 	Assert(desc);
 	return desc->descs.Size();
+	*/
+	return 0;
 }
 
 //Сконструировать объект
 void PhysCombined::Build()
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::Build");
+	/*
 	Assert(desc);
 	Assert(desc->descs > 0);
 	NxActor * nxActor = ((PhysicsScene *)scene)->Scene().createActor(desc->actorDesc);
@@ -791,37 +862,52 @@ void PhysCombined::Build()
 	rbactor.SetNxActor(GetFileName(), GetFileLine(), nxActor);
 	delete desc;
 	desc = null;
+	*/
 }
 
 //Получить количество фигур
 long PhysCombined::GetCount()
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetCount");
+	/*
 	if(desc) return 0;
 	return (long)rbactor.GetNxActor().getNbShapes();
+	*/
+	return 0;
 }
 
 //Получить локальную позицию
 bool PhysCombined::SetLocalTransform(long index, const Matrix & transform)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::SetLocalTransform");
+	/*
 	if(desc) return false;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return false;
 	NxMat34 mtx;
 	rbactor.GetNxActor().getShapes()[index]->setLocalPose(Nx(mtx, transform));
 	return true;
+	*/
+	return false;
 }
 
 //Установить локальную позицию
 bool PhysCombined::GetLocalTransform(long index, Matrix & transform)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetLocalTransform");
+	/*
 	if(desc) return false;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return false;
 	Nx(transform, rbactor.GetNxActor().getShapes()[index]->getLocalPose());
 	return true;
+	*/
+	return false;
 }
 
 //Получить тип
 IPhysCombined::Type PhysCombined::GetType(long index)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetType");
+	/*
 	if(desc) return t_error;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return t_error;
 	NxShape * shp = rbactor.GetNxActor().getShapes()[index];
@@ -835,34 +921,45 @@ IPhysCombined::Type PhysCombined::GetType(long index)
 	case NX_SHAPE_CAPSULE:
 		return t_capsule;
 	}
+	*/
 	return t_error;
 }
 
 //Получить параметры ящика
 bool PhysCombined::GetBox(long index, Vector & size)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetBox");
+	/*
 	if(desc) return false;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return false;
 	NxBoxShape * shp = rbactor.GetNxActor().getShapes()[index]->isBox();
 	if(!shp) return false;
 	size = Nx(shp->getDimensions());
 	return true;
+	*/
+	return false;
 }
 
 //Получить параметры шара
 bool PhysCombined::GetSphere(long index, float & radius)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetSphere");
+	/*
 	if(desc) return false;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return false;
 	NxSphereShape * shp = rbactor.GetNxActor().getShapes()[index]->isSphere();
 	if(!shp) return false;
 	radius = float(shp->getRadius());
 	return true;
+	*/
+	return false;
 }
 
 //Получить параметры капсулы
 bool PhysCombined::GetCapsule(long index, float & radius, float & height)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetCapsule");
+	/*
 	if(desc) return false;
 	if(index < 0 || index >= (long)rbactor.GetNxActor().getNbShapes()) return false;
 	NxCapsuleShape * shp = rbactor.GetNxActor().getShapes()[index]->isCapsule();
@@ -870,30 +967,42 @@ bool PhysCombined::GetCapsule(long index, float & radius, float & height)
 	radius = float(shp->getRadius());
 	height = float(shp->getHeight());
 	return true;
+	*/
+	return false;
 }
 
 //Установить глобальную позицию
 bool PhysCombined::SetGlobalTransform(unsigned int index, const Matrix & transform)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::SetGlobalTransform");
+	/*
 	if (desc) return false;
 	if (index >= rbactor.GetNxActor().getNbShapes()) return false;
 	NxMat34 mtx;
 	rbactor.GetNxActor().getShapes()[index]->setGlobalPose(Nx(mtx, transform));
 	return true;
+	*/
+	return false;
 }
 
 //Получить глобальную позицию
 bool PhysCombined::GetGlobalTransform(unsigned int index, Matrix & transform)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::GetGlobalTransform");
+	/*
 	if (desc) return false;
 	if (index >= rbactor.GetNxActor().getNbShapes()) return false;
 	Nx(transform, rbactor.GetNxActor().getShapes()[index]->getGlobalPose());
 	return true;
+	*/
+	return false;
 }
 
 //Включить/выключить коллизии
 void PhysCombined::EnableCollision(unsigned int index, bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableCollision2");
+	/*
 	if (desc)
 	{
 		if (index >= desc->descs.Size())
@@ -909,11 +1018,14 @@ void PhysCombined::EnableCollision(unsigned int index, bool enable)
 		if (index >= rbactor.GetNxActor().getNbShapes()) return;
 		rbactor.GetNxActor().getShapes()[index]->setFlag(NX_SF_DISABLE_COLLISION, !enable);
 	}
+	*/
 }
 
 //Включить/выключить коллизию для актера
 void PhysCombined::EnableCollision(bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableCollision1");
+	/*
 	if (desc)
 		for (unsigned int i = 0; i < GetCountForBuild(); ++i)
 			EnableCollision(i, enable);
@@ -925,11 +1037,14 @@ void PhysCombined::EnableCollision(bool enable)
 			rbactor.GetNxActor().raiseActorFlag(NX_AF_DISABLE_COLLISION);
 			
 	}
+	*/
 }
 
 //Включить/выключить реакцию на коллизии
 void PhysCombined::EnableResponse(unsigned int index, bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableResponse");
+	/*
 	if (desc)
 	{
 		if (index >= desc->descs.Size())
@@ -945,11 +1060,14 @@ void PhysCombined::EnableResponse(unsigned int index, bool enable)
 		if (index >= rbactor.GetNxActor().getNbShapes()) return;
 		rbactor.GetNxActor().getShapes()[index]->setFlag(NX_SF_DISABLE_RESPONSE, !enable);
 	}
+	*/
 }
 
 //Включить/выключить рэйкаст
 void PhysCombined::EnableRaycast(unsigned int index, bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableRaycast");
+	/*
 	if (desc)
 	{
 		if (index >= desc->descs.Size())
@@ -965,11 +1083,14 @@ void PhysCombined::EnableRaycast(unsigned int index, bool enable)
 		if (index >= rbactor.GetNxActor().getNbShapes()) return;
 		rbactor.GetNxActor().getShapes()[index]->setFlag(NX_SF_DISABLE_RAYCASTING, !enable);
 	}
+	*/
 }
 
 //Включить/выключить визуализацию
 void PhysCombined::EnableVisualization(unsigned int index, bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableVisualization2");
+	/*
 	if (desc)
 	{
 		if (index >= desc->descs.Size())
@@ -985,11 +1106,14 @@ void PhysCombined::EnableVisualization(unsigned int index, bool enable)
 		if (index >= rbactor.GetNxActor().getNbShapes()) return;
 		rbactor.GetNxActor().getShapes()[index]->setFlag(NX_SF_VISUALIZATION, enable);
 	}
+	*/
 }
 
 //Включить/выключить визуализацию для актера
 void PhysCombined::EnableVisualization(bool enable)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableVisualization1");
+	/*
 	if (desc)
 		for (unsigned int i = 0; i < GetCountForBuild(); ++i)
 			EnableCollision(i, enable);
@@ -1001,11 +1125,14 @@ void PhysCombined::EnableVisualization(bool enable)
 			rbactor.GetNxActor().clearBodyFlag(NX_BF_VISUALIZATION);
 
 	}
+	*/
 }
 
 // включить-выключить гравитацию
 void PhysCombined::EnableGravity( bool bEnable )
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::EnableGravity");
+	/*
 	if (desc)
 	{
 		Assert(!"can't change gravity state - no actor created");
@@ -1017,6 +1144,7 @@ void PhysCombined::EnableGravity( bool bEnable )
 		else
 			rbactor.GetNxActor().raiseBodyFlag(NX_BF_DISABLE_GRAVITY);
 	}
+	*/
 }
 
 // включить-выключить кинематическое поведение
@@ -1028,12 +1156,14 @@ void PhysCombined::EnableKinematic(bool bEnable)
 // установить кол-во итерация солвера для актера
 void PhysCombined::SetSolverIterations(unsigned int count)
 {
-	rbactor.GetNxActor().setSolverIterationCount(count);
+	rbactor.GetNxActor().setSolverIterationCounts(count);
 }
 
 //Протестировать на пересечение с лучом
 bool PhysCombined::Raycast(unsigned int index, const Vector& from, const Vector& to, RaycastResult * details)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::Raycast");
+	/*
 	if (desc) return false;
 	if (index >= rbactor.GetNxActor().getNbShapes()) return false;
 	
@@ -1058,27 +1188,37 @@ bool PhysCombined::Raycast(unsigned int index, const Vector& from, const Vector&
 	}
 
 	return result;
+	*/
+	return false;
 }
 
 //Протестировать элемент на пересечение с боксом
 bool PhysCombined::OverlapBox(unsigned int index, const Vector& size, const Matrix& transform )
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::OverlapBox");
+	/*
 	if (desc) return false;
 	if (index >= rbactor.GetNxActor().getNbShapes()) return false;
 
 	NxMat33 rot;
 	NxBox box(Nx(transform.pos), Nx(size*0.5f), Nx(rot, transform));
 	return rbactor.GetNxActor().getShapes()[index]->checkOverlapOBB(box);
+	*/
+	return false;
 }
 
 //Протестировать элемент на пересечение со сферой
 bool PhysCombined::OverlapSphere(unsigned int index, const Vector& center, float radius)
 {
+	api->Trace("FIX_PX3 Desc PhysCombined::OverlapSphere");
+	/*
 	if (desc) return false;
 	if (index >= rbactor.GetNxActor().getNbShapes()) return false;
 
 	NxSphere sph(Nx(center), radius);
 	return rbactor.GetNxActor().getShapes()[index]->checkOverlapSphere(sph);
+	*/
+	return false;
 }
 
 PhysRigidBodyConnector::PhysRigidBodyConnector(const char * filename, long fileline, IPhysicsScene * _scene, IPhysRigidBody * _left, IPhysRigidBody * _right, float brokeForce) :
@@ -1090,7 +1230,9 @@ IPhysRigidBodyConnector(_scene)
 	right = _right;
 	Assert(left);
 	Assert(right);
-    NxFixedJointDesc fixedDesc;
+	api->Trace("FIX_PX3 Desc PhysRigidBodyConnector::PhysRigidBodyConnector");
+	/*
+	NxFixedJointDesc fixedDesc;
 	PhysInternal nxFirst;
 	PhysInternal nxSecond;
 	_left->GetInternals(nxFirst);
@@ -1100,17 +1242,25 @@ IPhysRigidBodyConnector(_scene)
 	joint = (NxFixedJoint *)((PhysicsScene *)scene)->Scene().createJoint(fixedDesc);
 	Assert(joint);
 	joint->setBreakable((NxReal)brokeForce, (NxReal)brokeForce*0.105f);
+	*/
 }
 
 PhysRigidBodyConnector::~PhysRigidBodyConnector()
 {
+	api->Trace("FIX_PX3 Joint PhysRigidBodyConnector::~PhysRigidBodyConnector");
+	/*
 	((PhysicsScene *)scene)->Scene().releaseJoint(*joint);
+	*/
 }
 
 //Сломано соединение или нет
 bool PhysRigidBodyConnector::IsBroke()
 {	
+	api->Trace("FIX_PX3 Joint PhysRigidBodyConnector::IsBroke");
+	/*
 	return joint->getState() == NX_JS_BROKEN;
+	*/
+	return true;
 }
 
 //Поставить обработчик

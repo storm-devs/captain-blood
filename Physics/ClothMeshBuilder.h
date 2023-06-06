@@ -10,7 +10,7 @@ class ClothMeshBuilder : public IClothMeshBuilder
 
 public:
 
-	ClothMeshBuilder(NxPhysicsSDK * sdk);
+	ClothMeshBuilder(PxPhysics * sdk);
 	virtual ~ClothMeshBuilder();
 
 
@@ -59,5 +59,6 @@ public:
 	// готова ли сетка для PhysX
 	virtual bool IsReady() const;
 	// вернуть сетку
-	virtual NxClothMesh& GetMesh() const;
+	// FIX_PX3 ClothMesh
+	virtual PxCloth& GetMesh() const;
 };

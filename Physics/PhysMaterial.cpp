@@ -1,6 +1,6 @@
 #include "PhysMaterial.h"
 
-PhysMaterial::PhysMaterial(const char * filename, long fileline, IPhysicsScene * scene, NxMaterial * mat) :
+PhysMaterial::PhysMaterial(const char * filename, long fileline, IPhysicsScene * scene, PxMaterial * mat) :
 IPhysMaterial(scene),
 m_nxMaterial(mat)
 {
@@ -10,5 +10,4 @@ m_nxMaterial(mat)
 
 PhysMaterial::~PhysMaterial(void)
 {
-
 }

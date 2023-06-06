@@ -422,6 +422,8 @@ protected:
 //Комбинированный объект
 class PhysCombined : public IPhysCombined
 {
+	// FIX_PX3 Desc
+	/*
 	struct ObjectDesc
 	{
 		ObjectDesc();
@@ -430,6 +432,7 @@ class PhysCombined : public IPhysCombined
 		array<NxShapeDesc *> descs;
 		NxBodyDesc bodyDesc;
 	};
+	*/
 public:
 	PhysCombined(const char * filename, long fileline, const Matrix & transform, bool isDynamic, float density, IPhysicsScene * _scene);
 	virtual ~PhysCombined();
@@ -541,7 +544,8 @@ public:
 
 protected:
 	PhysRigidBodyActor rbactor;
-	ObjectDesc * desc;
+	// FIX_PX3 Desc
+	//ObjectDesc * desc;
 };
 
 
@@ -568,7 +572,7 @@ public:
 protected:
 	IPhysRigidBody * left;
 	IPhysRigidBody * right;
-	NxFixedJoint * joint;
+	PxFixedJoint * joint;
 };
 
 

@@ -109,6 +109,8 @@ void MaterialProxy::OnSyncCreate()
 	if (m_realMaterial)
 		return;
 
+	api->Trace("FIX_PX3 Desc MaterialProxy::OnSyncCreate");
+	/*
 	NxMaterialDesc mtlDesc;
 	mtlDesc.staticFriction = m_statFriction;
 	mtlDesc.dynamicFriction = m_dynFriction;
@@ -116,6 +118,7 @@ void MaterialProxy::OnSyncCreate()
 	NxMaterial * mtl = m_scene.Scene().createMaterial(mtlDesc);
 
 	m_realMaterial = NEW PhysMaterial(GetFileName(), GetFileLine(), &m_scene, mtl);
+	*/
 
 	Assert(m_realMaterial);
 
