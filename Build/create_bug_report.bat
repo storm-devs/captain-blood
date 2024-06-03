@@ -1,0 +1,2 @@
+del bug_report.rar
+rar a bug_report.rar engine.exe modules\*.dll modules\debuginfo\*.pdb *.dll system_log system_log.txt logic_debug.txt storm3_crush_dump.dmp engine.ini mission.ini storm3_crush_dump.txt storm3_deadlock_dump.txt

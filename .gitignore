@@ -15,7 +15,6 @@ CMakeFiles
 CMakeCache.txt
 cmake-build-debug
 cmake-build-release
-build
 out
 
 # Compiled Object files
@@ -33,3 +32,6 @@ out
 #*.la
 #*.a
 #*.lib
+ENGINE/modules/Win32Shaders30.fxo
+Build/Temp
+Build/modules

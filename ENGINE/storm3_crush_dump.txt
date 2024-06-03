@@ -1,0 +1,2 @@
+Assert failed in C:\Work\GitHub\captain-blood\System\XRender\shaders\ShaderManager.cpp line 1037, expression string var
+Assert failed in C:\Work\GitHub\captain-blood\System\XRender\Render.cpp line 1395, expression string iniFile
