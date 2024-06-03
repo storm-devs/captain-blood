@@ -1,0 +1,260 @@
+---------------------------------------------------------------------------------
+Storm engine v3.0
+Build: Jun  2 2024, 18:50:17
+Started: 02 June 2024, 20:00:50
+---------------------------------------------------------------------------------
+Ini file: pedit.ini
+---------------------------------------------------------------------------------
+Core states:
+    trace: 1
+    debugkeys: 1
+    memorycheck: 1
+    panicmemorycheck: 0
+    memorypools: 1
+    lorestimer: 0
+    multithreading: ini set = -1 (autodetect); current: multi
+    no idle: 0
+    startimage: "logo\Particles.tga"
+    fixedfps: off (set FPS count for enable this feature)
+    load class: ParticleEditor
+---------------------------------------------------------------------------------
+Load modules
+---------------------------------------------------------------------------------
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\ArcadeSea.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Character.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Editors.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Game.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\MissionEditor.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Particles.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Physics.dll"
+Load module: "C:\Work\GitHub\captain-blood\Build\Modules\Systems.dll"
+---------------------------------------------------------------------------------
+Load modules complette sucsesful.
+Create services & objects
+---------------------------------------------------------------------------------
+FileService error: can't open pack file "resource\ini.pkx" (file: C:\Work\GitHub\captain-blood\System\FileService\FileService.cpp, line: 108 -> LoadPak)
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+SoundService started is successful
+FileService error: can't open pack file "Resource\text.pkx" (file: C:\Work\GitHub\captain-blood\System\LocStrings\LocStrings.cpp, line: 242 -> LoadPak)
+Physics started in multithread mode
+FileService error: can't open pack file "resource\InitTextures.pkx" (file: C:\Work\GitHub\captain-blood\System\XRender\Render.cpp, line: 1049 -> LoadPak)
+
+Render parameters:
+---------------------------------------------------------------------------------
+DontShowReloading = 1 (Don't show reloading screen)
+WaitForGPUFrames = -1 (Sync CPU and GPU every [0..3] frame (smothnes but lower FPS) reccomended value = 1, (-1) disable
+PerfGraphs = 0 (Show performance graphs)
+texture_degradation = 0 (Use smalest mip level)
+mipfillcolor = 0 (Show mip maps as different colors)
+PostProcess = 1 (Enable fullscreen postprocess effects)
+Multisample disabled
+Adapter : 'NVIDIA GeForce RTX 4090'
+Adapter : 'NVIDIA GeForce RTX 4090'
+Adapter : 'NVIDIA GeForce RTX 4090'
+Render WIDE SCREEN mode = AutoDetect
+AUTODETECT FAILED, USE 1:1
+[0] Screen info 3840x2036
+Aspect width multipler 1.000000
+---------------------------------------------------------------------------------
+
+Use prebuilded shaders file 'modules\Win32Shaders30.fxo'
+Shader compilation done...
+Shaders loading time : 0.22 sec. (260 shaders, 0.00 sec. per shader)
+Loader font scale : 1.000000
+
+Render: Resolution3D 3840x2036, Resolution2D 3840x2036
+Loading screen 'resource\eng_i_loading_default.jpg' - not found !!! Using previous loading screen '' !!! 
+Render init time 297 ms
+
+client size 3840 x 2036
+Control/alias [_joyUp] not found. Can't create alias
+Control/alias [_joyDown] not found. Can't create alias
+Control/alias [_joyLeft] not found. Can't create alias
+Control/alias [_joyRight] not found. Can't create alias
+Control/alias [_joyUp] not found. Can't create alias
+Control/alias [_joyDown] not found. Can't create alias
+Control/alias [_joyLeft] not found. Can't create alias
+Control/alias [_joyRight] not found. Can't create alias
+Control/alias [_Pause2] not found. Can't create alias
+Control/alias [_Pause3] not found. Can't create alias
+Control/alias [_Pause4] not found. Can't create alias
+Control/alias [_Menu_LeftStick] not found. Can't create alias
+Control/alias [_Menu_RightStick] not found. Can't create alias
+Control/alias [_CamLock] not found. Can't create alias
+Control/alias [_Switch_MsRight] not found. Can't create alias
+Control/alias [_Switch_MsDown] not found. Can't create alias
+Control/alias [] not found. Can't create alias
+Control/alias [] not found. Can't create alias
+
+Create controls atlas:
+
+DX9Error: Can't find texture : 'resource\textures\controls\mousewheel.txx' (C:\Work\GitHub\captain-blood\System\Controls\pc.cpp, line: 1237)
+DX9Error: Can't find texture : 'resource\textures\controls\kb_scroll.txx' (C:\Work\GitHub\captain-blood\System\Controls\pc.cpp, line: 1237)
+ - CreateRenderTarget: 1988x192 from (C:\Work\GitHub\captain-blood\System\Controls\pc.cpp, 1345) Format 2
+
+FileService error: can't open pack file "Resource\forces.pkx" (file: C:\Work\GitHub\captain-blood\System\Controls\pc.cpp, line: 880 -> LoadPak)
+Create forces:
+
+    bad file (skipped) - 3_r_.ffe
+    bad file (skipped) - death.ffe
+    bad file (skipped) - door_fall.ffe
+
+FileService error: can't open pack file "resource\particles.pkx" (file: C:\Work\GitHub\captain-blood\Particles\Service\particleservice.cpp, line: 345 -> LoadPak)
+279 particles loaded by 786141940 ticks - 0.25 seconds
+
+Shadow service parameters:
+---------------------------------------------------------------------------------
+Off = 0 (1 - disable shadow maps)
+PostTexSz = 512 (shadow receive texture size)
+Quality = 1 (shadow quality, 0 = 2048, 1 = 1536, 2 = 1280, 3 = 1024, 4 = 896, 5 = 768, 6 = 512)
+---------------------------------------------------------------------------------
+
+ - CreateRenderTarget: 1024x1024 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 130) Format 55
+
+ - CreateRenderTarget: 1024x1024 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 146) Format 3
+
+ - CreateDepthStencil: 1024x1024 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 150) Format 42
+
+ - CreateRenderTarget: 1024x1024 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 154) Format 3
+
+PSSM: Selected format - FMT_R32F
+ - CreateRenderTarget: 3072x3072 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 200) Format 57
+
+ - CreateDepthStencil: 3072x3072 from (C:\Work\GitHub\captain-blood\Game\CoolThings\shadowmap\shadowsserv.cpp, 202) Format 42
+
+DX9Error: Can't find texture : 'resource\textures\console.txx' (C:\Work\GitHub\captain-blood\Game\CoolThings\console\Console.cpp, line: 462)
+DX9Error: Can't find texture : 'resource\textures\fx_splash_norm.txx' (C:\Work\GitHub\captain-blood\Game\Camera\postprocess\filters\Splash.cpp, line: 139)
+DX9Error: Can't find texture : 'resource\textures\fx_splash_diff.txx' (C:\Work\GitHub\captain-blood\Game\Camera\postprocess\filters\Splash.cpp, line: 140)
+Render Error: Can't find shader 'PostPolygon'
+Render Error: Can't find shader 'PE_SharpnessWithZ'
+Render Error: Can't find shader 'PE_FinalWithZ'
+Render Error: Can't find shader 'PE_DOFCalculateAlpha'
+ - CreateRenderTarget: 3840x2036 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 122) Format 2
+
+ - CreateRenderTarget: 3840x2036 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 123) Format 2
+
+ - CreateDepthStencil: 3840x2036 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 125) Format 42
+
+CreateTempRenderTarget from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 130)
+ - CreateRenderTarget: 3840x2036 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 130) Format 2
+
+CreateTempRenderTarget from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 137)
+ - CreateRenderTarget: 960x509 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 137) Format 2
+
+CreateTempRenderTarget from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 138)
+ - CreateRenderTarget: 960x509 from (C:\Work\GitHub\captain-blood\Game\CoolThings\posteffects\UberFilter.cpp, 138) Format 2
+
+ - CreateRenderTarget: 512x512 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 252) Format 2
+
+CreateTempRenderTarget from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 253)
+ - CreateRenderTarget: 512x512 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 253) Format 2
+
+CreateTempDepthStencil from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 254)
+ - CreateDepthStencil: 512x512 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 254) Format 42
+
+ - CreateRenderTarget: 512x512 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 256) Format 2
+
+CreateTempDepthStencil from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 257)
+ - CreateRenderTarget: 512x512 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 270) Format 2
+
+ - CreateRenderTarget: 3840x2036 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 286) Format 2
+
+ - CreateDepthStencil: 3840x2036 from (C:\Work\GitHub\captain-blood\ArcadeSea\Ocean3\Ocean.cpp, 287) Format 42
+
+SoundService: Can't open sound bank file: Resource\sounds\mini.ssb
+SoundService: Can't open sound bank file: Resource\sounds\Globals.ssb
+SoundService: Can't open sound bank file: Resource\sounds\Globals_eng.ssb
+
+
+
+
+
+Services create statistics:
+
+000: Service "FileService", level = 0, ctration time = 0.000s
+001: Service "LiveService", level = 1, ctration time = 0.000s
+002: Service "ProjectBuilderService", level = 1, ctration time = 0.000s
+003: Service "CacheService", level = 1, ctration time = 0.000s
+004: Service "SoundService", level = 2, ctration time = 0.078s
+005: Service "LocStrings", level = 3, ctration time = 0.000s
+006: Service "PhysicsService", level = 19, ctration time = 0.187s
+007: Service "DX9Render", level = 20, ctration time = 0.297s
+008: Service "ControlsService", level = 25, ctration time = 0.172s
+009: Service "AnimationService", level = 30, ctration time = 0.000s
+010: Service "ParticleService", level = 30, ctration time = 0.250s
+011: Service "ShadowsService", level = 55, ctration time = 0.000s
+012: Service "GMXService", level = 60, ctration time = 0.000s
+013: Service "PathService", level = 100, ctration time = 0.000s
+014: Service "PreviewService", level = 100, ctration time = 0.000s
+015: Service "MissionsManagerService", level = 100, ctration time = 0.000s
+016: Service "Console", level = 110, ctration time = 0.000s
+017: Service "ContentManager", level = 120, ctration time = 0.000s
+018: Service "ShipAIService", level = 120, ctration time = 0.000s
+019: Service "PlayerChecker", level = 120, ctration time = 0.000s
+020: Service "PostProcessService", level = 120, ctration time = 0.000s
+021: Service "PostEffects", level = 130, ctration time = 0.000s
+022: Service "TimeCalcService", level = 500, ctration time = 0.000s
+023: Service "SoundEditorAccessor", level = 1000, ctration time = 0.000s
+024: Service "AnxEditorServiceAccess", level = 1000, ctration time = 0.000s
+025: Service "SetLanguageBlockService", level = 1000, ctration time = 0.000s
+026: Service "MusicService", level = 1000, ctration time = 0.000s
+027: Service "Ocean3Service", level = 10000, ctration time = 0.281s
+028: Service "InterfaceUtils", level = 10000, ctration time = 0.000s
+029: Service "ObjectsFindManagerStorage", level = 100000, ctration time = 0.000s
+030: Service "SoundBanksKipper", level = 2147483637, ctration time = 0.000s
+
+Total creation time: 1.265s
+
+
+
+CreateTempRenderTarget from (C:\Work\GitHub\captain-blood\Particles\Manager\particlemanager.cpp, 96)
+ - CreateRenderTarget: 3840x2036 from (C:\Work\GitHub\captain-blood\Particles\Manager\particlemanager.cpp, 96) Format 2
+
+DX9Error: Can't find texture : 'resource\textures\haze.txx' (C:\Work\GitHub\captain-blood\Particles\Manager\particlemanager.cpp, line: 112)
+DX9Error: Can't find texture : 'resource\textures\cannondeck5.txx' (C:\Work\GitHub\captain-blood\Particles\Editor\Forms\mainwindow.cpp, line: 111)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\grid.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\grid.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\colorch.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\colorch.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\colorch.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+DX9Error: Can't find texture : 'resource\textures\gui\peditor\colorch.txx' (C:\Work\GitHub\captain-blood\common_h\GUI\Controls\gui_image.cpp, line: 48)
+---------------------------------------------------------------------------------
+Services & objects creating sucsesful.
+---------------------------------------------------------------------------------
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+Ini file error (file "pedit.ini", line 65): Invalidate key syntactic, not found '='
+FileService error: can't open pack file "resource\particles.pkx" (file: C:\Work\GitHub\captain-blood\Particles\Service\particleservice.cpp, line: 345 -> LoadPak)
+279 particles loaded by 507381555 ticks - 0.16 seconds
+Particles cache create(0.000000)  freq: 0.000000 systems per second
+Particles create(2.000000)  freq: 0.244372 systems per second
+Particles destroy(1.000000) freq: 0.122186 systems per second
+GMXService - dtor
+AnimationService released successfully.
+
+=============================
+
+Controls service shutdown start
+Controls service shutdown end
+
+=============================
+
+
+NGRender::~NGRender()
+
+NGRender::Shutdown begin
+
+NGRender::Shutdown shader manager
+
+Render released successfully.
+NGRender::Shutdown finished
+
+Memory manager released successful...
+  Peak allocate memory blocks: 35586
+  Peak allocate memory blocks in pools: 28851, (system blocks = 6735)
+  Peak allocate memory size: 17.45 Mb (18297553 bytes)
+
+

@@ -27,6 +27,7 @@
     <SccProjectName>\Workspace\CaptainBlood\Programming\DRIVE_V3\</SccProjectName>
     <SccLocalPath>..</SccLocalPath>
     <SccProvider>MSSCCI:Alienbrain</SccProvider>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'" Label="Configuration">
@@ -87,26 +88,27 @@
     <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\temp\Release\</OutDir>
-    <IntDir>.\temp\Release\</IntDir>
+    <OutDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\Out\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\temp\Debug\</OutDir>
-    <IntDir>.\temp\Debug\</IntDir>
+    <OutDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\Out\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Xbox360 Release|Win32'">
-    <IntDir>$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\Out\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\Out\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\Out\</OutDir>
+    <IntDir>$(SolutionDir)\Build\Temp\$(Configuration)\$(ProjectName)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -144,7 +146,7 @@
     </ResourceCompile>
     <Link>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)\Build\modules\$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
@@ -190,7 +192,7 @@
       <Culture>0x0419</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)\Build\modules\$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_d.pdb</ProgramDatabaseFile>
@@ -218,7 +220,7 @@
       <ShaderModel>2.0</ShaderModel>
     </FxCompile>
     <Link>
-      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)\Build\modules\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Pix profile|Win32'">
@@ -256,7 +258,7 @@
     </ResourceCompile>
     <Link>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)\Build\modules\$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName)_p.pdb</ProgramDatabaseFile>
@@ -308,7 +310,7 @@
     </ResourceCompile>
     <Link>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(SolutionDir)$(Configuration)\modules\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(SolutionDir)\Build\modules\$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>..\engine\modules\debugInfo\$(ProjectName).pdb</ProgramDatabaseFile>
